@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SQL → SQL Taşıyıcı</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>SQL → SQL Taşıyıcı</h1>
+  <p class="sub">Şu an desteklenen: <strong>SQL Server → PostgreSQL</strong></p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1 · Kayıtlı sunucular</h2>
+    <p class="hint">Sunucular yalnızca bu bilgisayarda saklanır. Şifreler makineye bağlı
+      anahtarla şifrelenir.</p>
+    <div id="serverList" class="server-list"></div>
+    <details id="serverForm">
+      <summary>Sunucu ekle / düzenle</summary>
+      <div class="grid">
+        <label>Ad<input id="fName" placeholder="Prod SQL Server"></label>
+        <label>Tür
+          <select id="fKind">
+            <option value="SqlServer">SQL Server (kaynak)</option>
+            <option value="PostgreSql">PostgreSQL (hedef)</option>
+          </select>
+        </label>
+        <label>Adres<input id="fHost" placeholder="10.0.0.5"></label>
+        <label>Port<input id="fPort" type="number" value="1433"></label>
+        <label>Kullanıcı<input id="fUser" placeholder="sa"></label>
+        <label>Şifre<input id="fPass" type="password" placeholder="(düzenlemede boş = değişmesin)"></label>
+      </div>
+      <div class="row">
+        <button id="btnSaveServer" class="primary">Kaydet</button>
+        <button id="btnClearForm">Formu temizle</button>
+        <span id="serverMsg" class="msg"></span>
+      </div>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>2 · Kaynak</h2>
+    <div class="grid">
+      <label>SQL Server<select id="srcServer"></select></label>
+      <label>Taşınacak veritabanı
+        <input id="srcDbFilter" list="srcDbList" placeholder="yazarak filtrele veya seç">
+        <datalist id="srcDbList"></datalist>
+      </label>
+    </div>
+    <span id="srcMsg" class="msg"></span>
+  </section>
+
+  <section class="card">
+    <h2>3 · Hedef</h2>
+    <div class="grid">
+      <label>PostgreSQL<select id="tgtServer"></select></label>
+      <label>Hedef veritabanı adı
+        <input id="tgtDb" list="tgtDbList" placeholder="kaynakla aynı isimle gelir">
+        <datalist id="tgtDbList"></datalist>
+      </label>
+      <label>Collation (ICU)
+        <input id="tgtLocale" value="und" placeholder="und">
+      </label>
+    </div>
+    <p class="hint">Var olmayan bir veritabanı adı yazarsan doğru collation ile oluşturulur.
+      Var olanı seçersen ona dokunulmaz. <strong>Hedef tablolar önceden var olmalıdır</strong> —
+      bu araç veri taşır, şema yaratmaz.</p>
+    <span id="tgtMsg" class="msg"></span>
+  </section>
+
+  <section class="card">
+    <h2>4 · Seçenekler</h2>
+    <p class="hint">Hepsi kapalıdır ve bilinçli açılır. Ne geçirdiklerini okumadan açmak,
+      bu aracın var oluş sebebini iptal eder.</p>
+    <label class="check"><input type="checkbox" id="optSourceOnly">
+      Hedefte olmayan kaynak tablolarına izin ver <em>— verileri taşınmaz</em></label>
+    <label class="check"><input type="checkbox" id="optSchemaRisk">
+      Şema riskine izin ver <em>— NOT NULL'a giden NULL, sınırı aşan uzunluk</em></label>
+    <label class="check"><input type="checkbox" id="optCollation">
+      Collation uyuşmazlığına izin ver <em>— arama ve sıralama sessizce değişir</em></label>
+    <label class="check"><input type="checkbox" id="optVerifyOnly">
+      Yalnız doğrula <em>— veri taşımaz, mevcut durumu kontrol eder</em></label>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <button id="btnRun" class="primary big">Taşımayı başlat</button>
+      <span id="runState" class="msg"></span>
+    </div>
+    <pre id="log" class="log" aria-live="polite"></pre>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
