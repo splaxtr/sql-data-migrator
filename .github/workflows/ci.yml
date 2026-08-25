@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore SqlDataMigrator.sln
+
+      # -warnaserror is deliberate. The build is clean today, and a warning that is
+      # allowed to accumulate is a warning nobody reads.
+      - name: Build
+        run: dotnet build SqlDataMigrator.sln --configuration Release --no-restore -warnaserror
+
+      # There is no test project yet. This step says so out loud rather than
+      # letting a green check imply the code was tested. See CONTRIBUTING.md.
+      - name: Test
+        shell: bash
+        run: |
+          if compgen -G "tests/*/*.csproj" > /dev/null; then
+            dotnet test SqlDataMigrator.sln --configuration Release --no-build
+          else
+            echo "No test project exists yet - nothing was tested. This build only proves it compiles."
+          fi

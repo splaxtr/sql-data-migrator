@@ -1,5 +1,8 @@
 # SQL Data Migrator
 
+[![CI](https://github.com/splaxtr/sql-data-migrator/actions/workflows/ci.yml/badge.svg)](https://github.com/splaxtr/sql-data-migrator/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A local app that moves data between SQL databases — **SQL Server → PostgreSQL** today.
 
 Move data between SQL databases from a small local app you run on your own machine.
@@ -73,6 +76,18 @@ line is the only thing that matters, and it is honest.
 | [docs/SAFETY.md](docs/SAFETY.md) | What is guaranteed, what is not, and why each check exists |
 | [docs/USAGE.md](docs/USAGE.md) | Field-by-field walkthrough, the options, and what to do when a run stops |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | The SQL → SQL goal and the order things get built |
+
+## Contributing
+
+Pull requests are welcome, and [docs/ROADMAP.md](docs/ROADMAP.md) is the best place to see
+what would actually help. Read [CONTRIBUTING.md](CONTRIBUTING.md) first — it covers how to
+build and run the project, the three rules the engine is built on, and what is deliberately
+out of scope, which is the part worth knowing before you write anything.
+
+Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+Found a security problem? Follow [SECURITY.md](SECURITY.md) — report it privately rather
+than opening a public issue.
 
 ## License
 
