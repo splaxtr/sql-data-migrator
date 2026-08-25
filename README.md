@@ -1,4 +1,6 @@
-# SQL → SQL Migrator
+# SQL Data Migrator
+
+A local app that moves data between SQL databases — **SQL Server → PostgreSQL** today.
 
 Move data between SQL databases from a small local app you run on your own machine.
 Save your servers once, pick a source database from a searchable list, pick or name the
@@ -32,8 +34,8 @@ three are avoidable. See [docs/SAFETY.md](docs/SAFETY.md) for exactly what is gu
 ## Running it
 
 ```bash
-git clone https://github.com/splaxtr/mssql-to-postgres.git
-cd mssql-to-postgres
+git clone https://github.com/splaxtr/sql-data-migrator.git
+cd sql-data-migrator
 dotnet run --project src/Migrator.App
 ```
 
