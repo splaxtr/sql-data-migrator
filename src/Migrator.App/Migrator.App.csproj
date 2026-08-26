@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.11" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -13,5 +14,32 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <!-- Arayüz assembly'ye gömülür: yayın çıktısı wwwroot klasörü olmadan da çalışır.
+       Geliştirmede fiziksel dosyalar kullanılır (bkz. Program.cs), bu yüzden Content olarak da kalırlar. -->
+  <PropertyGroup>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot/**" />
+  </ItemGroup>
+
+  <!-- Tek dosya yayın: `dotnet publish -c Release -r win-x64` tek bir exe üretir.
+       RuntimeIdentifier verilmeyen normal build/run etkilenmez. -->
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>embedded</DebugType>
+    <!-- IIS'e kurulmayacak; web.config üretme. -->
+    <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Exe'nin yanında dosya bırakmamak için yayına girmezler: arayüz gömülüden servis
+         edilir, appsettings'in de varsayılanlardan farkı yok. -->
+    <Content Update="wwwroot/**" CopyToPublishDirectory="Never" />
+    <Content Update="appsettings.json;appsettings.Development.json" CopyToPublishDirectory="Never" />
+  </ItemGroup>
 
 </Project>

@@ -36,17 +36,31 @@ three are avoidable. See [docs/SAFETY.md](docs/SAFETY.md) for exactly what is gu
 
 ## Running it
 
+### As a single executable
+
+```bash
+dotnet publish src/Migrator.App -c Release -r win-x64
+```
+
+This produces one self-contained `Migrator.App.exe` under
+`src/Migrator.App/bin/Release/net8.0/win-x64/publish/` — around 50 MB, because it carries
+its own .NET runtime and the whole UI. Whoever you hand it to just runs it: it starts on
+<http://localhost:5099> and opens the browser by itself, with nothing to install. Use
+`-r linux-x64` or `-r osx-arm64` for the other platforms.
+
+### From source
+
 ```bash
 git clone https://github.com/splaxtr/sql-data-migrator.git
 cd sql-data-migrator
 dotnet run --project src/Migrator.App
 ```
 
-The app starts on <http://localhost:5099> and opens your browser. Nothing is installed,
-nothing runs as a service, and no data leaves your machine.
+The app starts on <http://localhost:5099>. Nothing is installed, nothing runs as a
+service, and no data leaves your machine.
 
-Requires the [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0). A
-self-contained build that needs no .NET installed is on the roadmap.
+Building either way requires the [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0);
+the published executable itself requires nothing.
 
 ## What the screen does
 

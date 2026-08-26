@@ -1,6 +1,8 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.FileProviders;
 using Migrator.App;
 using Migrator.Core;
 
@@ -16,8 +18,14 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(o =>
 builder.WebHost.UseUrls("http://localhost:5099");
 
 var app = builder.Build();
-app.UseDefaultFiles();
-app.UseStaticFiles();
+
+// Arayüz yayında assembly'den servis edilir: tek dosyalık exe'nin yanında wwwroot yoktur.
+// Geliştirmede fiziksel dosyalar kalır ki JS/CSS düzenlemesi yeniden derleme istemesin.
+IFileProvider ui = app.Environment.IsDevelopment()
+    ? app.Environment.WebRootFileProvider
+    : new ManifestEmbeddedFileProvider(typeof(Program).Assembly, "wwwroot");
+app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = ui });
+app.UseStaticFiles(new StaticFileOptions { FileProvider = ui });
 
 // ── Kayıtlı sunucular ────────────────────────────────────────────────────────
 
@@ -119,6 +127,15 @@ app.MapGet("/api/jobs/{id}", (JobRegistry jobs, string id, int from) =>
     var job = jobs.Get(id);
     return job is null ? Results.NotFound() : Results.Ok(job.Read(from));
 });
+
+// Exe çift tıklanınca arayüz kendiliğinden açılır; geliştirmede her yeniden
+// başlatmada tarayıcı fırlatmamak için yalnız yayında.
+if (!app.Environment.IsDevelopment())
+    app.Lifetime.ApplicationStarted.Register(() =>
+    {
+        try { Process.Start(new ProcessStartInfo("http://localhost:5099") { UseShellExecute = true }); }
+        catch { /* tarayıcı açılamadıysa adres konsolda yazıyor */ }
+    });
 
 app.Run();
 
