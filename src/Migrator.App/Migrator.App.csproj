@@ -15,8 +15,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <!-- Arayüz assembly'ye gömülür: yayın çıktısı wwwroot klasörü olmadan da çalışır.
-       Geliştirmede fiziksel dosyalar kullanılır (bkz. Program.cs), bu yüzden Content olarak da kalırlar. -->
+  <!-- The UI is embedded into the assembly: the publish output works without a wwwroot
+       folder. Development uses the physical files (see Program.cs), so they stay Content too. -->
   <PropertyGroup>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
@@ -24,20 +24,20 @@
     <EmbeddedResource Include="wwwroot/**" />
   </ItemGroup>
 
-  <!-- Tek dosya yayın: `dotnet publish -c Release -r win-x64` tek bir exe üretir.
-       RuntimeIdentifier verilmeyen normal build/run etkilenmez. -->
+  <!-- Single-file publish: `dotnet publish -c Release -r win-x64` produces one exe.
+       Regular build/run without a RuntimeIdentifier is unaffected. -->
   <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <DebugType>embedded</DebugType>
-    <!-- IIS'e kurulmayacak; web.config üretme. -->
+    <!-- Never hosted on IIS; don't generate web.config. -->
     <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
   </PropertyGroup>
   <ItemGroup>
-    <!-- Exe'nin yanında dosya bırakmamak için yayına girmezler: arayüz gömülüden servis
-         edilir, appsettings'in de varsayılanlardan farkı yok. -->
+    <!-- Kept out of the publish output so nothing sits next to the exe: the UI is served
+         from the embedded copy, and appsettings differs in nothing from the defaults. -->
     <Content Update="wwwroot/**" CopyToPublishDirectory="Never" />
     <Content Update="appsettings.json;appsettings.Development.json" CopyToPublishDirectory="Never" />
   </ItemGroup>

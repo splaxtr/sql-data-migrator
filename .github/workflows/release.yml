@@ -1,10 +1,10 @@
 name: Release
 
-# Binary'ler üç durumda derlenir:
-#  - release-please bir release PR'ını merge edip bu workflow'u yeni tag ile çağırınca
-#  - elle bir v* tag'i push'lanınca
-#  - elle çalıştırmada (workflow_dispatch) aynı binary'ler derlenir ama yalnızca
-#    workflow artifact'i olarak yüklenir — release'e dokunmayan bir deneme turu
+# Binaries are built in three situations:
+#  - release-please merges a release PR and calls this workflow with the new tag
+#  - a v* tag is pushed by hand
+#  - a manual run (workflow_dispatch) builds the same binaries but only uploads
+#    them as workflow artifacts — a dry run that touches no release
 on:
   push:
     tags: ['v*']
@@ -96,8 +96,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # release-please yolu: release zaten var, dosyalar eklenir.
-          # Elle tag yolu: release burada oluşturulur.
+          # release-please path: the release already exists, the files are attached.
+          # Hand-pushed tag path: the release is created here.
           if gh release view "$TAG" > /dev/null 2>&1; then
             gh release upload "$TAG" dist/* --clobber
           else

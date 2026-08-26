@@ -12,7 +12,7 @@ const api = async (url, options) => {
 let servers = [];
 let editingId = null;
 
-// ── Sunucular ───────────────────────────────────────────────────────────────
+// ── Servers ─────────────────────────────────────────────────────────────────
 
 async function loadServers() {
   servers = await api("/api/servers");
@@ -68,7 +68,7 @@ function clearForm() {
 }
 
 $("fKind").onchange = () => {
-  // Port varsayılanı türe göre; kullanıcı elle değiştirmişse dokunma.
+  // Port default follows the kind; hands off once the user changed it.
   const port = $("fPort");
   if (port.value === "1433" || port.value === "5432" || !port.value)
     port.value = $("fKind").value === "SqlServer" ? 1433 : 5432;
@@ -112,7 +112,7 @@ function fillServerSelects() {
   fill($("tgtServer"), "PostgreSql");
 }
 
-// ── Veritabanı listeleri ────────────────────────────────────────────────────
+// ── Database lists ──────────────────────────────────────────────────────────
 
 async function loadDatabases(serverId, datalistId, msgId) {
   const list = $(datalistId);
@@ -137,16 +137,16 @@ async function loadDatabases(serverId, datalistId, msgId) {
 $("srcServer").onchange = () => loadDatabases($("srcServer").value, "srcDbList", "srcMsg");
 $("tgtServer").onchange = () => loadDatabases($("tgtServer").value, "tgtDbList", "tgtMsg");
 
-// Hedef adı varsayılan olarak kaynakla aynı gelir; kullanıcı değiştirdiyse ona dokunmayız.
+// The target name defaults to the source's; once the user edits it, we leave it alone.
 let targetNameTouched = false;
 $("tgtDb").oninput = () => { targetNameTouched = true; };
 $("srcDbFilter").onchange = () => {
   if (!targetNameTouched) $("tgtDb").value = $("srcDbFilter").value;
 };
 
-// ── Çeviri ──────────────────────────────────────────────────────────────────
-// Motor İngilizce konuşur; Türkçesi kod + argümanlardan burada kurulur. Sözlükte
-// olmayan mesaj (ör. sürücü hatası) İngilizce metniyle olduğu gibi gösterilir.
+// ── Translation ─────────────────────────────────────────────────────────────
+// The engine speaks English; the Turkish is built here from code + args. A message
+// not in the dictionary (e.g. a driver error) is shown as-is, in English.
 
 const TR = {
   "step.readingSchemas": "Şemalar okunuyor",
@@ -201,7 +201,7 @@ const TR = {
   "fail.exception": "Taşıma bir istisnayla durdu.",
 };
 
-// Argüman olarak gelen, kendisi de çevrilen işaret değerleri (bkz. MessageCode.TokenUnknown).
+// Sentinel values that arrive as arguments yet get translated themselves (see MessageCode.TokenUnknown).
 const TR_TOKENS = {
   "@@unknown": "(bilinmiyor)",
   "@@unreadable": "(okunamadı)",
@@ -214,7 +214,7 @@ function translate(message) {
   return template.replace(/\{(\d+)\}/g, (placeholder, i) => args[i] ?? placeholder);
 }
 
-// ── Taşıma ──────────────────────────────────────────────────────────────────
+// ── Migration ───────────────────────────────────────────────────────────────
 
 function setMsg(id, text, kind) {
   const element = $(id);

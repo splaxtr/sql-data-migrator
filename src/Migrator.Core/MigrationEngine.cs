@@ -6,12 +6,12 @@ using Npgsql;
 using NpgsqlTypes;
 
 /// <summary>
-/// SQL Server -> PostgreSQL veri taşıma motoru.
+/// SQL Server -> PostgreSQL data migration engine.
 ///
-/// Tasarım kararı: taşıma VE doğrulama tek transaction içinde koşar; doğrulama geçmeden
-/// commit yapılmaz. Böylece "başarılı" çıkışı verinin gerçekten taşındığı anlamına gelir ve
-/// başarısızlık hedefi yarı-dolu bırakmaz. Şema hedefte HAZIR olmalıdır — bu araç yalnız
-/// veri taşır, tablo yaratmaz.
+/// Design decision: the copy AND its verification run inside one transaction; nothing is
+/// committed until verification passes. A successful exit therefore means the data really
+/// moved, and a failure leaves no half-filled target. The schema must already EXIST in
+/// the target — this tool only moves data, it creates no tables.
 /// </summary>
 public sealed class MigrationEngine
 {
@@ -33,9 +33,10 @@ public sealed class MigrationEngine
         await sql.OpenAsync(ct);
         await using var pg = new NpgsqlConnection(targetConnectionString);
         await pg.OpenAsync(ct);
-        // TRUNCATE CASCADE, bağlı her tablo için ayrı bir notice basar; büyük bir şemada bu
-        // yüzlerce satır demek ve gerçek ilerlemeyi görünmez kılar. Sayılıp tek satırda özetlenir,
-        // ama tamamen yutulmaz: hangi tabloların boşaldığı operatörün bilmesi gereken bir şey.
+        // TRUNCATE CASCADE emits a separate notice for every dependent table; on a large
+        // schema that is hundreds of lines burying the real progress. They are counted and
+        // summarized in one line, but not swallowed entirely: which tables were emptied is
+        // something the operator needs to know.
         var cascaded = new List<string>();
         pg.Notice += (_, e) =>
         {
@@ -212,7 +213,7 @@ public sealed class MigrationEngine
         _ => throw new InvalidOperationException($"Cannot synthesize a default: {udt}"),
     };
 
-    // ── Ön kontrol ────────────────────────────────────────────────────────────
+    // ── Preflight ─────────────────────────────────────────────────────────────
 
     private async Task<bool> PreflightAsync(SqlConnection sql, List<TablePlan> plan, bool allowRisk, CancellationToken ct)
     {
@@ -221,7 +222,7 @@ public sealed class MigrationEngine
 
         foreach (var table in plan)
         {
-            // Tablo başına TEK geçiş: kolon başına ayrı sorgu, büyük tablolarda ayrı tam tarama demek.
+            // ONE pass per table: a query per column would mean a separate full scan on large tables.
             var nullChecks = table.CopyColumns.Where(c => !c.Target.IsNullable && c.Source.IsNullable).ToList();
             var lengthChecks = table.CopyColumns
                 .Where(c => c.Target.StoreType is "varchar" or "bpchar" && c.Target.MaxLength > 0 && c.Source.MaxLength is int)
@@ -274,14 +275,15 @@ public sealed class MigrationEngine
         return allowRisk;
     }
 
-    // ── Kopyalama ─────────────────────────────────────────────────────────────
+    // ── Copy ──────────────────────────────────────────────────────────────────
 
     private async Task<long> CopyAsync(
         SqlConnection sql, NpgsqlConnection pg, List<TablePlan> plan, NpgsqlTransaction transaction, CancellationToken ct)
     {
         _progress.Report(new(ProgressKind.Step, "Copying data", MessageCode.StepCopying));
 
-        // FK tetikleyicilerini transaction boyunca askıya al (superuser ister) — kopyalama sırası önemsizleşir.
+        // Suspend FK triggers for the duration of the transaction (requires superuser) —
+        // copy order stops mattering.
         await ExecAsync(pg, "SET LOCAL session_replication_role = replica;", transaction, ct);
 
         var toTruncate = plan.Where(p => p.CopyColumns.Count > 0).Select(p => TargetDatabase.Quote(p.Table)).ToList();
@@ -304,7 +306,7 @@ public sealed class MigrationEngine
             await using (var importer = await pg.BeginBinaryImportAsync(
                 $"COPY {TargetDatabase.Quote(table.Table)} ({targetList}) FROM STDIN (FORMAT BINARY)", ct))
             {
-                importer.Timeout = TimeSpan.Zero; // sıfır = sınırsız; 30 sn'lik varsayılan büyük tabloları keser
+                importer.Timeout = TimeSpan.Zero; // zero = unlimited; the 30-second default cuts off large tables
                 while (await reader.ReadAsync(ct))
                 {
                     await importer.StartRowAsync(ct);
@@ -354,7 +356,7 @@ public sealed class MigrationEngine
             case "bpchar": await importer.WriteAsync((string)value, NpgsqlDbType.Char, ct); break;
             case "bytea": await importer.WriteAsync((byte[])value, NpgsqlDbType.Bytea, ct); break;
             case "timestamp":
-                // datetime2 Kind=Unspecified döner; birebir taşınır, UTC dönüşümü YOK.
+                // datetime2 comes back Kind=Unspecified; moved verbatim, NO UTC conversion.
                 await importer.WriteAsync(DateTime.SpecifyKind((DateTime)value, DateTimeKind.Unspecified), NpgsqlDbType.Timestamp, ct);
                 break;
             case "timestamptz":
@@ -402,7 +404,7 @@ public sealed class MigrationEngine
                 MessageCode.InfoSequencesAligned, new object?[] { identities.Count }));
     }
 
-    // ── Doğrulama ─────────────────────────────────────────────────────────────
+    // ── Verification ──────────────────────────────────────────────────────────
 
     private async Task<bool> VerifyRowCountsAsync(
         SqlConnection sql, NpgsqlConnection pg, List<TablePlan> plan, NpgsqlTransaction? transaction, CancellationToken ct)
@@ -428,8 +430,9 @@ public sealed class MigrationEngine
     }
 
     /// <summary>
-    /// Yetim satır denetimi. Kopyalama boyunca FK'lar askıda olduğu için kaynaktaki tutarsızlık
-    /// sessizce girebilir; tek güvence bu kontroldür ve commit'ten ÖNCE koşar.
+    /// Orphan-row audit. With FKs suspended throughout the copy, an inconsistency in the
+    /// source can enter silently; this check is the only guarantee, and it runs BEFORE
+    /// the commit.
     /// </summary>
     private async Task<bool> ValidateForeignKeysAsync(
         NpgsqlConnection pg, List<ForeignKey> foreignKeys, HashSet<string> copyTables,
@@ -465,7 +468,7 @@ public sealed class MigrationEngine
         return ok;
     }
 
-    // ── Yardımcılar ───────────────────────────────────────────────────────────
+    // ── Helpers ───────────────────────────────────────────────────────────────
 
     private static async Task ExecAsync(NpgsqlConnection pg, string sql, NpgsqlTransaction? transaction, CancellationToken ct)
     {

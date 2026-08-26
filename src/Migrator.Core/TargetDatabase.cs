@@ -2,12 +2,13 @@ namespace Migrator.Core;
 
 using Npgsql;
 
-/// <summary>Hedef veritabanını hazırlar ve collation'ını doğrular.</summary>
+/// <summary>Prepares the target database and verifies its collation.</summary>
 public static class TargetDatabase
 {
     /// <summary>
-    /// Hedef veritabanını, yoksa, istenen ICU collation ile oluşturur. Var olana dokunmaz:
-    /// PostgreSQL kurulmuş bir veritabanının collation'ını değiştirmeye izin vermez.
+    /// Creates the target database with the requested ICU collation if it does not exist.
+    /// An existing one is left untouched: PostgreSQL does not allow changing a database's
+    /// collation once it is created.
     /// </summary>
     public static async Task<bool> EnsureCreatedAsync(
         string connectionString, string? icuLocale, IProgress<ProgressMessage> progress, CancellationToken ct = default)
@@ -56,9 +57,9 @@ public static class TargetDatabase
     }
 
     /// <summary>
-    /// Collation'ı doğrular. Yanlış collation sessizdir: veritabanı hatasız çalışır, yalnız
-    /// arama ve sıralama fark edilmeden yanlış davranır — ve veri girdikten sonra düzeltmek
-    /// veritabanını yeniden yaratmayı gerektirir.
+    /// Verifies the collation. A wrong collation is silent: the database runs without
+    /// errors, only search and sort quietly misbehave — and fixing it after data has
+    /// arrived means recreating the database.
     /// </summary>
     public static async Task<bool> CheckCollationAsync(
         NpgsqlConnection pg, string? expectedIcuLocale, bool allowMismatch,
@@ -75,8 +76,8 @@ public static class TargetDatabase
             return true;
         }
 
-        // Args token'ın kendisini taşır ki çeviri katmanı onu görüp çevirebilsin;
-        // İngilizce metin okunur karşılığını gösterir.
+        // Args carry the token itself so the translation layer can see and translate it;
+        // the English text shows its readable rendering.
         var message = $"Target collation is '{DescribeLocale(actual)}' — expected ICU '{expectedIcuLocale}'.";
         var args = new object?[] { actual, expectedIcuLocale };
         if (allowMismatch)
@@ -94,7 +95,7 @@ public static class TargetDatabase
 
     private static async Task<string> ReadLocaleAsync(NpgsqlConnection pg, CancellationToken ct)
     {
-        // PG 17 daticulocale'i datlocale olarak yeniden adlandırdı.
+        // PG 17 renamed daticulocale to datlocale.
         foreach (var column in new[] { "daticulocale", "datlocale" })
         {
             try
@@ -105,7 +106,7 @@ public static class TargetDatabase
             }
             catch (PostgresException ex) when (ex.SqlState == "42703")
             {
-                // sonraki kolon adını dene
+                // try the next column name
             }
         }
         return MessageCode.TokenUnreadable;

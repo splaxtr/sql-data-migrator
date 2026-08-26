@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.DataProtection;
 
 public enum ServerKind { SqlServer, PostgreSql }
 
-/// <summary>Kayıtlı bir sunucu. Şifre diskte şifreli tutulur, düz metin hiç yazılmaz.</summary>
+/// <summary>A saved server. The password is kept encrypted on disk; plain text is never written.</summary>
 public sealed record ServerProfile(
     string Id,
     string Name,
@@ -18,11 +18,12 @@ internal sealed record StoredProfile(
     string Id, string Name, ServerKind Kind, string Host, int Port, string User, string ProtectedPassword);
 
 /// <summary>
-/// Kayıtlı sunucuları kullanıcının kendi makinesinde tutar.
+/// Keeps saved servers on the user's own machine.
 ///
-/// Şifreler makineye bağlı anahtarla şifrelenir: dosya başka bir bilgisayara kopyalanırsa
-/// şifreler okunamaz. Bu, dosyanın kazayla paylaşılmasına karşı korur; makinede oturumu
-/// açık olan birine karşı korumaz — uygulama bağlanabilmek için çözmek zorundadır.
+/// Passwords are encrypted with a machine-bound key: copied to another computer, the
+/// file yields unreadable passwords. This protects against the file being shared by
+/// accident; it does not protect against someone with a session on this machine — the
+/// app has to be able to decrypt them to connect.
 /// </summary>
 public sealed class ConnectionStore
 {
@@ -56,7 +57,7 @@ public sealed class ConnectionStore
             var stored = await ReadAsync();
             var existing = id is null ? null : stored.FirstOrDefault(s => s.Id == id);
 
-            // Şifre boş bırakılırsa mevcut şifre korunur — düzenleme sırasında yeniden yazdırmamak için.
+            // A blank password keeps the stored one — no retyping while editing.
             var protectedPassword = string.IsNullOrEmpty(password)
                 ? existing?.ProtectedPassword ?? ""
                 : _protector.Protect(password);
@@ -85,7 +86,7 @@ public sealed class ConnectionStore
         finally { _lock.Release(); }
     }
 
-    /// <summary>Kayıtlı profilden çalışır bir bağlantı dizgisi üretir.</summary>
+    /// <summary>Builds a working connection string from a saved profile.</summary>
     public async Task<string?> BuildConnectionStringAsync(string id, string? database)
     {
         var stored = (await ReadAsync()).FirstOrDefault(s => s.Id == id);
@@ -112,8 +113,9 @@ public sealed class ConnectionStore
         try { return _protector.Unprotect(value); }
         catch (Exception)
         {
-            // Anahtar başka bir makineden geliyor ya da bozuk: boş dön, bağlantı anlaşılır bir
-            // kimlik hatası verir — sessizce yanlış şifreyle denemekten iyidir.
+            // The key came from another machine or is corrupt: return empty so the
+            // connection fails with a clear authentication error — better than silently
+            // trying a wrong password.
             return "";
         }
     }

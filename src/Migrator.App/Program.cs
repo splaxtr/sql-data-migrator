@@ -13,21 +13,21 @@ builder.Services.AddSingleton<JobRegistry>();
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(o =>
     o.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
-// Yalnız localhost: uygulama üretim veritabanlarının kimlik bilgilerini tutuyor,
-// yerel kalması bir güvenlik özelliğidir.
+// Localhost only: the app holds credentials for production databases, and staying
+// local is a security feature.
 builder.WebHost.UseUrls("http://localhost:5099");
 
 var app = builder.Build();
 
-// Arayüz yayında assembly'den servis edilir: tek dosyalık exe'nin yanında wwwroot yoktur.
-// Geliştirmede fiziksel dosyalar kalır ki JS/CSS düzenlemesi yeniden derleme istemesin.
+// In production the UI is served from the assembly: a single-file exe has no wwwroot
+// next to it. Development keeps the physical files so editing JS/CSS needs no rebuild.
 IFileProvider ui = app.Environment.IsDevelopment()
     ? app.Environment.WebRootFileProvider
     : new ManifestEmbeddedFileProvider(typeof(Program).Assembly, "wwwroot");
 app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = ui });
 app.UseStaticFiles(new StaticFileOptions { FileProvider = ui });
 
-// ── Kayıtlı sunucular ────────────────────────────────────────────────────────
+// ── Saved servers ────────────────────────────────────────────────────────────
 
 app.MapGet("/api/servers", async (ConnectionStore store) => Results.Ok(await store.ListAsync()));
 
@@ -45,7 +45,7 @@ app.MapPost("/api/servers", async (ConnectionStore store, SaveServerRequest requ
 app.MapDelete("/api/servers/{id}", async (ConnectionStore store, string id) =>
     await store.DeleteAsync(id) ? Results.NoContent() : Results.NotFound());
 
-// ── Veritabanı listeleri (canlı, sunucudan okunur) ───────────────────────────
+// ── Database lists (live, read from the server) ──────────────────────────────
 
 app.MapGet("/api/servers/{id}/databases", async (ConnectionStore store, string id) =>
 {
@@ -69,7 +69,7 @@ app.MapGet("/api/servers/{id}/databases", async (ConnectionStore store, string i
     }
 });
 
-// ── Taşıma ──────────────────────────────────────────────────────────────────
+// ── Migration ───────────────────────────────────────────────────────────────
 
 app.MapPost("/api/migrate", async (ConnectionStore store, JobRegistry jobs, MigrateRequest request) =>
 {
@@ -83,8 +83,8 @@ app.MapPost("/api/migrate", async (ConnectionStore store, JobRegistry jobs, Migr
 
     var job = jobs.Create();
 
-    // Ateşle ve bırak: ilerleme /api/jobs/{id} üzerinden okunur. İstek boyunca beklemek,
-    // uzun taşımalarda tarayıcı zaman aşımına düşürür.
+    // Fire and forget: progress is read via /api/jobs/{id}. Holding the request open
+    // would hit browser timeouts on long migrations.
     _ = Task.Run(async () =>
     {
         try
@@ -128,10 +128,10 @@ app.MapGet("/api/jobs/{id}", (JobRegistry jobs, string id, int from) =>
     return job is null ? Results.NotFound() : Results.Ok(job.Read(from));
 });
 
-// İkinci bir kopyanın "5099'daki gerçekten ben miyim?" sorusuna cevabı.
+// Answers a second copy's question: "is the thing on 5099 really me?"
 app.MapGet("/api/ping", () => Results.Ok(new { app = "SqlDataMigrator" }));
 
-// Exe ikinci kez çift tıklanırsa çökmek yerine çalışan kopyanın arayüzü açılır.
+// A second double-click opens the running copy's UI instead of crashing.
 if (await IsAlreadyRunningAsync())
 {
     Console.WriteLine("Uygulama zaten çalışıyor — tarayıcıda http://localhost:5099 açılıyor.");
@@ -139,8 +139,8 @@ if (await IsAlreadyRunningAsync())
     return;
 }
 
-// Exe çift tıklanınca arayüz kendiliğinden açılır; geliştirmede her yeniden
-// başlatmada tarayıcı fırlatmamak için yalnız yayında.
+// Double-clicking the exe opens the UI by itself; production only, so development
+// restarts don't keep launching browsers.
 if (!app.Environment.IsDevelopment())
     app.Lifetime.ApplicationStarted.Register(OpenBrowser);
 
@@ -150,8 +150,8 @@ try
 }
 catch (IOException ex) when (ex.InnerException is Microsoft.AspNetCore.Connections.AddressInUseException)
 {
-    // Portu tutan biz değiliz (yukarıdaki kontrol geçildi): kullanıcıya çökme
-    // yerine ne yapacağını söyle. Çift tıklamada pencere anında kapanmasın.
+    // Whoever holds the port is not us (the check above passed): tell the user what to
+    // do instead of crashing, and keep the window from vanishing on double-click.
     Console.WriteLine();
     Console.WriteLine("HATA: 5099 portu başka bir uygulama tarafından kullanılıyor.");
     Console.WriteLine("O uygulamayı kapatıp bunu yeniden başlatın.");
@@ -173,7 +173,7 @@ static async Task<bool> IsAlreadyRunningAsync()
     }
     catch
     {
-        // Bağlantı reddi = port boş; zaman aşımı/başka cevap = bizim değil.
+        // Connection refused = port free; timeout or a different answer = not ours.
         return false;
     }
 }
@@ -181,10 +181,10 @@ static async Task<bool> IsAlreadyRunningAsync()
 static void OpenBrowser()
 {
     try { Process.Start(new ProcessStartInfo("http://localhost:5099") { UseShellExecute = true }); }
-    catch { /* tarayıcı açılamadıysa adres konsolda yazıyor */ }
+    catch { /* if no browser opened, the address is on the console */ }
 }
 
-// ── İstek tipleri ───────────────────────────────────────────────────────────
+// ── Request types ───────────────────────────────────────────────────────────
 
 internal sealed record SaveServerRequest(
     string? Id, string Name, ServerKind Kind, string Host, int Port, string? User, string? Password);
@@ -200,7 +200,7 @@ internal sealed record MigrateRequest(
     bool AllowCollationMismatch,
     bool VerifyOnly);
 
-/// <summary>Koşan taşımaların ilerlemesini bellekte tutar; uygulama kapanınca kaybolur.</summary>
+/// <summary>Holds running migrations' progress in memory; gone when the app exits.</summary>
 internal sealed class JobRegistry
 {
     private readonly ConcurrentDictionary<string, Job> _jobs = new();

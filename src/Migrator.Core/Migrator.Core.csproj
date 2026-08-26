@@ -4,7 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!-- Semboller assembly'nin içinde: tek dosyalık yayın .pdb bırakmaz, stack trace satır numarası korunur. -->
+    <!-- Symbols live inside the assembly: single-file publish leaves no .pdb behind while
+         stack traces keep their line numbers. -->
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 

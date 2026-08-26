@@ -3,7 +3,7 @@ namespace Migrator.Core;
 using Microsoft.Data.SqlClient;
 using Npgsql;
 
-/// <summary>Her iki tarafın şemasını information_schema'dan okur.</summary>
+/// <summary>Reads both sides' schemas from information_schema.</summary>
 public static class SchemaReader
 {
     public static async Task<List<string>> ListSqlServerDatabasesAsync(string connectionString, CancellationToken ct = default)
