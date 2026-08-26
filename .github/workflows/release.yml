@@ -1,12 +1,20 @@
 name: Release
 
-# Every v* tag builds the single-file binaries and publishes them as a GitHub
-# release. A manual run builds the same binaries but only uploads them as
-# workflow artifacts — a dry run that creates no release.
+# Binary'ler üç durumda derlenir:
+#  - release-please bir release PR'ını merge edip bu workflow'u yeni tag ile çağırınca
+#  - elle bir v* tag'i push'lanınca
+#  - elle çalıştırmada (workflow_dispatch) aynı binary'ler derlenir ama yalnızca
+#    workflow artifact'i olarak yüklenir — release'e dokunmayan bir deneme turu
 on:
   push:
     tags: ['v*']
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      tag:
+        description: Existing v* tag to build binaries for
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -16,9 +24,14 @@ jobs:
     name: Publish single-file builds
     runs-on: ubuntu-latest
 
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+
     steps:
       - name: Check out
         uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag || github.ref }}
 
       - name: Set up .NET 8
         uses: actions/setup-dotnet@v6
@@ -26,11 +39,14 @@ jobs:
           dotnet-version: '8.0.x'
 
       # Cross-publishing from Linux covers all three platforms because the
-      # builds use neither ReadyToRun nor build-time code signing.
+      # builds use neither ReadyToRun nor build-time code signing. The assembly
+      # version comes from the tag so the exe's file properties match the release.
       - name: Publish
         run: |
+          version_flag=""
+          [[ "$TAG" == v* ]] && version_flag="-p:Version=${TAG#v}"
           for rid in win-x64 linux-x64 osx-arm64; do
-            dotnet publish src/Migrator.App -c Release -r "$rid" -o "out/$rid"
+            dotnet publish src/Migrator.App -c Release -r "$rid" -o "out/$rid" $version_flag
           done
           mkdir dist
           mv out/win-x64/Migrator.App.exe dist/SqlDataMigrator-win-x64.exe
@@ -75,8 +91,15 @@ jobs:
           name: binaries
           path: dist/
 
-      - name: Create GitHub release
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Attach binaries to the release
+        if: startsWith(env.TAG, 'v')
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/* --title "$GITHUB_REF_NAME" --generate-notes
+        run: |
+          # release-please yolu: release zaten var, dosyalar eklenir.
+          # Elle tag yolu: release burada oluşturulur.
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" dist/* --clobber
+          else
+            gh release create "$TAG" dist/* --title "$TAG" --generate-notes
+          fi

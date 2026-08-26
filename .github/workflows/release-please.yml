@@ -1,0 +1,38 @@
+name: Release Please
+
+# Sürümleme otomasyonu: Conventional Commits geçmişinden SemVer sürümü türetir.
+# main'e her push'ta bir "release PR" açar/günceller (CHANGELOG + sürüm); o PR
+# merge edilince tag'i ve GitHub release'ini oluşturur. feat: → minor,
+# fix: → patch, feat!/BREAKING CHANGE → major; docs/chore/ci sürüm üretmez.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.rp.outputs.release_created }}
+      tag_name: ${{ steps.rp.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: rp
+        with:
+          release-type: simple
+
+  # release-please'in varsayılan GITHUB_TOKEN ile oluşturduğu tag, bilinçli
+  # olarak tag-push workflow'unu tetiklemez (GitHub'ın döngü koruması). Bu
+  # yüzden binary'ler o workflow'u buradan çağırarak eklenir.
+  binaries:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.release-please.outputs.tag_name }}
