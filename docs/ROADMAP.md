@@ -25,8 +25,10 @@ different identity semantics — which is exactly what the interfaces need to su
 stop assuming PostgreSQL specifics (`COPY`, `session_replication_role`, `setval`) and
 express them as capabilities a provider either has or emulates.
 
-**4. Self-contained builds.** A single executable per platform so the tool runs without a
-.NET install. It is meant to be handed to whoever is doing the migration.
+**4. Self-contained builds — shipped.** Every tagged release publishes a single executable
+per platform on the [releases page](https://github.com/splaxtr/sql-data-migrator/releases);
+`dotnet publish -c Release -r <rid>` produces the same binary locally. It is meant to be
+handed to whoever is doing the migration.
 
 **5. Table selection.** Migrate a subset. The engine already reasons about a plan; the
 missing piece is the safety analysis, because truncating a subset can cascade into tables
