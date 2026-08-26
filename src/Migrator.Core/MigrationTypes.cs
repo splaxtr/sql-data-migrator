@@ -1,6 +1,6 @@
 namespace Migrator.Core;
 
-/// <summary>Bir kolonun taşıma için gereken bilgisi.</summary>
+/// <summary>What the migration needs to know about a single column.</summary>
 public sealed record ColumnInfo(
     string Name,
     string StoreType,
@@ -9,7 +9,7 @@ public sealed record ColumnInfo(
     bool HasDefault,
     int? MaxLength);
 
-/// <summary>Tek bir tablonun kopyalama planı.</summary>
+/// <summary>The copy plan for a single table.</summary>
 public sealed record TablePlan(
     string Table,
     List<(ColumnInfo Source, ColumnInfo Target)> CopyColumns,
@@ -23,25 +23,53 @@ public sealed record ForeignKey(
 
 public enum ProgressKind { Info, Warning, Error, Success, Step }
 
-public sealed record ProgressMessage(ProgressKind Kind, string Text);
+/// <summary>
+/// One line of progress.
+///
+/// <para><see cref="Text"/> is always English and is the only field a consumer has to
+/// understand. <see cref="Code"/> and <see cref="Args"/> are the same message expressed as
+/// data: a stable identifier plus the values interpolated into it. A presentation layer that
+/// wants another language translates by code and falls back to <see cref="Text"/> when it has
+/// no translation, which is why the engine stays free of any notion of locale — it reports
+/// what happened, not how to word it.</para>
+///
+/// <para>Codes live in <see cref="MessageCode"/>. A message with no code is one whose text
+/// came from outside the engine, such as a driver exception.</para>
+/// </summary>
+public sealed record ProgressMessage(
+    ProgressKind Kind,
+    string Text,
+    string? Code = null,
+    object?[]? Args = null);
 
-/// <summary>Taşımanın bilinçli olarak gevşetilebilen kapıları. Hiçbiri varsayılan açık değildir.</summary>
+/// <summary>The gates that can be deliberately relaxed. None of them defaults to open.</summary>
 public sealed class MigrationOptions
 {
-    /// <summary>Kaynakta olup hedefte olmayan tabloları yok sayar (verileri taşınmaz).</summary>
+    /// <summary>Ignores source tables with no target counterpart (their data is not migrated).</summary>
     public bool AllowSourceOnlyTables { get; init; }
 
-    /// <summary>Ön kontrolün bulduğu NULL/uzunluk uyumsuzluklarına rağmen devam eder.</summary>
+    /// <summary>Proceeds despite the NULL/length mismatches the preflight found.</summary>
     public bool AllowSchemaRisk { get; init; }
 
-    /// <summary>Hedef collation beklenenden farklıysa devam eder.</summary>
+    /// <summary>Proceeds when the target collation differs from the expected one.</summary>
     public bool AllowCollationMismatch { get; init; }
 
-    /// <summary>Yalnız doğrulama yapar, veri taşımaz.</summary>
+    /// <summary>Verifies only; moves no data.</summary>
     public bool VerifyOnly { get; init; }
 
-    /// <summary>Beklenen ICU collation; boşsa collation kontrolü yapılmaz.</summary>
+    /// <summary>Expected ICU collation; when empty, no collation check is performed.</summary>
     public string? ExpectedIcuLocale { get; init; }
 }
 
-public sealed record MigrationResult(bool Succeeded, long RowsCopied, TimeSpan Duration, string Summary);
+/// <summary>
+/// The outcome of a run. <see cref="Summary"/> is English; <see cref="Code"/> and
+/// <see cref="Args"/> carry the same statement as data, on the same terms as
+/// <see cref="ProgressMessage"/>.
+/// </summary>
+public sealed record MigrationResult(
+    bool Succeeded,
+    long RowsCopied,
+    TimeSpan Duration,
+    string Summary,
+    string? Code = null,
+    object?[]? Args = null);
