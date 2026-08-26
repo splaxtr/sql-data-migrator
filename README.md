@@ -40,7 +40,15 @@ three are avoidable. See [docs/SAFETY.md](docs/SAFETY.md) for exactly what is gu
 
 Prebuilt binaries for Windows, Linux, and macOS are published on the
 [releases page](https://github.com/splaxtr/sql-data-migrator/releases) for every tagged
-version. To build one yourself:
+version.
+
+> **Windows note.** The binaries are not code-signed yet. SmartScreen may warn — choose
+> *More info → Run anyway*. **Smart App Control** (Windows 11), which only runs signed or
+> known apps, will block the exe outright with no override; on such a machine, build from
+> source below or wait for a signed release. Either way, verify your download against
+> `SHA256SUMS.txt` first.
+
+To build one yourself:
 
 ```bash
 dotnet publish src/Migrator.App -c Release -r win-x64

@@ -26,7 +26,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       # Cross-publishing from Linux covers all three platforms because the
-      # builds use neither ReadyToRun nor code signing.
+      # builds use neither ReadyToRun nor build-time code signing.
       - name: Publish
         run: |
           for rid in win-x64 linux-x64 osx-arm64; do
@@ -36,7 +36,38 @@ jobs:
           mv out/win-x64/Migrator.App.exe dist/SqlDataMigrator-win-x64.exe
           mv out/linux-x64/Migrator.App   dist/SqlDataMigrator-linux-x64
           mv out/osx-arm64/Migrator.App   dist/SqlDataMigrator-osx-arm64
-          (cd dist && sha256sum * > SHA256SUMS.txt)
+
+      # Authenticode signing via SignPath Foundation. These steps skip themselves
+      # until the SignPath repository variables and secret exist, so releases keep
+      # working (unsigned) while the application is pending.
+      - name: Upload unsigned Windows exe for signing
+        id: unsigned
+        if: vars.SIGNPATH_ORGANIZATION_ID != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: unsigned-windows-exe
+          path: dist/SqlDataMigrator-win-x64.exe
+
+      - name: Sign Windows exe
+        if: vars.SIGNPATH_ORGANIZATION_ID != ''
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: signed
+
+      - name: Use the signed exe
+        if: vars.SIGNPATH_ORGANIZATION_ID != ''
+        run: mv signed/SqlDataMigrator-win-x64.exe dist/SqlDataMigrator-win-x64.exe
+
+      # After signing on purpose: the checksums must describe the bytes people
+      # actually download.
+      - name: Checksums
+        run: (cd dist && sha256sum * > SHA256SUMS.txt)
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
