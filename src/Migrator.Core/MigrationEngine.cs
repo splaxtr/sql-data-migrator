@@ -43,60 +43,72 @@ public sealed class MigrationEngine
             const string marker = "truncate cascades to table ";
             var index = text.IndexOf(marker, StringComparison.OrdinalIgnoreCase);
             if (index >= 0) cascaded.Add(text[(index + marker.Length)..].Trim('"', ' ', '.'));
-            else _progress.Report(new(ProgressKind.Info, $"(pg) {text}"));
+            else _progress.Report(new(ProgressKind.Info, $"(pg) {text}",
+                MessageCode.InfoPostgresNotice, new object?[] { text }));
         };
 
         if (!await TargetDatabase.CheckCollationAsync(pg, options.ExpectedIcuLocale, options.AllowCollationMismatch, _progress, ct))
-            return Fail(stopwatch, "Collation uyuşmazlığı.");
+            return Fail(stopwatch, "Collation mismatch.", MessageCode.FailCollationMismatch);
 
-        _progress.Report(new(ProgressKind.Step, "Şemalar okunuyor"));
+        _progress.Report(new(ProgressKind.Step, "Reading schemas", MessageCode.StepReadingSchemas));
         var sourceSchema = await SchemaReader.ReadSqlServerAsync(sql, ct);
         var targetSchema = await SchemaReader.ReadPostgresAsync(pg, ct);
         var foreignKeys = await SchemaReader.ReadForeignKeysAsync(pg, ct);
 
         var plan = BuildPlan(sourceSchema, targetSchema, options.AllowSourceOnlyTables);
         if (plan is null)
-            return Fail(stopwatch, "Şema uyuşmazlığı — ayrıntılar yukarıda.");
+            return Fail(stopwatch, "Schema mismatch — details above.", MessageCode.FailSchemaMismatch);
 
         var copyTables = plan.Where(p => p.CopyColumns.Count > 0).Select(p => p.Table).ToHashSet(StringComparer.Ordinal);
         if (copyTables.Count == 0)
         {
             _progress.Report(new(ProgressKind.Error,
-                "Kopyalanacak tablo bulunamadı — kaynak/hedef yanlış olabilir ya da hedefte şema yok."));
-            return Fail(stopwatch, "Boş kesişim.");
+                "No tables to copy — the source/target may be wrong, or the target has no schema.",
+                MessageCode.ErrorNoTablesToCopy));
+            return Fail(stopwatch, "Empty intersection.", MessageCode.FailEmptyIntersection);
         }
-        _progress.Report(new(ProgressKind.Info, $"{copyTables.Count} tablo taşınacak."));
+        _progress.Report(new(ProgressKind.Info, $"{copyTables.Count} tables to migrate.",
+            MessageCode.InfoTablesToMigrate, new object?[] { copyTables.Count }));
 
         if (options.VerifyOnly)
         {
             var okVerify = await VerifyRowCountsAsync(sql, pg, plan, null, ct)
                          & await ValidateForeignKeysAsync(pg, foreignKeys, copyTables, null, ct);
             return okVerify
-                ? Succeed(stopwatch, 0, "Doğrulama başarılı.")
-                : Fail(stopwatch, "Doğrulama başarısız.");
+                ? Succeed(stopwatch, 0, "Verification passed.", MessageCode.SuccessVerifyPassed)
+                : Fail(stopwatch, "Verification failed.", MessageCode.FailVerifyFailed);
         }
 
         if (!await PreflightAsync(sql, plan, options.AllowSchemaRisk, ct))
-            return Fail(stopwatch, "Ön kontrol uyumsuzlukları giderilmedi.");
+            return Fail(stopwatch, "Preflight mismatches were not resolved.", MessageCode.FailPreflightUnresolved);
 
         await using var transaction = await pg.BeginTransactionAsync(ct);
         var rows = await CopyAsync(sql, pg, plan, transaction, ct);
-        _progress.Report(new(ProgressKind.Info, $"Kopyalama bitti — {rows} satır."));
+        _progress.Report(new(ProgressKind.Info, $"Copy finished — {rows} rows.",
+            MessageCode.InfoCopyFinished, new object?[] { rows }));
 
         if (cascaded.Count > 0)
         {
             var sample = string.Join(", ", cascaded.Take(8));
-            var rest = cascaded.Count > 8 ? $" (+{cascaded.Count - 8} tablo daha)" : "";
-            _progress.Report(new(ProgressKind.Warning,
-                $"TRUNCATE CASCADE {cascaded.Count} bağlı tabloyu da boşalttı: {sample}{rest}. " +
-                "Kaynakta karşılığı olmayanlar boş kalır."));
+            if (cascaded.Count > 8)
+                _progress.Report(new(ProgressKind.Warning,
+                    $"TRUNCATE CASCADE also emptied {cascaded.Count} dependent tables: {sample} (+{cascaded.Count - 8} more). " +
+                    "Tables with no source counterpart stay empty.",
+                    MessageCode.WarnTruncateCascadeMore, new object?[] { cascaded.Count, sample, cascaded.Count - 8 }));
+            else
+                _progress.Report(new(ProgressKind.Warning,
+                    $"TRUNCATE CASCADE also emptied {cascaded.Count} dependent tables: {sample}. " +
+                    "Tables with no source counterpart stay empty.",
+                    MessageCode.WarnTruncateCascade, new object?[] { cascaded.Count, sample }));
         }
 
         if (rows == 0)
         {
-            _progress.Report(new(ProgressKind.Error, "Hiç satır kopyalanmadı; kaynak boş ya da yanlış. Commit edilmedi."));
+            _progress.Report(new(ProgressKind.Error,
+                "No rows were copied; the source is empty or wrong. Nothing was committed.",
+                MessageCode.ErrorZeroRows));
             await transaction.RollbackAsync(ct);
-            return Fail(stopwatch, "Sıfır satır.");
+            return Fail(stopwatch, "Zero rows.", MessageCode.FailZeroRows);
         }
 
         var ok = await VerifyRowCountsAsync(sql, pg, plan, transaction, ct)
@@ -104,23 +116,26 @@ public sealed class MigrationEngine
 
         if (!ok)
         {
-            _progress.Report(new(ProgressKind.Error, "Doğrulama başarısız — geri alınıyor, hedefe yazılmadı."));
+            _progress.Report(new(ProgressKind.Error,
+                "Verification failed — rolling back, the target was not written.",
+                MessageCode.ErrorVerifyFailedRollback));
             await transaction.RollbackAsync(ct);
-            return Fail(stopwatch, "Doğrulama başarısız.");
+            return Fail(stopwatch, "Verification failed.", MessageCode.FailVerifyFailed);
         }
 
         await transaction.CommitAsync(ct);
         await ExecAsync(pg, "ANALYZE;", null, ct);
-        return Succeed(stopwatch, rows, $"{rows} satır taşındı ve doğrulandı.");
+        return Succeed(stopwatch, rows, $"{rows} rows migrated and verified.",
+            MessageCode.SuccessMigrated, new object?[] { rows });
     }
 
-    private MigrationResult Succeed(Stopwatch sw, long rows, string summary)
+    private MigrationResult Succeed(Stopwatch sw, long rows, string summary, string code, object?[]? args = null)
     {
-        _progress.Report(new(ProgressKind.Success, summary));
-        return new MigrationResult(true, rows, sw.Elapsed, summary);
+        _progress.Report(new(ProgressKind.Success, summary, code, args));
+        return new MigrationResult(true, rows, sw.Elapsed, summary, code, args);
     }
 
-    private MigrationResult Fail(Stopwatch sw, string summary) => new(false, 0, sw.Elapsed, summary);
+    private MigrationResult Fail(Stopwatch sw, string summary, string code) => new(false, 0, sw.Elapsed, summary, code);
 
     // ── Plan ──────────────────────────────────────────────────────────────────
 
@@ -152,7 +167,8 @@ public sealed class MigrationEngine
                 if (CanSynthesize(column.StoreType)) { synthesized.Add(column); continue; }
 
                 _progress.Report(new(ProgressKind.Error,
-                    $"{table}.{column.Name}: kaynakta yok, NOT NULL ve güvenli varsayılan üretilemiyor ({column.StoreType})."));
+                    $"{table}.{column.Name}: missing from the source, NOT NULL, and no safe default can be synthesized ({column.StoreType}).",
+                    MessageCode.ErrorColumnNotSynthesizable, new object?[] { table, column.Name, column.StoreType }));
                 fatal = true;
             }
 
@@ -167,9 +183,17 @@ public sealed class MigrationEngine
 
         foreach (var table in sourceOnly)
         {
-            var text = $"Kaynak tablosu '{table}' hedefte yok — verisi taşınmayacak.";
-            if (allowSourceOnly) _progress.Report(new(ProgressKind.Warning, text));
-            else { _progress.Report(new(ProgressKind.Error, text + " Bilinçliyse 'hedefte olmayan tablolara izin ver' seçeneğini işaretleyin.")); fatal = true; }
+            var text = $"Source table '{table}' does not exist in the target — its data will not be migrated.";
+            if (allowSourceOnly)
+                _progress.Report(new(ProgressKind.Warning, text,
+                    MessageCode.WarnSourceOnlyTable, new object?[] { table }));
+            else
+            {
+                _progress.Report(new(ProgressKind.Error,
+                    text + " If this is intentional, enable the 'allow source-only tables' option.",
+                    MessageCode.ErrorSourceOnlyTable, new object?[] { table }));
+                fatal = true;
+            }
         }
 
         return fatal ? null : plan;
@@ -185,15 +209,15 @@ public sealed class MigrationEngine
     {
         "bool" => false, "int2" => (short)0, "int4" => 0, "int8" => 0L,
         "numeric" => 0m, "float4" => 0f, "float8" => 0d, "text" or "varchar" => "",
-        _ => throw new InvalidOperationException($"Varsayılan üretilemez: {udt}"),
+        _ => throw new InvalidOperationException($"Cannot synthesize a default: {udt}"),
     };
 
     // ── Ön kontrol ────────────────────────────────────────────────────────────
 
     private async Task<bool> PreflightAsync(SqlConnection sql, List<TablePlan> plan, bool allowRisk, CancellationToken ct)
     {
-        _progress.Report(new(ProgressKind.Step, "Ön kontrol"));
-        var violations = new List<string>();
+        _progress.Report(new(ProgressKind.Step, "Preflight", MessageCode.StepPreflight));
+        var violations = new List<ProgressMessage>();
 
         foreach (var table in plan)
         {
@@ -217,7 +241,9 @@ public sealed class MigrationEngine
             {
                 var nulls = reader.IsDBNull(i) ? 0L : Convert.ToInt64(reader.GetValue(i));
                 if (nulls > 0)
-                    violations.Add($"{table.Table}.{nullChecks[i].Target.Name}: hedef NOT NULL ama kaynakta {nulls} NULL var.");
+                    violations.Add(new(ProgressKind.Error,
+                        $"{table.Table}.{nullChecks[i].Target.Name}: target is NOT NULL but the source has {nulls} NULLs.",
+                        MessageCode.ErrorPreflightNulls, new object?[] { table.Table, nullChecks[i].Target.Name, nulls }));
             }
             for (var i = 0; i < lengthChecks.Count; i++)
             {
@@ -225,21 +251,26 @@ public sealed class MigrationEngine
                 var longest = reader.IsDBNull(ordinal) ? 0L : Convert.ToInt64(reader.GetValue(ordinal));
                 var limit = lengthChecks[i].Target.MaxLength!.Value;
                 if (longest > limit)
-                    violations.Add($"{table.Table}.{lengthChecks[i].Target.Name}: hedef varchar({limit}) ama kaynakta en uzun değer {longest} karakter.");
+                    violations.Add(new(ProgressKind.Error,
+                        $"{table.Table}.{lengthChecks[i].Target.Name}: target is varchar({limit}) but the longest source value is {longest} characters.",
+                        MessageCode.ErrorPreflightLength, new object?[] { table.Table, lengthChecks[i].Target.Name, limit, longest }));
             }
         }
 
         if (violations.Count == 0)
         {
-            _progress.Report(new(ProgressKind.Info, "Ön kontrol temiz: NULL/uzunluk uyumsuzluğu yok."));
+            _progress.Report(new(ProgressKind.Info, "Preflight clean: no NULL/length mismatches.",
+                MessageCode.InfoPreflightClean));
             return true;
         }
 
         foreach (var violation in violations)
-            _progress.Report(new(allowRisk ? ProgressKind.Warning : ProgressKind.Error, violation));
+            _progress.Report(violation with { Kind = allowRisk ? ProgressKind.Warning : ProgressKind.Error });
 
         if (allowRisk)
-            _progress.Report(new(ProgressKind.Warning, "İzin verildiği için devam ediliyor — kopyalama sırasında patlayabilir."));
+            _progress.Report(new(ProgressKind.Warning,
+                "Proceeding because the risk was accepted — the copy may still fail midway.",
+                MessageCode.WarnPreflightAllowed));
         return allowRisk;
     }
 
@@ -248,7 +279,7 @@ public sealed class MigrationEngine
     private async Task<long> CopyAsync(
         SqlConnection sql, NpgsqlConnection pg, List<TablePlan> plan, NpgsqlTransaction transaction, CancellationToken ct)
     {
-        _progress.Report(new(ProgressKind.Step, "Veri taşınıyor"));
+        _progress.Report(new(ProgressKind.Step, "Copying data", MessageCode.StepCopying));
 
         // FK tetikleyicilerini transaction boyunca askıya al (superuser ister) — kopyalama sırası önemsizleşir.
         await ExecAsync(pg, "SET LOCAL session_replication_role = replica;", transaction, ct);
@@ -284,7 +315,7 @@ public sealed class MigrationEngine
                         catch (Exception ex)
                         {
                             throw new InvalidOperationException(
-                                $"{table.Table}.{column.Name} (satır {rows + 1}, tip {column.StoreType}): {ex.Message}", ex);
+                                $"{table.Table}.{column.Name} (row {rows + 1}, type {column.StoreType}): {ex.Message}", ex);
                         }
                     }
                     foreach (var column in table.SynthesizedColumns)
@@ -296,7 +327,8 @@ public sealed class MigrationEngine
 
             total += rows;
             if (rows > 0)
-                _progress.Report(new(ProgressKind.Info, $"  {table.Table}: {rows} satır"));
+                _progress.Report(new(ProgressKind.Info, $"  {table.Table}: {rows} rows",
+                    MessageCode.InfoTableCopied, new object?[] { table.Table, rows }));
         }
 
         await FixIdentitySequencesAsync(pg, transaction, ct);
@@ -339,7 +371,7 @@ public sealed class MigrationEngine
             case "interval": await importer.WriteAsync((TimeSpan)value, NpgsqlDbType.Interval, ct); break;
             case "time": await importer.WriteAsync(TimeOnly.FromTimeSpan((TimeSpan)value), NpgsqlDbType.Time, ct); break;
             default:
-                throw new NotSupportedException($"Desteklenmeyen hedef tipi: {udt} (CLR tipi {value.GetType().Name})");
+                throw new NotSupportedException($"Unsupported target type: {udt} (CLR type {value.GetType().Name})");
         }
     }
 
@@ -366,7 +398,8 @@ public sealed class MigrationEngine
                 """, transaction, ct);
         }
         if (identities.Count > 0)
-            _progress.Report(new(ProgressKind.Info, $"{identities.Count} identity sequence hizalandı."));
+            _progress.Report(new(ProgressKind.Info, $"{identities.Count} identity sequences aligned.",
+                MessageCode.InfoSequencesAligned, new object?[] { identities.Count }));
     }
 
     // ── Doğrulama ─────────────────────────────────────────────────────────────
@@ -374,7 +407,7 @@ public sealed class MigrationEngine
     private async Task<bool> VerifyRowCountsAsync(
         SqlConnection sql, NpgsqlConnection pg, List<TablePlan> plan, NpgsqlTransaction? transaction, CancellationToken ct)
     {
-        _progress.Report(new(ProgressKind.Step, "Satır sayıları doğrulanıyor"));
+        _progress.Report(new(ProgressKind.Step, "Verifying row counts", MessageCode.StepVerifyRowCounts));
         var ok = true;
         foreach (var table in plan)
         {
@@ -383,11 +416,14 @@ public sealed class MigrationEngine
             var target = Convert.ToInt64(await ScalarPgAsync(pg, $"SELECT COUNT(*) FROM {TargetDatabase.Quote(table.Table)}", transaction, ct));
             if (source != target)
             {
-                _progress.Report(new(ProgressKind.Error, $"{table.Table}: kaynak {source}, hedef {target} satır."));
+                _progress.Report(new(ProgressKind.Error,
+                    $"{table.Table}: source has {source} rows, target has {target}.",
+                    MessageCode.ErrorRowCountMismatch, new object?[] { table.Table, source, target }));
                 ok = false;
             }
         }
-        if (ok) _progress.Report(new(ProgressKind.Info, "Tüm satır sayıları eşit."));
+        if (ok) _progress.Report(new(ProgressKind.Info, "All row counts match.",
+            MessageCode.InfoRowCountsMatch));
         return ok;
     }
 
@@ -399,7 +435,7 @@ public sealed class MigrationEngine
         NpgsqlConnection pg, List<ForeignKey> foreignKeys, HashSet<string> copyTables,
         NpgsqlTransaction? transaction, CancellationToken ct)
     {
-        _progress.Report(new(ProgressKind.Step, "Yabancı anahtar bütünlüğü doğrulanıyor"));
+        _progress.Report(new(ProgressKind.Step, "Verifying foreign key integrity", MessageCode.StepVerifyForeignKeys));
         var ok = true;
         var checkedCount = 0;
 
@@ -416,13 +452,16 @@ public sealed class MigrationEngine
             checkedCount++;
             if (orphans > 0)
             {
+                var columns = string.Join(", ", fk.Columns.Select(c => c.Child));
                 _progress.Report(new(ProgressKind.Error,
-                    $"Yetim satır: {fk.ChildTable} ({string.Join(", ", fk.Columns.Select(c => c.Child))}) → {fk.ParentTable}: {orphans} satır ({fk.Name})."));
+                    $"Orphan rows: {fk.ChildTable} ({columns}) → {fk.ParentTable}: {orphans} rows ({fk.Name}).",
+                    MessageCode.ErrorOrphanRows, new object?[] { fk.ChildTable, columns, fk.ParentTable, orphans, fk.Name }));
                 ok = false;
             }
         }
 
-        if (ok) _progress.Report(new(ProgressKind.Info, $"{checkedCount} yabancı anahtar denetlendi, yetim satır yok."));
+        if (ok) _progress.Report(new(ProgressKind.Info, $"{checkedCount} foreign keys checked, no orphan rows.",
+            MessageCode.InfoForeignKeysClean, new object?[] { checkedCount }));
         return ok;
     }
 

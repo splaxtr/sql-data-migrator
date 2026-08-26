@@ -86,7 +86,11 @@ app.MapPost("/api/migrate", async (ConnectionStore store, JobRegistry jobs, Migr
             {
                 var created = await TargetDatabase.EnsureCreatedAsync(
                     target, request.TargetIcuLocale, progress);
-                if (!created) { job.Finish(false, "Hedef veritabanı hazırlanamadı."); return; }
+                if (!created)
+                {
+                    job.Finish(false, "The target database could not be prepared.", MessageCode.FailTargetDbNotReady);
+                    return;
+                }
             }
 
             var engine = new MigrationEngine(progress);
@@ -98,12 +102,12 @@ app.MapPost("/api/migrate", async (ConnectionStore store, JobRegistry jobs, Migr
                 VerifyOnly = request.VerifyOnly,
                 ExpectedIcuLocale = string.IsNullOrWhiteSpace(request.TargetIcuLocale) ? null : request.TargetIcuLocale,
             });
-            job.Finish(result.Succeeded, result.Summary);
+            job.Finish(result.Succeeded, result.Summary, result.Code, result.Args);
         }
         catch (Exception ex)
         {
             job.Add(new ProgressMessage(ProgressKind.Error, ex.Message));
-            job.Finish(false, "Taşıma bir istisnayla durdu.");
+            job.Finish(false, "The migration stopped with an exception.", MessageCode.FailException);
         }
     });
 
@@ -160,18 +164,22 @@ internal sealed class Job
     public bool Done { get; private set; }
     public bool? Succeeded { get; private set; }
     public string? Summary { get; private set; }
+    public string? SummaryCode { get; private set; }
+    public object?[]? SummaryArgs { get; private set; }
 
     public void Add(ProgressMessage message)
     {
         lock (_gate) _messages.Add(message);
     }
 
-    public void Finish(bool succeeded, string summary)
+    public void Finish(bool succeeded, string summary, string? code = null, object?[]? args = null)
     {
         lock (_gate)
         {
             Succeeded = succeeded;
             Summary = summary;
+            SummaryCode = code;
+            SummaryArgs = args;
             Done = true;
         }
     }
@@ -180,8 +188,15 @@ internal sealed class Job
     {
         lock (_gate)
         {
-            var slice = _messages.Skip(from).Select(m => new { kind = m.Kind.ToString(), text = m.Text }).ToList();
-            return new { done = Done, succeeded = Succeeded, summary = Summary, next = _messages.Count, messages = slice };
+            var slice = _messages.Skip(from)
+                .Select(m => new { kind = m.Kind.ToString(), text = m.Text, code = m.Code, args = m.Args })
+                .ToList();
+            return new
+            {
+                done = Done, succeeded = Succeeded,
+                summary = Summary, summaryCode = SummaryCode, summaryArgs = SummaryArgs,
+                next = _messages.Count, messages = slice,
+            };
         }
     }
 }

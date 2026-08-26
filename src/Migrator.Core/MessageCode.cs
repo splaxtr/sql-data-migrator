@@ -69,6 +69,8 @@ public static class MessageCode
     public const string FailVerifyFailed = "fail.verifyFailed";
     public const string FailPreflightUnresolved = "fail.preflightUnresolved";
     public const string FailZeroRows = "fail.zeroRows";
+    public const string FailTargetDbNotReady = "fail.targetDbNotReady";
+    public const string FailException = "fail.exception";
 
     /// <summary>
     /// Values a translator has to be able to reach even though they arrive as an argument

@@ -16,7 +16,8 @@ public static class TargetDatabase
         var databaseName = target.Database;
         if (string.IsNullOrWhiteSpace(databaseName))
         {
-            progress.Report(new(ProgressKind.Error, "Hedef bağlantı dizgisinde veritabanı adı yok."));
+            progress.Report(new(ProgressKind.Error, "The target connection string has no database name.",
+                MessageCode.ErrorTargetDbNameMissing));
             return false;
         }
 
@@ -29,7 +30,9 @@ public static class TargetDatabase
             exists.Parameters.AddWithValue("n", databaseName);
             if (await exists.ExecuteScalarAsync(ct) is not null)
             {
-                progress.Report(new(ProgressKind.Info, $"Hedef veritabanı '{databaseName}' zaten var — dokunulmadı."));
+                progress.Report(new(ProgressKind.Info,
+                    $"Target database '{databaseName}' already exists — left untouched.",
+                    MessageCode.InfoTargetDbExists, new object?[] { databaseName }));
                 return true;
             }
         }
@@ -42,8 +45,13 @@ public static class TargetDatabase
         await using (var create = new NpgsqlCommand(sql, connection))
             await create.ExecuteNonQueryAsync(ct);
 
-        progress.Report(new(ProgressKind.Success,
-            $"Hedef veritabanı '{databaseName}' oluşturuldu{(locale == "" ? "" : $" (collation: {icuLocale})")}."));
+        if (locale == "")
+            progress.Report(new(ProgressKind.Success, $"Target database '{databaseName}' created.",
+                MessageCode.SuccessTargetDbCreated, new object?[] { databaseName }));
+        else
+            progress.Report(new(ProgressKind.Success,
+                $"Target database '{databaseName}' created (collation: {icuLocale}).",
+                MessageCode.SuccessTargetDbCreatedCollation, new object?[] { databaseName, icuLocale }));
         return true;
     }
 
@@ -62,18 +70,25 @@ public static class TargetDatabase
         var actual = await ReadLocaleAsync(pg, ct);
         if (string.Equals(actual, expectedIcuLocale, StringComparison.Ordinal))
         {
-            progress.Report(new(ProgressKind.Info, $"Collation doğrulandı: {actual}"));
+            progress.Report(new(ProgressKind.Info, $"Collation verified: {actual}",
+                MessageCode.InfoCollationVerified, new object?[] { actual }));
             return true;
         }
 
-        var message = $"Hedef collation '{actual}' — beklenen ICU '{expectedIcuLocale}'.";
+        // Args token'ın kendisini taşır ki çeviri katmanı onu görüp çevirebilsin;
+        // İngilizce metin okunur karşılığını gösterir.
+        var message = $"Target collation is '{DescribeLocale(actual)}' — expected ICU '{expectedIcuLocale}'.";
+        var args = new object?[] { actual, expectedIcuLocale };
         if (allowMismatch)
         {
-            progress.Report(new(ProgressKind.Warning, message + " İzin verildiği için devam ediliyor."));
+            progress.Report(new(ProgressKind.Warning,
+                message + " Proceeding because the mismatch was allowed.",
+                MessageCode.WarnCollationMismatchAllowed, args));
             return true;
         }
         progress.Report(new(ProgressKind.Error, message +
-            " Yanlış collation sessizdir: arama ve sıralama fark edilmeden yanlış davranır."));
+            " A wrong collation is silent: search and sort quietly misbehave.",
+            MessageCode.ErrorCollationMismatch, args));
         return false;
     }
 
@@ -86,15 +101,22 @@ public static class TargetDatabase
             {
                 await using var command = new NpgsqlCommand(
                     $"SELECT coalesce({column}, datcollate) FROM pg_database WHERE datname = current_database()", pg);
-                return await command.ExecuteScalarAsync(ct) as string ?? "(bilinmiyor)";
+                return await command.ExecuteScalarAsync(ct) as string ?? MessageCode.TokenUnknown;
             }
             catch (PostgresException ex) when (ex.SqlState == "42703")
             {
                 // sonraki kolon adını dene
             }
         }
-        return "(okunamadı)";
+        return MessageCode.TokenUnreadable;
     }
+
+    private static string DescribeLocale(string locale) => locale switch
+    {
+        MessageCode.TokenUnknown => "(unknown)",
+        MessageCode.TokenUnreadable => "(unreadable)",
+        _ => locale,
+    };
 
     internal static string Quote(string identifier) => "\"" + identifier.Replace("\"", "\"\"") + "\"";
 }

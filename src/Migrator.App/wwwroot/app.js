@@ -144,6 +144,76 @@ $("srcDbFilter").onchange = () => {
   if (!targetNameTouched) $("tgtDb").value = $("srcDbFilter").value;
 };
 
+// ── Çeviri ──────────────────────────────────────────────────────────────────
+// Motor İngilizce konuşur; Türkçesi kod + argümanlardan burada kurulur. Sözlükte
+// olmayan mesaj (ör. sürücü hatası) İngilizce metniyle olduğu gibi gösterilir.
+
+const TR = {
+  "step.readingSchemas": "Şemalar okunuyor",
+  "step.preflight": "Ön kontrol",
+  "step.copying": "Veri taşınıyor",
+  "step.verifyRowCounts": "Satır sayıları doğrulanıyor",
+  "step.verifyForeignKeys": "Yabancı anahtar bütünlüğü doğrulanıyor",
+
+  "info.tablesToMigrate": "{0} tablo taşınacak.",
+  "error.noTablesToCopy": "Kopyalanacak tablo bulunamadı — kaynak/hedef yanlış olabilir ya da hedefte şema yok.",
+  "error.columnNotSynthesizable": "{0}.{1}: kaynakta yok, NOT NULL ve güvenli varsayılan üretilemiyor ({2}).",
+  "warn.sourceOnlyTable": "Kaynak tablosu '{0}' hedefte yok — verisi taşınmayacak.",
+  "error.sourceOnlyTable": "Kaynak tablosu '{0}' hedefte yok — verisi taşınmayacak. Bilinçliyse 'hedefte olmayan tablolara izin ver' seçeneğini işaretleyin.",
+
+  "info.preflightClean": "Ön kontrol temiz: NULL/uzunluk uyumsuzluğu yok.",
+  "error.preflightNulls": "{0}.{1}: hedef NOT NULL ama kaynakta {2} NULL var.",
+  "error.preflightLength": "{0}.{1}: hedef varchar({2}) ama kaynakta en uzun değer {3} karakter.",
+  "warn.preflightAllowed": "İzin verildiği için devam ediliyor — kopyalama sırasında patlayabilir.",
+
+  "info.tableCopied": "  {0}: {1} satır",
+  "info.copyFinished": "Kopyalama bitti — {0} satır.",
+  "info.sequencesAligned": "{0} identity sequence hizalandı.",
+  "warn.truncateCascade": "TRUNCATE CASCADE {0} bağlı tabloyu da boşalttı: {1}. Kaynakta karşılığı olmayanlar boş kalır.",
+  "warn.truncateCascadeMore": "TRUNCATE CASCADE {0} bağlı tabloyu da boşalttı: {1} (+{2} tablo daha). Kaynakta karşılığı olmayanlar boş kalır.",
+  "error.zeroRows": "Hiç satır kopyalanmadı; kaynak boş ya da yanlış. Commit edilmedi.",
+
+  "info.rowCountsMatch": "Tüm satır sayıları eşit.",
+  "error.rowCountMismatch": "{0}: kaynak {1}, hedef {2} satır.",
+  "info.foreignKeysClean": "{0} yabancı anahtar denetlendi, yetim satır yok.",
+  "error.orphanRows": "Yetim satır: {0} ({1}) → {2}: {3} satır ({4}).",
+  "error.verifyFailedRollback": "Doğrulama başarısız — geri alınıyor, hedefe yazılmadı.",
+
+  "error.targetDbNameMissing": "Hedef bağlantı dizgisinde veritabanı adı yok.",
+  "info.targetDbExists": "Hedef veritabanı '{0}' zaten var — dokunulmadı.",
+  "success.targetDbCreated": "Hedef veritabanı '{0}' oluşturuldu.",
+  "success.targetDbCreatedCollation": "Hedef veritabanı '{0}' oluşturuldu (collation: {1}).",
+  "info.collationVerified": "Collation doğrulandı: {0}",
+  "warn.collationMismatchAllowed": "Hedef collation '{0}' — beklenen ICU '{1}'. İzin verildiği için devam ediliyor.",
+  "error.collationMismatch": "Hedef collation '{0}' — beklenen ICU '{1}'. Yanlış collation sessizdir: arama ve sıralama fark edilmeden yanlış davranır.",
+
+  "info.postgresNotice": "(pg) {0}",
+
+  "success.migrated": "{0} satır taşındı ve doğrulandı.",
+  "success.verifyPassed": "Doğrulama başarılı.",
+  "fail.collationMismatch": "Collation uyuşmazlığı.",
+  "fail.schemaMismatch": "Şema uyuşmazlığı — ayrıntılar yukarıda.",
+  "fail.emptyIntersection": "Boş kesişim.",
+  "fail.verifyFailed": "Doğrulama başarısız.",
+  "fail.preflightUnresolved": "Ön kontrol uyumsuzlukları giderilmedi.",
+  "fail.zeroRows": "Sıfır satır.",
+  "fail.targetDbNotReady": "Hedef veritabanı hazırlanamadı.",
+  "fail.exception": "Taşıma bir istisnayla durdu.",
+};
+
+// Argüman olarak gelen, kendisi de çevrilen işaret değerleri (bkz. MessageCode.TokenUnknown).
+const TR_TOKENS = {
+  "@@unknown": "(bilinmiyor)",
+  "@@unreadable": "(okunamadı)",
+};
+
+function translate(message) {
+  const template = message.code && TR[message.code];
+  if (!template) return message.text;
+  const args = (message.args ?? []).map(a => TR_TOKENS[a] ?? a);
+  return template.replace(/\{(\d+)\}/g, (placeholder, i) => args[i] ?? placeholder);
+}
+
 // ── Taşıma ──────────────────────────────────────────────────────────────────
 
 function setMsg(id, text, kind) {
@@ -197,12 +267,13 @@ async function followJob(jobId) {
   let cursor = 0;
   for (;;) {
     const state = await api(`/api/jobs/${jobId}?from=${cursor}`);
-    state.messages.forEach(m => appendLog(m.kind, m.text));
+    state.messages.forEach(m => appendLog(m.kind, translate(m)));
     cursor = state.next;
     if (state.done) {
-      setMsg("runState", state.summary, state.succeeded ? "ok" : "err");
+      const summary = translate({ text: state.summary, code: state.summaryCode, args: state.summaryArgs });
+      setMsg("runState", summary, state.succeeded ? "ok" : "err");
       appendLog(state.succeeded ? "Success" : "Error",
-        (state.succeeded ? "✔ " : "✖ ") + state.summary);
+        (state.succeeded ? "✔ " : "✖ ") + summary);
       return;
     }
     await new Promise(r => setTimeout(r, 500));
