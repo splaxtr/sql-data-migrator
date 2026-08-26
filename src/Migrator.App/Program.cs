@@ -128,16 +128,61 @@ app.MapGet("/api/jobs/{id}", (JobRegistry jobs, string id, int from) =>
     return job is null ? Results.NotFound() : Results.Ok(job.Read(from));
 });
 
+// İkinci bir kopyanın "5099'daki gerçekten ben miyim?" sorusuna cevabı.
+app.MapGet("/api/ping", () => Results.Ok(new { app = "SqlDataMigrator" }));
+
+// Exe ikinci kez çift tıklanırsa çökmek yerine çalışan kopyanın arayüzü açılır.
+if (await IsAlreadyRunningAsync())
+{
+    Console.WriteLine("Uygulama zaten çalışıyor — tarayıcıda http://localhost:5099 açılıyor.");
+    OpenBrowser();
+    return;
+}
+
 // Exe çift tıklanınca arayüz kendiliğinden açılır; geliştirmede her yeniden
 // başlatmada tarayıcı fırlatmamak için yalnız yayında.
 if (!app.Environment.IsDevelopment())
-    app.Lifetime.ApplicationStarted.Register(() =>
-    {
-        try { Process.Start(new ProcessStartInfo("http://localhost:5099") { UseShellExecute = true }); }
-        catch { /* tarayıcı açılamadıysa adres konsolda yazıyor */ }
-    });
+    app.Lifetime.ApplicationStarted.Register(OpenBrowser);
 
-app.Run();
+try
+{
+    app.Run();
+}
+catch (IOException ex) when (ex.InnerException is Microsoft.AspNetCore.Connections.AddressInUseException)
+{
+    // Portu tutan biz değiliz (yukarıdaki kontrol geçildi): kullanıcıya çökme
+    // yerine ne yapacağını söyle. Çift tıklamada pencere anında kapanmasın.
+    Console.WriteLine();
+    Console.WriteLine("HATA: 5099 portu başka bir uygulama tarafından kullanılıyor.");
+    Console.WriteLine("O uygulamayı kapatıp bunu yeniden başlatın.");
+    if (!Console.IsInputRedirected)
+    {
+        Console.WriteLine("Kapatmak için bir tuşa basın...");
+        Console.ReadKey(intercept: true);
+    }
+    Environment.Exit(1);
+}
+
+static async Task<bool> IsAlreadyRunningAsync()
+{
+    try
+    {
+        using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(2) };
+        var body = await http.GetStringAsync("http://localhost:5099/api/ping");
+        return body.Contains("SqlDataMigrator", StringComparison.Ordinal);
+    }
+    catch
+    {
+        // Bağlantı reddi = port boş; zaman aşımı/başka cevap = bizim değil.
+        return false;
+    }
+}
+
+static void OpenBrowser()
+{
+    try { Process.Start(new ProcessStartInfo("http://localhost:5099") { UseShellExecute = true }); }
+    catch { /* tarayıcı açılamadıysa adres konsolda yazıyor */ }
+}
 
 // ── İstek tipleri ───────────────────────────────────────────────────────────
 
