@@ -1,0 +1,51 @@
+name: Release
+
+# Every v* tag builds the single-file binaries and publishes them as a GitHub
+# release. A manual run builds the same binaries but only uploads them as
+# workflow artifacts — a dry run that creates no release.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Publish single-file builds
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '8.0.x'
+
+      # Cross-publishing from Linux covers all three platforms because the
+      # builds use neither ReadyToRun nor code signing.
+      - name: Publish
+        run: |
+          for rid in win-x64 linux-x64 osx-arm64; do
+            dotnet publish src/Migrator.App -c Release -r "$rid" -o "out/$rid"
+          done
+          mkdir dist
+          mv out/win-x64/Migrator.App.exe dist/SqlDataMigrator-win-x64.exe
+          mv out/linux-x64/Migrator.App   dist/SqlDataMigrator-linux-x64
+          mv out/osx-arm64/Migrator.App   dist/SqlDataMigrator-osx-arm64
+          (cd dist && sha256sum * > SHA256SUMS.txt)
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: binaries
+          path: dist/
+
+      - name: Create GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --title "$GITHUB_REF_NAME" --generate-notes

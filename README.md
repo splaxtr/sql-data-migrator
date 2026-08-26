@@ -38,6 +38,10 @@ three are avoidable. See [docs/SAFETY.md](docs/SAFETY.md) for exactly what is gu
 
 ### As a single executable
 
+Prebuilt binaries for Windows, Linux, and macOS are published on the
+[releases page](https://github.com/splaxtr/sql-data-migrator/releases) for every tagged
+version. To build one yourself:
+
 ```bash
 dotnet publish src/Migrator.App -c Release -r win-x64
 ```
