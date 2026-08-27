@@ -78,6 +78,7 @@
       <div id="dbHead" class="db-head" hidden>
         <span>Kaynak veritabanı</span>
         <span>Hedef adı</span>
+        <span>Hedefte</span>
       </div>
       <div id="dbList" class="db-list"></div>
       <p id="dbEmpty" class="empty">Önce bir SQL Server seç — veritabanları buraya gelir.</p>
@@ -92,74 +93,209 @@
       <label for="tgtLocale">Collation (ICU)<input id="tgtLocale" value="und" placeholder="und"></label>
     </div>
     <p class="hint"><code>{db}</code> kaynak veritabanının adıyla değişir — örneğin
-      <code>{db}_pg</code>. Listedeki her hedef adını tek tek de düzenleyebilirsin.
-      Var olmayan ad doğru collation ile oluşturulur, var olana dokunulmaz.
-      <strong>Hedef tablolar önceden var olmalıdır</strong> — eksik olanları aşağıdaki
-      <strong>aynala</strong> seçeneği kaynaktan oluşturur.</p>
+      <code>{db}_pg</code>. Adım 2'deki listede her hedef adını tek tek de yazabilirsin:
+      alan, hedef sunucuda <strong>var olan veritabanlarını</strong> önerir, yani mevcut
+      bir veritabanını listeden seçip içine veri taşıyabilirsin.
+      <strong>Boş bıraktığın satır kaynakla aynı adı alır.</strong> Her satır, o adın
+      hedefte olup olmadığını yanında gösterir: var olana dokunulmaz, olmayan bu
+      collation ile oluşturulur.</p>
+    <p class="hint"><strong>Hedef tablolar önceden var olmalıdır</strong> — eksik olanları
+      aşağıdaki <strong>aynala</strong> seçeneği kaynaktan oluşturur. Yalnızca veritabanını
+      (ve istersen kullanıcısını) açmak istiyorsan, adım 4'teki <strong>yalnız veritabanı
+      oluştur</strong> modu veriye hiç dokunmaz.</p>
     <span id="tgtMsg" class="msg"></span>
+
+    <!-- Populated from the target server: an existing database is a legitimate target and
+         guessing its spelling from memory is how data lands in the wrong one. -->
+    <datalist id="tgtDbList"></datalist>
   </section>
 
   <section class="card">
     <h2><span class="step">4</span> Seçenekler</h2>
-    <p class="hint">Hepsi kapalıdır ve bilinçli açılır. Ne geçirdiklerini okumadan açmak,
-      bu aracın var oluş sebebini iptal eder.</p>
+    <p class="hint">Hepsi kapalıdır ve bilinçli açılır. <strong>Kapı açar</strong> etiketli
+      olanlar, aracın normalde durduğu bir durumu geçirir — ne geçirdiğini okumadan
+      işaretlemek, bu aracın var oluş sebebini iptal eder.</p>
 
-    <label class="opt">
-      <input type="checkbox" id="optMirror">
-      <span class="opt-text">
-        <span class="opt-title">Hedefte olmayan tabloları oluştur (aynala)</span>
-        <span class="opt-desc">Kaynak şemadan tablo, PK ve FK üretilir; verisi birebir taşınır.
-          Default, index ve check constraint kopyalanmaz.</span>
-      </span>
-    </label>
+    <div class="always">
+      <h3>Her taşımada olur — seçeneklerden bağımsız</h3>
+      <ul>
+        <li>Kopyalanacak her hedef tablo, veri yazılmadan önce
+          <code>TRUNCATE … RESTART IDENTITY CASCADE</code> ile boşaltılır.
+          <strong>CASCADE</strong>, bu tablolara bağlı olup kaynakta karşılığı bulunmayan
+          tabloları da boşaltır ve onlar boş kalır — hangileri olduğu kayıtta uyarı
+          olarak yazar.</li>
+        <li>Boşaltma, kopyalama, identity sequence hizalaması ve doğrulama
+          <strong>tek bir transaction</strong> içindedir. Doğrulama geçmezse hiçbir şey
+          yazılmaz; hedef, çalıştırmadan önceki hâliyle kalır.</li>
+        <li>Kopyalama boyunca yabancı anahtar tetikleyicileri askıya alınır — bu
+          <strong>superuser</strong> ister — ve commit'ten önce yetim satır denetimiyle
+          yeniden doğrulanır.</li>
+        <li>Kaynağa yalnızca <code>SELECT</code> gönderilir; kaynak hiçbir koşulda
+          değişmez.</li>
+      </ul>
+      <p class="always-foot">Bunlar <strong>taşıma</strong> için geçerlidir. Aşağıdaki diğer
+        iki mod veri taşımaz: hiçbir tablo boşaltılmaz, hiçbir satır yazılmaz.</p>
+    </div>
 
-    <label class="opt">
-      <input type="checkbox" id="optSourceOnly">
-      <span class="opt-text">
-        <span class="opt-title">Hedefte olmayan kaynak tablolarına izin ver</span>
-        <span class="opt-desc">Bu tabloların verileri taşınmaz.</span>
-      </span>
-    </label>
+    <fieldset class="opt-group">
+      <legend class="opt-group-title">Çalıştırma modu</legend>
 
-    <label class="opt">
-      <input type="checkbox" id="optSchemaRisk">
-      <span class="opt-text">
-        <span class="opt-title">Şema riskine izin ver</span>
-        <span class="opt-desc">NOT NULL'a giden NULL, sınırı aşan uzunluk — erken ve net duruş
-          yerine kopyalama ortasında hata.</span>
-      </span>
-    </label>
+      <label class="opt">
+        <input type="radio" name="runMode" id="modeMigrate" value="Migrate" checked>
+        <span class="opt-text">
+          <span class="opt-title">Taşı ve doğrula <span class="opt-note-inline">varsayılan</span></span>
+          <span class="opt-desc">Tam akış: hedef veritabanı yoksa oluşturulur, tablolar
+            boşaltılır, veri kopyalanır, satır sayıları ve yabancı anahtarlar doğrulanır ve
+            ancak o zaman commit edilir.</span>
+        </span>
+      </label>
 
-    <label class="opt">
-      <input type="checkbox" id="optCollation">
-      <span class="opt-text">
-        <span class="opt-title">Collation uyuşmazlığına izin ver</span>
-        <span class="opt-desc">Arama ve sıralama sessizce beklediğinden farklı davranır.</span>
-      </span>
-    </label>
+      <label class="opt">
+        <input type="radio" name="runMode" id="modeVerify" value="VerifyOnly">
+        <span class="opt-text">
+          <span class="opt-title">Yalnız doğrula — hedefe hiçbir şey yazma</span>
+          <span class="opt-desc">Veri kopyalanmaz, hiçbir tablo boşaltılmaz, eksik hedef
+            veritabanı oluşturulmaz. Daha önce taşınmış bir hedefin satır sayılarını
+            kaynakla karşılaştırır ve yabancı anahtarlarında yetim satır arar. Collation
+            kontrolü bu modda da yapılır.</span>
+        </span>
+      </label>
 
-    <label class="opt">
-      <input type="checkbox" id="optVerifyOnly">
-      <span class="opt-text">
-        <span class="opt-title">Yalnız doğrula</span>
-        <span class="opt-desc">Veri taşımaz; mevcut durumun satır sayılarını ve yabancı
-          anahtarlarını kontrol eder.</span>
-      </span>
-    </label>
+      <label class="opt">
+        <input type="radio" name="runMode" id="modeProvision" value="ProvisionOnly">
+        <span class="opt-text">
+          <span class="opt-title">Yalnız veritabanı oluştur — veriye dokunma</span>
+          <span class="opt-desc">Hiçbir tablo okunmaz ve yazılmaz. Hedef veritabanı yoksa
+            adım 3'teki collation ile oluşturulur; varsa olduğu gibi bırakılır. Kaynak
+            veritabanı yine de yoklanır — orada olmayan bir ada göre hedef açmak yazım
+            hatasıdır, plan değil.</span>
+          <span class="opt-desc">Aşağıdaki <strong>her veritabanı için ayrı kullanıcı
+            oluştur</strong> seçeneği bu modda da geçerlidir: işaretliyse rolü de açılır ve
+            parolası yine yalnızca PDF raporunda görünür.</span>
+        </span>
+      </label>
+    </fieldset>
 
-    <label class="opt">
-      <input type="checkbox" id="optUsers">
-      <span class="opt-text">
-        <span class="opt-title">Her veritabanı için ayrı kullanıcı oluştur</span>
-        <span class="opt-desc">Rastgele parolalı bir PostgreSQL rolü açılır ve veritabanının
-          sahibi yapılır. Bu araç oluşturduysa veritabanına yalnızca o rol bağlanabilir.
-          Parolalar hiçbir yere kaydedilmez, yalnızca taşıma sonundaki PDF raporunda
-          görünür — rapor kaybolursa parola geri alınamaz.</span>
-      </span>
-    </label>
+    <div class="opt-group">
+      <h3 class="opt-group-title">Eksik tablolar</h3>
 
-    <div id="userOpts" class="sub-opt" hidden>
-      <label for="userPattern">Kullanıcı adı deseni<input id="userPattern" value="{db}_user"></label>
+      <label class="opt">
+        <input type="checkbox" id="optMirror"
+               aria-describedby="noteMirrorVerify noteMirrorProvision">
+        <span class="opt-text">
+          <span class="opt-title">Hedefte olmayan tabloları kaynaktan oluştur (aynala)</span>
+          <span class="opt-desc">Yalnızca hedefte bulunmayan tablolar oluşturulur: sütunlar,
+            NOT NULL, identity, birincil anahtarlar ve yabancı anahtarlar. Varsayılan
+            değerler, index'ler ve check constraint'ler kopyalanmaz — bu, hedefe ORM
+            göçlerini uygulamanın yerine geçmez. Kaynakta PostgreSQL karşılığı olmayan bir
+            sütun tipi varsa taşıma hiç başlamaz.</span>
+        </span>
+      </label>
+      <div class="opt-notes" data-for="optMirror">
+        <p id="noteMirrorVerify" class="opt-note" hidden>Yalnız doğrula açıkken aynalama
+          yapılmaz: doğrulama, hedefi bulduğu gibi bırakmak zorunda.</p>
+        <p id="noteMirrorProvision" class="opt-note" hidden>Yalnız veritabanı oluştur
+          modunda hiçbir tablo okunmaz ya da yazılmaz; aynalama çalışmaz.</p>
+      </div>
+
+      <label class="opt">
+        <input type="checkbox" id="optSourceOnly"
+               aria-describedby="noteSourceOnlyProvision noteSourceOnlyMirror">
+        <span class="opt-text">
+          <span class="opt-title">Hedefte olmayan kaynak tablolarına izin ver
+            <span class="opt-flag">kapı açar</span></span>
+          <span class="opt-desc">Normalde tek bir eksik tablo taşımayı durdurur. İzin
+            verildiğinde durmaz: o tabloların verisi taşınmaz ve kayıtta uyarı olarak
+            listelenir. İşaretlemeden önce listeyi oku — hâlâ ihtiyacın olan bir tablo,
+            bilerek kaldırılmış bir tabloyla birebir aynı görünür.</span>
+        </span>
+      </label>
+      <div class="opt-notes" data-for="optSourceOnly">
+        <p id="noteSourceOnlyProvision" class="opt-note" hidden>Yalnız veritabanı oluştur
+          modunda kaynak ve hedef tabloları hiç karşılaştırılmaz; bu iznin etkisi olmaz.</p>
+        <p id="noteSourceOnlyMirror" class="opt-note" hidden>Aynalama açıkken bu izne gerek
+          kalmaz: eksik tablolar zaten hedefte oluşturulur.</p>
+      </div>
+    </div>
+
+    <div class="opt-group">
+      <h3 class="opt-group-title">Riskli izinler</h3>
+
+      <label class="opt">
+        <input type="checkbox" id="optSchemaRisk"
+               aria-describedby="noteSchemaRiskVerify noteSchemaRiskProvision">
+        <span class="opt-text">
+          <span class="opt-title">Şema riskine izin ver
+            <span class="opt-flag">kapı açar</span></span>
+          <span class="opt-desc">Ön kontrol, kaynağı tarayarak iki şeyi bulur: hedefte
+            NOT NULL olan bir sütuna gidecek NULL değerler ve hedef sütuna sığmayan uzun
+            metinler. İzin verildiğinde bunlar hatadan uyarıya iner ve taşıma başlar; sorun
+            bu kez kopyalamanın ortasında patlar. Transaction geri alındığı için veri kaybı
+            olmaz — kaybedilen, erken ve net duruş.</span>
+        </span>
+      </label>
+      <div class="opt-notes" data-for="optSchemaRisk">
+        <p id="noteSchemaRiskVerify" class="opt-note" hidden>Yalnız doğrula açıkken ön
+          kontrol hiç çalışmaz; bu seçeneğin etkisi olmaz.</p>
+        <p id="noteSchemaRiskProvision" class="opt-note" hidden>Yalnız veritabanı oluştur
+          modunda kopyalama yapılmaz; ön kontrol hiç çalışmaz.</p>
+      </div>
+
+      <label class="opt">
+        <input type="checkbox" id="optCollation"
+               aria-describedby="noteCollationProvision noteCollationNoLocale">
+        <span class="opt-text">
+          <span class="opt-title">Collation uyuşmazlığına izin ver
+            <span class="opt-flag">kapı açar</span></span>
+          <span class="opt-desc">Hedef veritabanının collation'ı adım 3'te yazdığından
+            farklıysa taşıma durur; izin verildiğinde devam eder. Yanlış collation
+            sessizdir: veri doğru saklanır, ama arama ve sıralama beklediğinden farklı
+            davranır ve bunu hiçbir hata bildirmez. Bir veritabanının collation'ı sonradan
+            değiştirilemez — düzeltmek, veritabanını yeniden oluşturmak demektir.</span>
+        </span>
+      </label>
+      <div class="opt-notes" data-for="optCollation">
+        <p id="noteCollationProvision" class="opt-note" hidden>Yalnız veritabanı oluştur
+          modunda collation karşılaştırılmaz — ama adım 3'teki değer, oluşturulacak
+          veritabanının collation'ı olur.</p>
+        <p id="noteCollationNoLocale" class="opt-note" hidden>Adım 3'teki collation alanı
+          boş — collation hiç kontrol edilmiyor, bu seçeneğin etkisi olmaz.</p>
+      </div>
+    </div>
+
+    <div class="opt-group">
+      <h3 class="opt-group-title">Hedef kullanıcıları</h3>
+
+      <label class="opt">
+        <input type="checkbox" id="optUsers" aria-describedby="noteUsersVerify">
+        <span class="opt-text">
+          <span class="opt-title">Her veritabanı için ayrı kullanıcı oluştur</span>
+          <span class="opt-desc">Taşıma bittikten sonra hedef veritabanı için 24 karakterlik
+            rastgele parolalı bir PostgreSQL rolü açılır; rol, veritabanının ve public
+            şemasındaki nesnelerin sahibi yapılır. Veritabanını bu çalıştırma oluşturduysa
+            PUBLIC'in bağlanma yetkisi kaldırılır — o veritabanına yalnızca kendi rolü
+            bağlanabilir. Aynı adlı bir rol zaten varsa yeniden kullanılır ve parolası
+            değiştirilmez.</span>
+          <span class="opt-desc">Rol oluşturmak ve sahipliği devretmek
+            <strong>superuser</strong> (en azından <code>CREATEROLE</code>) ister. Yetki
+            yoksa rol yine oluşturulup yetkilendirilir, ama sahiplik devredilemez ve bu
+            kayıtta uyarı olarak bildirilir.</span>
+          <span class="opt-desc">Parolalar hiçbir yere kaydedilmez; yalnızca taşıma
+            sonundaki PDF raporunda görünür. Rapor kaybolursa parola geri alınamaz,
+            PostgreSQL'de <code>ALTER ROLE</code> ile sıfırlanması gerekir.</span>
+        </span>
+      </label>
+      <div class="opt-notes" data-for="optUsers">
+        <p id="noteUsersVerify" class="opt-note" hidden>Yalnız doğrula açıkken kullanıcı
+          oluşturulmaz: doğrulama, hedefi bulduğu gibi bırakmak zorunda.</p>
+      </div>
+
+      <div id="userOpts" class="sub-opt" hidden>
+        <label for="userPattern">Kullanıcı adı deseni<input id="userPattern" value="{db}_user"></label>
+        <p class="opt-note plain"><code>{db}</code> hedef veritabanının adıyla değişir. Ad
+          küçük harfe çevrilir; harf, rakam ve alt çizgi dışındaki her karakter alt çizgi
+          olur.</p>
+      </div>
     </div>
   </section>
 

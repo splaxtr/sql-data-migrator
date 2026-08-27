@@ -87,13 +87,21 @@ not stop the rest.
 
 **Target** — Pick a saved PostgreSQL server. Target names come from a pattern — `{db}` is
 the source name, so `{db}_pg` renames the lot in one go — and any single name can still be
-edited by hand. A database that does not exist is created for you.
+edited by hand, with the target server's existing databases offered as suggestions so you
+can migrate into one that is already there. Leave a name empty and it takes the source's.
+Each row says whether that name is already on the server or is about to be created.
 
-**Options** — Every gate that can be relaxed is off by default and has to be turned on
-deliberately. They exist because a real migration sometimes needs them, not because
-skipping checks is normal. Each one explains what it lets through. Two do more than relax a
-check: **mirror** creates the tables the target is missing from the source schema, and
-**one user per database** gives each migrated database its own PostgreSQL login.
+**Options** — A run is one of three modes. **Migrate** prepares the target, copies, verifies
+and commits. **Verify only** compares an existing target against the source and writes
+nothing at all. **Create database only** creates the target database — and its login, if you
+asked for one — without reading or writing a single table.
+
+Everything else is a gate that is off by default and has to be turned on deliberately. They
+exist because a real migration sometimes needs them, not because skipping checks is normal,
+and each one explains what it lets through. Two do more than relax a check: **mirror**
+creates the tables the target is missing from the source schema, and **one user per
+database** gives each migrated database its own PostgreSQL login. Options a mode would
+ignore are locked with the reason, so the page never offers work the run will not do.
 
 **Run** — Progress streams live: which database, which table, how many rows, what was
 verified. The final line is the only thing that matters, and it is honest. When the run

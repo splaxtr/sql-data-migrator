@@ -65,6 +65,24 @@ migration occasionally needs it:
 
 Turning one on without reading what it reported cancels the reason this tool exists.
 
+## The modes that move nothing
+
+Two of the three run modes copy no data, and none of the guarantees above about the copy
+apply to them, because there is no copy.
+
+**Verify only** writes nothing at all — no database is created, no table is truncated, no
+role is provisioned. It reads both ends and compares them.
+
+**Create database only** creates the target database, and its login when that option is on,
+and stops. It reads no table from the source and writes none in the target; a target
+database that already exists is left as it is. The source is still opened first, to
+establish that the database the target is being named after is really there.
+
+The honesty rule holds in both. A verification that fails is a failed run, not a warning.
+And a "create database only" run that made the database but could not make the login you
+asked for is reported as **failed** — the database existing is not what you asked for, and
+saying otherwise would be reporting success it did not earn.
+
 ## Stored credentials
 
 Saved connections live in a JSON file in your local application data directory. Passwords

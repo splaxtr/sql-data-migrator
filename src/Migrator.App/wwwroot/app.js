@@ -121,9 +121,30 @@ const selectedDatabases = new Set();
 // pattern, so editing the pattern keeps working for the rows nobody has touched.
 const targetNames = new Map();
 
+// What the target server already has, so a row can say whether its name will be created
+// or written into. Empty until a target server is picked and its list comes back.
+let targetDatabases = new Set();
+let targetListLoaded = false;
+
 function targetFor(database) {
-  if (targetNames.has(database)) return targetNames.get(database);
+  if (targetNames.has(database)) {
+    const typed = targetNames.get(database).trim();
+    // An empty box is not a missing answer: "the same name as the source" is the commonest
+    // one, and making it the meaning of empty saves typing it out on every row.
+    return typed === "" ? database : typed;
+  }
   return ($("tgtPattern").value.trim() || "{db}").replaceAll("{db}", database);
+}
+
+// Three things a target name can be, and the run mode decides between the last two:
+// nothing is ever created while verifying.
+function targetState(name) {
+  if (!targetListLoaded) return { text: "—", kind: "unknown", title: "Hedef sunucu seçilmedi." };
+  if (targetDatabases.has(name))
+    return { text: "var", kind: "exists", title: "Bu veritabanı hedef sunucuda zaten var — oluşturulmayacak." };
+  return runMode() === "VerifyOnly"
+    ? { text: "yok", kind: "missing", title: "Hedef sunucuda böyle bir veritabanı yok ve bu modda oluşturulmaz." }
+    : { text: "oluşturulacak", kind: "new", title: "Hedef sunucuda yok — adım 3'teki collation ile oluşturulacak." };
 }
 
 // Turkish casing on purpose: with the invariant rules "I" lower-cases to "i", so filtering
@@ -162,14 +183,30 @@ function renderDatabases() {
 
     const target = document.createElement("input");
     target.className = "db-target";
-    target.value = targetFor(database);
+    target.value = targetNames.has(database) ? targetNames.get(database) : targetFor(database);
+    // The target server's own databases, offered rather than remembered: picking an
+    // existing one is how you migrate into a database that is already there.
+    target.setAttribute("list", "tgtDbList");
+    // Empty means the source name, so the placeholder is that name — the rule is visible
+    // in the box it applies to instead of only in the paragraph above.
+    target.placeholder = database;
     // The column heading disappears on narrow screens, so the field carries its
     // own name rather than borrowing one.
-    target.title = "Hedef veritabanı adı";
+    target.title = "Hedef veritabanı adı — boş bırakılırsa kaynakla aynı";
     target.setAttribute("aria-label", `${database} için hedef veritabanı adı`);
-    target.oninput = () => targetNames.set(database, target.value);
 
-    row.append(pick, target);
+    const state = document.createElement("span");
+    state.className = "db-state";
+    const paint = () => {
+      const current = targetState(targetFor(database));
+      state.textContent = current.text;
+      state.dataset.kind = current.kind;
+      state.title = current.title;
+    };
+    paint();
+    target.oninput = () => { targetNames.set(database, target.value); paint(); };
+
+    row.append(pick, target, state);
     host.appendChild(row);
   }
   showEmptyState(visible.length);
@@ -219,13 +256,31 @@ async function loadSourceDatabases() {
 
 async function loadTargetDatabases() {
   const serverId = $("tgtServer").value;
-  if (!serverId) return setMsg("tgtMsg", "");
+  targetDatabases = new Set();
+  targetListLoaded = false;
+  fillTargetSuggestions();
+  if (!serverId) { renderDatabases(); return setMsg("tgtMsg", ""); }
   setMsg("tgtMsg", "Bağlantı deneniyor…");
   try {
     const databases = await api(`/api/servers/${serverId}/databases`);
+    targetDatabases = new Set(databases);
+    targetListLoaded = true;
+    fillTargetSuggestions();
     setMsg("tgtMsg", `Bağlantı tamam — sunucuda ${databases.length} veritabanı var.`, "ok");
   } catch (e) {
     setMsg("tgtMsg", e.message, "err");
+  }
+  // The rows carry "var" / "oluşturulacak" badges that only this list can settle.
+  renderDatabases();
+}
+
+function fillTargetSuggestions() {
+  const list = $("tgtDbList");
+  list.innerHTML = "";
+  for (const name of [...targetDatabases].sort((a, b) => a.localeCompare(b, "tr"))) {
+    const option = document.createElement("option");
+    option.value = name;
+    list.appendChild(option);
   }
 }
 
@@ -236,17 +291,60 @@ $("tgtPattern").oninput = renderDatabases;
 $("btnAll").onclick = () => { visibleDatabases().forEach(d => selectedDatabases.add(d)); renderDatabases(); };
 $("btnNone").onclick = () => { selectedDatabases.clear(); renderDatabases(); };
 
-$("optUsers").onchange = () => { $("userOpts").hidden = !$("optUsers").checked; };
+// ── Run mode and option dependencies ────────────────────────────────────────
+// Each mode leaves some options with nothing to act on: verify-only writes nothing, so
+// everything that writes is moot; provision-only reads no tables, so everything about
+// tables is. An option the run will not look at must not sit there ticked and available,
+// or the page is promising work that never happens — it gets locked, with the reason.
 
-// Verifying must leave the target exactly as it was, and creating a role would not.
-$("optVerifyOnly").onchange = () => {
-  const verifying = $("optVerifyOnly").checked;
-  $("optUsers").disabled = verifying;
-  if (verifying) {
-    $("optUsers").checked = false;
-    $("userOpts").hidden = true;
-  }
-};
+const runMode = () => document.querySelector('input[name="runMode"]:checked').value;
+
+function syncOptions() {
+  const verifying = runMode() === "VerifyOnly";
+  const provisioning = runMode() === "ProvisionOnly";
+  // An empty locale means CheckCollationAsync returns before it compares anything.
+  const noLocale = $("tgtLocale").value.trim() === "";
+
+  lockOption("optMirror", verifying || provisioning,
+    verifying ? "noteMirrorVerify" : "noteMirrorProvision");
+  lockOption("optSourceOnly", provisioning, "noteSourceOnlyProvision");
+  lockOption("optSchemaRisk", verifying || provisioning,
+    verifying ? "noteSchemaRiskVerify" : "noteSchemaRiskProvision");
+  lockOption("optCollation", provisioning || noLocale,
+    provisioning ? "noteCollationProvision" : "noteCollationNoLocale");
+  lockOption("optUsers", verifying, "noteUsersVerify");
+
+  $("userOpts").hidden = !$("optUsers").checked;
+  // Mirroring creates the missing tables, so permission to skip them has nothing left to
+  // permit. Not an error, so it is a note rather than a lock — and only when a bigger
+  // reason has not already claimed the same spot.
+  if (!provisioning && !verifying && $("optMirror").checked)
+    showNote("optSourceOnly", "noteSourceOnlyMirror");
+
+  // "var" / "oluşturulacak" on each row depends on the mode: nothing is created while
+  // verifying, so the badge cannot be decided once and left alone.
+  renderDatabases();
+}
+
+// A locked gate is also an unticked one: what the page shows and what the run receives
+// have to be the same thing.
+function lockOption(id, locked, noteId) {
+  const box = $(id);
+  box.disabled = locked;
+  if (locked) box.checked = false;
+  showNote(id, locked ? noteId : null);
+}
+
+// Every reason an option can be inert is written out in index.html; this picks the one
+// that applies and hides the rest, so no Turkish sentence has to live in this file.
+function showNote(optionId, noteId) {
+  document.querySelectorAll(`.opt-notes[data-for="${optionId}"] .opt-note`)
+    .forEach(note => note.hidden = note.id !== noteId);
+}
+
+document.querySelectorAll('input[name="runMode"]').forEach(radio => radio.onchange = syncOptions);
+["optMirror", "optUsers"].forEach(id => $(id).onchange = syncOptions);
+$("tgtLocale").addEventListener("input", syncOptions);
 
 // ── Translation ─────────────────────────────────────────────────────────────
 // The engine speaks English; the Turkish is built here from code + args. A message
@@ -310,11 +408,16 @@ const TR = {
 
   "step.batchDatabase": "[{0}/{1}] {2} → {3}",
   "info.batchSummary": "Toplu taşıma bitti: {0} başarılı, {1} başarısız, {2} satır.",
+  "info.batchSummaryNoRows": "Toplu işlem bitti: {0} başarılı, {1} başarısız.",
   "info.reportReady": "PDF raporu indirilmeye hazır.",
   "warn.reportFailed": "PDF raporu üretilemedi: {0}",
   "error.serverNotFound": "Kayıtlı sunucu bulunamadı.",
   "success.batchAll": "{0} veritabanı taşındı.",
   "fail.batchPartial": "{0} veritabanı taşındı, {1} tanesi başarısız.",
+  "success.batchVerified": "{0} veritabanı doğrulandı.",
+  "fail.batchVerifyPartial": "{0} veritabanı doğrulandı, {1} tanesi başarısız.",
+  "success.batchProvisioned": "{0} veritabanı hazırlandı.",
+  "fail.batchProvisionPartial": "{0} veritabanı hazırlandı, {1} tanesi başarısız.",
 
   "info.postgresNotice": "(pg) {0}",
 
@@ -375,13 +478,11 @@ $("btnRun").onclick = async () => {
     mirrorMissingTables: $("optMirror").checked,
     allowSchemaRisk: $("optSchemaRisk").checked,
     allowCollationMismatch: $("optCollation").checked,
-    verifyOnly: $("optVerifyOnly").checked,
+    mode: runMode(),
   };
   if (!body.sourceServerId) return setMsg("runState", "Kaynak sunucu seç.", "err");
   if (!body.targetServerId) return setMsg("runState", "Hedef sunucu seç.", "err");
   if (!databases.length) return setMsg("runState", "En az bir veritabanı seç.", "err");
-  const blank = databases.find(d => !d.targetDatabase);
-  if (blank) return setMsg("runState", `'${blank.sourceDatabase}' için hedef ad boş.`, "err");
 
   $("log").textContent = "";
   $("btnReport").hidden = true;
@@ -436,5 +537,5 @@ $("btnTheme").onclick = () => {
   try { localStorage.setItem("theme", goingDark ? "dark" : "light"); } catch { /* private mode */ }
 };
 
-renderDatabases();
+syncOptions();
 loadServers().catch(e => setMsg("serverMsg", e.message, "err"));

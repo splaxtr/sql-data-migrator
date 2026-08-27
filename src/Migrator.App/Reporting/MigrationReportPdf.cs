@@ -38,7 +38,7 @@ internal static class MigrationReportPdf
         ReportFonts.Register();
 
         using var document = new PdfDocument();
-        document.Info.Title = "Veritabanı Taşıma Raporu";
+        document.Info.Title = TitleFor(report.Mode);
         document.Info.Creator = "SQL → SQL Taşıyıcı";
 
         var layout = new Layout(document);
@@ -64,7 +64,7 @@ internal static class MigrationReportPdf
     private static void DrawHeader(Layout layout, MigrationReport report)
     {
         var gfx = layout.Gfx;
-        gfx.DrawString("Veritabanı Taşıma Raporu", Font(19, true), Brush(Ink),
+        gfx.DrawString(TitleFor(report.Mode), Font(19, true), Brush(Ink),
             new XRect(Margin, layout.Y, ContentWidth, 24), XStringFormats.TopLeft);
         layout.Y += 25;
 
@@ -78,11 +78,33 @@ internal static class MigrationReportPdf
 
         Field(layout, "Kaynak sunucu", report.SourceServer);
         Field(layout, "Hedef sunucu", report.TargetServer);
-        Field(layout, "Mod", report.VerifyOnly
-            ? "Yalnız doğrulama — hiçbir veri taşınmadı"
-            : "Taşıma — veri kopyalandı ve doğrulandı");
+        Field(layout, "Mod", report.Mode switch
+        {
+            RunMode.VerifyOnly => "Yalnız doğrulama — hiçbir veri taşınmadı",
+            RunMode.ProvisionOnly => "Yalnız veritabanı oluşturma — hiçbir veri taşınmadı",
+            _ => "Taşıma — veri kopyalandı ve doğrulandı",
+        });
         layout.Y += 8;
     }
+
+    /// <summary>
+    /// The first line of the document, and the one a reader takes at face value: a run that
+    /// moved nothing must not head its report with the word for moving.
+    /// </summary>
+    internal static string TitleFor(RunMode mode) => mode switch
+    {
+        RunMode.VerifyOnly => "Veritabanı Doğrulama Raporu",
+        RunMode.ProvisionOnly => "Veritabanı Hazırlama Raporu",
+        _ => "Veritabanı Taşıma Raporu",
+    };
+
+    /// <summary>The same distinction in the name the browser saves the file under.</summary>
+    internal static string FileNameFor(RunMode mode) => mode switch
+    {
+        RunMode.VerifyOnly => "dogrulama-raporu",
+        RunMode.ProvisionOnly => "hazirlama-raporu",
+        _ => "tasima-raporu",
+    };
 
     private static void Field(Layout layout, string label, string value)
     {
@@ -99,12 +121,17 @@ internal static class MigrationReportPdf
         const double gap = 8;
         layout.Ensure(height + 14);
 
+        // The fourth tile is whatever the run actually produced. A provisioning run moves no
+        // rows, and a "0" under "taşınan satır" reads as a failed migration rather than as
+        // a mode that was never going to move any.
         var tiles = new (string Value, string Label)[]
         {
             (report.Databases.Count.ToString(Turkish), "veritabanı"),
             (report.SucceededCount.ToString(Turkish), "başarılı"),
             (report.FailedCount.ToString(Turkish), "başarısız"),
-            (report.TotalRows.ToString("N0", Turkish), "taşınan satır"),
+            report.Mode == RunMode.ProvisionOnly
+                ? (report.CreatedCount.ToString(Turkish), "oluşturulan")
+                : (report.TotalRows.ToString("N0", Turkish), "taşınan satır"),
         };
 
         var width = (ContentWidth - gap * (tiles.Length - 1)) / tiles.Length;
@@ -128,17 +155,29 @@ internal static class MigrationReportPdf
 
     private static void DrawResults(Layout layout, MigrationReport report)
     {
-        var columns = new[]
-        {
-            new Column("#", 22),
-            new Column("Kaynak veritabanı", 155),
-            new Column("Hedef veritabanı", 155),
-            new Column("Satır", 55, true),
-            new Column("Süre", 55, true),
-            new Column("Durum", 73),
-        };
+        // Provisioning has no row count and no duration worth printing, so the column that
+        // carries the outcome is wider and says what happened to the database instead.
+        var provisioning = report.Mode == RunMode.ProvisionOnly;
+        var columns = provisioning
+            ? new[]
+            {
+                new Column("#", 22),
+                new Column("Kaynak veritabanı", 145),
+                new Column("Hedef veritabanı", 145),
+                new Column("Sonuç", 148),
+                new Column("Durum", 55),
+            }
+            : new[]
+            {
+                new Column("#", 22),
+                new Column("Kaynak veritabanı", 155),
+                new Column("Hedef veritabanı", 155),
+                new Column("Satır", 55, true),
+                new Column("Süre", 55, true),
+                new Column("Durum", 73),
+            };
 
-        Heading(layout, "Taşıma sonuçları");
+        Heading(layout, provisioning ? "Hazırlama sonuçları" : "Taşıma sonuçları");
         TableHeader(layout, columns);
 
         var index = 0;
@@ -146,19 +185,30 @@ internal static class MigrationReportPdf
         {
             index++;
             var status = database.Succeeded ? "Başarılı" : "Başarısız";
-            var cells = new[]
-            {
-                index.ToString(Turkish),
-                database.SourceDatabase,
-                database.TargetDatabase,
-                database.RowsCopied.ToString("N0", Turkish),
-                FormatDuration(database.Duration),
-                status,
-            };
-            Row(layout, columns, cells, database.Succeeded ? Good : Bad, 5);
+            var cells = provisioning
+                ? new[]
+                {
+                    index.ToString(Turkish),
+                    database.SourceDatabase,
+                    database.TargetDatabase,
+                    // A failure's reason can be longer than any column, and a truncated
+                    // reason is a wrong one — it goes to the note line below instead.
+                    database.Succeeded ? database.Note : "—",
+                    status,
+                }
+                : new[]
+                {
+                    index.ToString(Turkish),
+                    database.SourceDatabase,
+                    database.TargetDatabase,
+                    database.RowsCopied.ToString("N0", Turkish),
+                    FormatDuration(database.Duration),
+                    status,
+                };
+            Row(layout, columns, cells, database.Succeeded ? Good : Bad, cells.Length - 1);
 
             // The note explains a failure and adds nothing to a success, where the row
-            // count already said everything.
+            // count — or, when provisioning, the outcome column — already said everything.
             if (!database.Succeeded && database.Note.Length > 0)
                 NoteLine(layout, database.Note);
         }

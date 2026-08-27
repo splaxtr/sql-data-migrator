@@ -13,9 +13,14 @@ internal static class AppMessageCode
 {
     public const string StepBatchDatabase = "step.batchDatabase";
     public const string InfoBatchSummary = "info.batchSummary";
+    public const string InfoBatchSummaryNoRows = "info.batchSummaryNoRows";
     public const string InfoReportReady = "info.reportReady";
     public const string WarnReportFailed = "warn.reportFailed";
     public const string ErrorServerNotFound = "error.serverNotFound";
     public const string SuccessBatchAll = "success.batchAll";
     public const string FailBatchPartial = "fail.batchPartial";
+    public const string SuccessBatchVerified = "success.batchVerified";
+    public const string FailBatchVerifyPartial = "fail.batchVerifyPartial";
+    public const string SuccessBatchProvisioned = "success.batchProvisioned";
+    public const string FailBatchProvisionPartial = "fail.batchProvisionPartial";
 }

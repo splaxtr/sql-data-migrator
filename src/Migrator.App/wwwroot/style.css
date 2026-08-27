@@ -211,7 +211,7 @@ input:hover, select:hover { border-color: var(--line-strong); }
 }
 input:focus, select:focus { border-color: var(--focus); }
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
   width: 18px; height: 18px;
   min-height: 0;
   margin: 0;
@@ -259,6 +259,55 @@ button:disabled:hover { background: var(--surface); border-color: var(--line); }
 
 /* ── Options ────────────────────────────────────────────────────────────── */
 
+/* What happens on every run is not an option, so it does not look like one: a
+   block above the list, not a seventh checkbox nobody can untick. */
+.always {
+  margin: 0 0 1.3rem;
+  padding: .85rem 1rem;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--warn);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+.always h3 {
+  margin: 0 0 .5rem;
+  color: var(--text-strong-muted);
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.always ul { margin: 0; padding-left: 1.1rem; }
+.always li { color: var(--text-muted); font-size: .85rem; line-height: 1.5; }
+.always li + li { margin-top: .4rem; }
+.always strong { color: var(--text-strong-muted); font-weight: 600; }
+.always-foot {
+  margin: .7rem 0 0;
+  padding-top: .6rem;
+  border-top: 1px solid var(--line-strong);
+  color: var(--text-muted);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+/* The block already sits on --surface-2; code needs the other one to stay a box. */
+.always code { background: var(--surface); }
+
+/* Four topics rather than one list of six: which options can even apply to a run
+   is decided by the group, and the group says so before the wording has to. */
+.opt-group + .opt-group { margin-top: 1.15rem; }
+/* A fieldset is the right element for an exclusive choice and the wrong one for every
+   default it brings with it. */
+fieldset.opt-group { min-width: 0; margin: 0; padding: 0; border: 0; }
+fieldset.opt-group > legend { padding: 0; }
+.opt-group-title {
+  margin: 0 0 .35rem;
+  color: var(--text-muted);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
 /* Two columns: the box, then everything else. The description lives *under*
    its own title rather than beside it, which is what stops a long explanation
    from squeezing the title into a four-line column. */
@@ -281,12 +330,63 @@ button:disabled:hover { background: var(--surface); border-color: var(--line); }
    the difference between a checked migration and a forced one. */
 .opt:has(input:checked) .opt-title { color: var(--primary); }
 .opt > input[type="checkbox"] { margin-top: .15rem; }
-.opt-text { display: flex; flex-direction: column; gap: .15rem; min-width: 0; }
-.opt-title { font-weight: 550; }
+.opt-text { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
+.opt-title { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; font-weight: 550; }
 .opt-desc { color: var(--text-muted); font-size: .85rem; line-height: 1.45; }
-.opt:has(input:disabled) { opacity: .5; cursor: not-allowed; }
+.opt-desc strong { color: var(--text-strong-muted); font-weight: 600; }
 
-.sub-opt { margin: .35rem 0 .1rem 2.05rem; max-width: 22rem; }
+/* Marks the options that let through something the tool would otherwise stop on.
+   Text, not just a colour — the distinction has to survive a greyscale screen. */
+.opt-flag {
+  flex: none;
+  padding: .05rem .45rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--warn);
+  font-size: .67rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+/* The badge keeps its own meaning when the row turns teal for being ticked. */
+.opt:has(input:checked) .opt-title .opt-flag { color: var(--warn); }
+
+/* Says which choice applies when nobody chooses. Not a gate, so not a gate's colour. */
+.opt-note-inline {
+  flex: none;
+  padding: .05rem .45rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.opt:has(input:checked) .opt-title .opt-note-inline { color: var(--text-muted); }
+
+/* Dimming the whole row would take the description below 4.5:1 exactly when it has
+   to explain why the option is off, so the state is carried by colour and by the
+   note underneath instead of by opacity. */
+.opt:has(input:disabled) { cursor: not-allowed; }
+.opt:has(input:disabled):hover { background: transparent; }
+.opt:has(input:disabled) .opt-title,
+.opt:has(input:disabled) .opt-flag { color: var(--text-muted); }
+
+/* Lives outside the label on purpose: a reason printed inside a disabled control
+   inherits its styling, and this is the one line that must stay readable. */
+.opt-note {
+  margin: -.1rem 0 .2rem 2.05rem;
+  padding-left: .6rem;
+  border-left: 2px solid var(--line-strong);
+  color: var(--text-strong-muted);
+  font-size: .8rem;
+  line-height: 1.45;
+}
+.opt-note.plain { border-left: 0; padding-left: 0; margin-left: 0; }
+
+.sub-opt { margin: .5rem 0 .1rem 2.05rem; max-width: 24rem; }
 
 /* ── Saved servers ──────────────────────────────────────────────────────── */
 
@@ -344,7 +444,7 @@ details[open] summary { margin-bottom: .7rem; }
    that it is the name the database will be given in the target. */
 .db-head {
   display: grid;
-  grid-template-columns: 1fr minmax(9rem, 15rem);
+  grid-template-columns: 1fr minmax(9rem, 15rem) minmax(5.5rem, 7rem);
   gap: .6rem;
   padding: .45rem .65rem;
   border-bottom: 1px solid var(--line);
@@ -357,7 +457,7 @@ details[open] summary { margin-bottom: .7rem; }
 
 .db-row {
   display: grid;
-  grid-template-columns: 1fr minmax(9rem, 15rem);
+  grid-template-columns: 1fr minmax(9rem, 15rem) minmax(5.5rem, 7rem);
   align-items: center;
   gap: .6rem;
   padding: .4rem .65rem;
@@ -377,6 +477,22 @@ details[open] summary { margin-bottom: .7rem; }
 }
 .db-pick span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .db-target { font-size: .85rem; min-height: 34px; padding: .3rem .5rem; }
+
+/* Whether this name is already on the target server. The word carries the meaning; the
+   colour only reinforces it, because "var" and "oluşturulacak" are not a warning and an
+   all-clear — they are two different, both legitimate, plans. */
+.db-state {
+  font-size: .75rem;
+  font-weight: 600;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.db-state[data-kind="unknown"] { color: var(--text-muted); font-weight: 400; }
+.db-state[data-kind="exists"] { color: var(--text-muted); }
+.db-state[data-kind="new"] { color: var(--primary); }
+.db-state[data-kind="missing"] { color: var(--warn); }
 
 .empty {
   margin: 0;
@@ -417,8 +533,10 @@ details[open] summary { margin-bottom: .7rem; }
   /* The target name needs the full width once it can no longer sit beside the
      database it belongs to — and column headings describe columns that no
      longer exist, so they go with them. The field keeps its aria-label. */
-  .db-row { grid-template-columns: 1fr; gap: .35rem; padding: .55rem .65rem; }
-  .db-target { width: 100%; }
+  .db-row { grid-template-columns: 1fr auto; gap: .35rem .5rem; padding: .55rem .65rem; }
+  .db-pick { grid-area: 1 / 1; }
+  .db-state { grid-area: 1 / 2; }
+  .db-target { grid-area: 2 / 1 / 3 / 3; width: 100%; }
   .db-head { display: none; }
   .picker-bar .msg { flex-basis: 100%; text-align: left; }
 }

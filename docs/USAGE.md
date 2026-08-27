@@ -60,6 +60,20 @@ for the source database name:
 Any individual name can still be typed over in the list; a name you edit by hand stops
 following the pattern, so changing the pattern afterwards leaves it alone.
 
+**The name box offers the target server's existing databases.** Migrating into a database
+that is already there is a normal thing to want, and picking it from the list beats
+recalling its spelling — a name typed one letter off is a new, empty database rather than
+an error. **Leave a row's box empty and it takes the source database's name**, which is the
+commonest answer and now needs no typing.
+
+Each row says what its name is on the target right now:
+
+| Badge | Meaning |
+|---|---|
+| `var` | The database is already on the server. It is used as-is; nothing is created |
+| `oluşturulacak` | Not there yet. It will be created with the collation above |
+| `yok` | Not there, and this run will not create it — only **verify only** shows this |
+
 A target that does not exist is created with the collation you specify. One that already
 exists is used as-is and its collation is verified, not changed.
 
@@ -72,29 +86,87 @@ entirely.
 
 ## 4 · Options
 
-Everything here is off by default. Most of them let through something the tool would
-otherwise stop on, and each is occasionally the right call:
+Everything here is off by default. Three things happen on **every migration** regardless of
+what you tick, and they are worth knowing before the options make sense. The other two run
+modes below move no data at all, so none of the three applies to them:
+
+- **Every table being copied is emptied first**, with `TRUNCATE … RESTART IDENTITY
+  CASCADE`. `CASCADE` also empties tables that depend on those and have no source
+  counterpart, and those stay empty — the run lists which ones it emptied.
+- **The truncate, the copy, the sequence fixup and the verification share one
+  transaction.** If the verification fails nothing is written and the target is exactly
+  what it was.
+- **Constraint triggers are suspended for the duration of the copy** — which needs
+  superuser on the target — and every foreign key is re-checked before the commit.
+
+The options below are grouped on the page the same way they are grouped here.
+
+### Run mode
+
+Three exclusive choices. Everything under them applies to whichever one is selected, and an
+option the chosen mode would ignore is locked on the page with the reason — the engine was
+always going to ignore it, and showing it as available promised work that never happened.
+
+**Migrate and verify** (the default) — the full pipeline described above.
+
+**Verify only** — no copy. Nothing is truncated, no target database is created, and no role
+is provisioned. It compares row counts and checks foreign keys against a target that was
+migrated earlier, which is how you confirm a previous run.
+
+Because a verification has to leave the target exactly as it found it, this disables three
+options the engine would ignore anyway: **mirror missing tables** and **one user per
+database**, both of which write to the target, and **allow schema risk**, whose pre-flight
+only runs when there is a copy to gate. The collation check still runs.
+
+**Create database only** — creates the target database and stops. No table is read from the
+source and none is written in the target; nothing is truncated. A database that is already
+there is left exactly as it is.
+
+The source database is still opened before anything is created. It is the only thing the
+source is used for in this mode, and it is worth the round trip: a target named after a
+source that is not there is a typo, not a plan.
+
+**One user per database** applies here too, and this is usually the point of the mode —
+standing up an empty database with its own login, ready for an ORM's migrations to run
+against it. If you asked for a login and it could not be created, the database is reported
+as **failed** even though it exists, because half of what you asked for did not happen. The
+password still appears only in the PDF.
+
+This mode locks everything about tables — mirror, the source-only permission and the schema
+risk gate — because no table is compared. It also locks **allow collation mismatch**: there
+is no existing collation to compare against. The collation field in step 3 still matters,
+though, because it is what the new database is created with.
+
+### Missing tables
 
 **Mirror missing tables** — creates the tables the target does not have, from the source
 schema: columns, NOT NULL, identity columns, primary keys and foreign keys. Defaults,
 indexes and check constraints are **not** copied, so this is a fast way to stand up a copy
 of a database, not a substitute for running your ORM's migrations against a target the
-application will then own.
+application will then own. A source column whose type has no PostgreSQL mapping stops the
+run before it starts, with the column named.
 
 **Allow tables missing from target** — the source has tables the target does not. Their data
 will not be migrated. Read the list before you tick this: a table you still need looks
-exactly the same as one that was dropped on purpose.
+exactly the same as one that was dropped on purpose. With mirroring on, this permission has
+nothing left to permit — the missing tables get created — and the page says so.
+
+### Relaxed checks
+
+Both of these are marked **kapı açar** on the page: they let through something the tool
+would otherwise stop on.
 
 **Allow schema risk** — the pre-flight found NULLs headed for NOT NULL columns, or values
 longer than the target column allows. Ticking this trades an early, clear stop for a
-failure partway through the copy.
+failure partway through the copy. The transaction still rolls back, so what you give up is
+the clean stop, not the data.
 
 **Allow collation mismatch** — the target's collation is not what you specified. The
 migration will work; search and sort behaviour will differ from what you expected, silently.
+Leaving the collation field in step 3 empty skips the check altogether, which leaves this
+option with nothing to relax — the page disables it and says why.
 
-**Verify only** — no copy. Compares row counts and checks foreign keys against a target
-that was migrated earlier. Useful for confirming a previous run. It disables user creation,
-because a verification must leave the target exactly as it found it.
+### Target users
 
 **One user per database** — after a database migrates, a PostgreSQL login role is created
 for it with a 24-character random password. The name comes from a pattern, `{db}_user` by

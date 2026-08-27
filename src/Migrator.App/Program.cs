@@ -196,7 +196,7 @@ internal sealed record MigrateRequest(
     bool MirrorMissingTables,
     bool AllowSchemaRisk,
     bool AllowCollationMismatch,
-    bool VerifyOnly);
+    RunMode Mode);
 
 /// <summary>Holds running migrations' progress in memory; gone when the app exits.</summary>
 internal sealed class JobRegistry

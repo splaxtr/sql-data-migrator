@@ -29,7 +29,7 @@ internal static class BatchRunner
             MirrorMissingTables = request.MirrorMissingTables,
             AllowSchemaRisk = request.AllowSchemaRisk,
             AllowCollationMismatch = request.AllowCollationMismatch,
-            VerifyOnly = request.VerifyOnly,
+            VerifyOnly = request.Mode == RunMode.VerifyOnly,
             ExpectedIcuLocale = string.IsNullOrWhiteSpace(request.TargetIcuLocale) ? null : request.TargetIcuLocale,
         };
 
@@ -53,24 +53,41 @@ internal static class BatchRunner
             DateTimeOffset.Now,
             Describe(servers, request.SourceServerId),
             Describe(servers, request.TargetServerId),
-            request.VerifyOnly,
+            request.Mode,
             outcomes);
 
         var succeeded = report.SucceededCount;
         var failed = report.FailedCount;
 
         if (total > 1)
-            progress.Report(new(ProgressKind.Info,
-                $"Batch finished: {succeeded} succeeded, {failed} failed, {report.TotalRows} rows.",
-                AppMessageCode.InfoBatchSummary, new object?[] { succeeded, failed, report.TotalRows }));
+        {
+            // A row count is the measure of a migration and of nothing else: the other two
+            // modes copy nothing, and printing "0 rows" next to a clean run reads as a
+            // failure rather than as a mode.
+            if (request.Mode == RunMode.Migrate)
+                progress.Report(new(ProgressKind.Info,
+                    $"Batch finished: {succeeded} succeeded, {failed} failed, {report.TotalRows} rows.",
+                    AppMessageCode.InfoBatchSummary, new object?[] { succeeded, failed, report.TotalRows }));
+            else
+                progress.Report(new(ProgressKind.Info,
+                    $"Batch finished: {succeeded} succeeded, {failed} failed.",
+                    AppMessageCode.InfoBatchSummaryNoRows, new object?[] { succeeded, failed }));
+        }
 
         AttachReport(job, report, progress);
 
+        var (verb, okCode, partialCode) = request.Mode switch
+        {
+            RunMode.VerifyOnly => ("verified", AppMessageCode.SuccessBatchVerified, AppMessageCode.FailBatchVerifyPartial),
+            RunMode.ProvisionOnly => ("provisioned", AppMessageCode.SuccessBatchProvisioned, AppMessageCode.FailBatchProvisionPartial),
+            _ => ("migrated", AppMessageCode.SuccessBatchAll, AppMessageCode.FailBatchPartial),
+        };
+
         job.Finish(failed == 0,
             failed == 0
-                ? $"{succeeded} databases migrated."
-                : $"{succeeded} databases migrated, {failed} failed.",
-            failed == 0 ? AppMessageCode.SuccessBatchAll : AppMessageCode.FailBatchPartial,
+                ? $"{succeeded} databases {verb}."
+                : $"{succeeded} databases {verb}, {failed} failed.",
+            failed == 0 ? okCode : partialCode,
             new object?[] { succeeded, failed });
     }
 
@@ -90,24 +107,32 @@ internal static class BatchRunner
         try
         {
             // Read before you write: creating the target first would leave an empty
-            // database behind for every source the batch cannot open.
+            // database behind for every source the batch cannot open. In ProvisionOnly this
+            // probe is the only thing the source is used for, and it is worth keeping — a
+            // target named after a source that is not there is a typo, not a plan.
             await SchemaReader.ProbeSqlServerAsync(source, ct);
 
             var state = TargetDatabaseState.AlreadyExisted;
-            if (!request.VerifyOnly)
+            if (request.Mode != RunMode.VerifyOnly)
             {
                 state = await TargetDatabase.EnsureCreatedAsync(target, request.TargetIcuLocale, progress, ct);
                 if (state == TargetDatabaseState.Failed)
                     return Failed(database, "Hedef veritabanı hazırlanamadı.");
             }
 
-            var result = await new MigrationEngine(progress).RunAsync(source, target, options, ct);
-            if (!result.Succeeded)
-                return Failed(database, TurkishOutcome(result), result.Duration);
+            // ProvisionOnly stops here: the database exists, and the engine has nothing to
+            // do that would not mean touching tables this mode promised to leave alone.
+            MigrationResult? result = null;
+            if (request.Mode != RunMode.ProvisionOnly)
+            {
+                result = await new MigrationEngine(progress).RunAsync(source, target, options, ct);
+                if (!result.Succeeded)
+                    return Failed(database, TurkishOutcome(result), result.Duration);
+            }
 
             ProvisionedUser? user = null;
             string? userNote = null;
-            if (request.CreateUsers && !request.VerifyOnly)
+            if (request.CreateUsers && request.Mode != RunMode.VerifyOnly)
             {
                 var maintenance = await store.BuildConnectionStringAsync(request.TargetServerId, null);
                 var role = UserProvisioner.BuildRoleName(request.UserNamePattern, database.TargetDatabase);
@@ -116,13 +141,27 @@ internal static class BatchRunner
                 // An existing role needs no note: the report already prints "Zaten vardı"
                 // next to it and says so again where the password would be.
                 if (user is null)
+                {
+                    // In ProvisionOnly the role is half of what was asked for, and there is
+                    // no migrated data whose success could carry the run on its own. Calling
+                    // that database "hazırlandı" would be reporting success it did not earn.
+                    if (request.Mode == RunMode.ProvisionOnly)
+                        return Failed(database,
+                            "Veritabanı hazır ama kullanıcı oluşturulamadı — ayrıntı için günlüğe bakın.");
                     userNote = "Kullanıcı oluşturulamadı — ayrıntı için taşıma günlüğüne bakın.";
+                }
             }
 
             return new DatabaseOutcome(
                 database.SourceDatabase, database.TargetDatabase, true,
-                result.RowsCopied, result.Duration, "",
-                user?.Role, user?.Password, user?.Created ?? false, userNote);
+                result?.RowsCopied ?? 0, result?.Duration ?? TimeSpan.Zero,
+                // A provisioning run has no row count to speak for it, so the row it puts in
+                // the report says which of the two things happened instead.
+                request.Mode == RunMode.ProvisionOnly
+                    ? (state == TargetDatabaseState.Created ? "Oluşturuldu" : "Zaten vardı — dokunulmadı")
+                    : "",
+                user?.Role, user?.Password, user?.Created ?? false, userNote,
+                state == TargetDatabaseState.Created);
         }
         catch (Exception ex)
         {
@@ -136,7 +175,8 @@ internal static class BatchRunner
         try
         {
             var stamp = report.CompletedAt.ToLocalTime().ToString("yyyyMMdd-HHmm");
-            job.AttachReport(MigrationReportPdf.Build(report), $"tasima-raporu-{stamp}.pdf");
+            job.AttachReport(MigrationReportPdf.Build(report),
+                $"{MigrationReportPdf.FileNameFor(report.Mode)}-{stamp}.pdf");
             progress.Report(new(ProgressKind.Info, "The PDF report is ready to download.",
                 AppMessageCode.InfoReportReady));
         }
