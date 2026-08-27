@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/splaxtr/sql-data-migrator/compare/v0.4.0...v0.5.0) (2026-08-27)
+
+
+### Features
+
+* **ui:** rebuild the screen on a teal palette and fix the options layout ([936a9ac](https://github.com/splaxtr/sql-data-migrator/commit/936a9ac16f85154e3dcde8abf030f572e0b06de9))
+
 ## [0.4.0](https://github.com/splaxtr/sql-data-migrator/compare/v0.3.0...v0.4.0) (2026-08-27)
 
 
