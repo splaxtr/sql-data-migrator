@@ -43,32 +43,32 @@
 
   <section class="card">
     <h2>2 · Kaynak</h2>
+    <p class="hint">Birden çok veritabanı seçebilirsin; hepsi sırayla taşınır. Biri
+      başarısız olursa kalanlar devam eder.</p>
     <div class="grid">
       <label>SQL Server<select id="srcServer"></select></label>
-      <label>Taşınacak veritabanı
-        <input id="srcDbFilter" list="srcDbList" placeholder="yazarak filtrele veya seç">
-        <datalist id="srcDbList"></datalist>
-      </label>
+      <label>Listede ara<input id="srcFilter" placeholder="veritabanı adına göre süz"></label>
     </div>
-    <span id="srcMsg" class="msg"></span>
+    <div class="row">
+      <button id="btnAll" type="button">Görünenleri seç</button>
+      <button id="btnNone" type="button">Seçimi temizle</button>
+      <span id="srcMsg" class="msg"></span>
+    </div>
+    <div id="dbList" class="db-list"></div>
   </section>
 
   <section class="card">
     <h2>3 · Hedef</h2>
     <div class="grid">
       <label>PostgreSQL<select id="tgtServer"></select></label>
-      <label>Hedef veritabanı adı
-        <input id="tgtDb" list="tgtDbList" placeholder="kaynakla aynı isimle gelir">
-        <datalist id="tgtDbList"></datalist>
-      </label>
-      <label>Collation (ICU)
-        <input id="tgtLocale" value="und" placeholder="und">
-      </label>
+      <label>Hedef ad deseni<input id="tgtPattern" value="{db}" placeholder="{db}"></label>
+      <label>Collation (ICU)<input id="tgtLocale" value="und" placeholder="und"></label>
     </div>
-    <p class="hint">Var olmayan bir veritabanı adı yazarsan doğru collation ile oluşturulur.
-      Var olanı seçersen ona dokunulmaz. <strong>Hedef tablolar önceden var olmalıdır</strong> —
-      bu araç veri taşır, şema yaratmaz. Eksik tabloları 4. adımdaki <strong>aynala</strong>
-      seçeneği kaynaktan oluşturabilir.</p>
+    <p class="hint"><code>{db}</code> kaynak veritabanının adıyla değişir — örneğin
+      <code>{db}_pg</code>. Listedeki her hedef adını tek tek de düzenleyebilirsin.
+      Var olmayan ad doğru collation ile oluşturulur, var olana dokunulmaz.
+      <strong>Hedef tablolar önceden var olmalıdır</strong> — eksik olanları aşağıdaki
+      <strong>aynala</strong> seçeneği kaynaktan oluşturur.</p>
     <span id="tgtMsg" class="msg"></span>
   </section>
 
@@ -87,11 +87,20 @@
       Collation uyuşmazlığına izin ver <em>— arama ve sıralama sessizce değişir</em></label>
     <label class="check"><input type="checkbox" id="optVerifyOnly">
       Yalnız doğrula <em>— veri taşımaz, mevcut durumu kontrol eder</em></label>
+    <label class="check"><input type="checkbox" id="optUsers">
+      Her veritabanı için ayrı kullanıcı oluştur <em>— rastgele parolalı bir PostgreSQL rolü
+      açılır ve veritabanının sahibi yapılır. Bu araç oluşturduysa veritabanına yalnızca o rol
+      bağlanabilir. Parolalar hiçbir yere kaydedilmez, yalnızca taşıma sonundaki PDF
+      raporunda görünür — rapor kaybolursa parola geri alınamaz</em></label>
+    <div id="userOpts" class="sub-opt" hidden>
+      <label>Kullanıcı adı deseni<input id="userPattern" value="{db}_user"></label>
+    </div>
   </section>
 
   <section class="card">
     <div class="row">
       <button id="btnRun" class="primary big">Taşımayı başlat</button>
+      <button id="btnReport" hidden>PDF raporunu indir</button>
       <span id="runState" class="msg"></span>
     </div>
     <pre id="log" class="log" aria-live="polite"></pre>

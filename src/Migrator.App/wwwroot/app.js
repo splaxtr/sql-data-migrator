@@ -112,36 +112,119 @@ function fillServerSelects() {
   fill($("tgtServer"), "PostgreSql");
 }
 
-// ── Database lists ──────────────────────────────────────────────────────────
+// ── Source database picker ──────────────────────────────────────────────────
 
-async function loadDatabases(serverId, datalistId, msgId) {
-  const list = $(datalistId);
-  list.innerHTML = "";
-  if (!serverId) { setMsg(msgId, ""); return []; }
-  setMsg(msgId, "Veritabanları okunuyor…");
+let sourceDatabases = [];
+let visibleCount = 0;
+const selectedDatabases = new Set();
+// Only holds databases whose target name was typed by hand; everything else follows the
+// pattern, so editing the pattern keeps working for the rows nobody has touched.
+const targetNames = new Map();
+
+function targetFor(database) {
+  if (targetNames.has(database)) return targetNames.get(database);
+  return ($("tgtPattern").value.trim() || "{db}").replaceAll("{db}", database);
+}
+
+// Turkish casing on purpose: with the invariant rules "I" lower-cases to "i", so filtering
+// "İSTANBUL" by typing "i" would miss it.
+const fold = (value) => value.toLocaleLowerCase("tr");
+
+function visibleDatabases() {
+  const needle = fold($("srcFilter").value.trim());
+  return sourceDatabases.filter(database => fold(database).includes(needle));
+}
+
+function renderDatabases() {
+  const host = $("dbList");
+  host.innerHTML = "";
+  const visible = visibleDatabases();
+  visibleCount = visible.length;
+
+  for (const database of visible) {
+    const row = document.createElement("div");
+    row.className = "db-row";
+
+    // The checkbox and the name share a label so the whole name is clickable; the target
+    // input stays outside it, or typing in it would toggle the checkbox.
+    const pick = document.createElement("label");
+    pick.className = "db-pick";
+    const check = document.createElement("input");
+    check.type = "checkbox";
+    check.checked = selectedDatabases.has(database);
+    check.onchange = () => {
+      if (check.checked) selectedDatabases.add(database); else selectedDatabases.delete(database);
+      showSelection();
+    };
+    const name = document.createElement("span");
+    name.textContent = database;
+    pick.append(check, name);
+
+    const target = document.createElement("input");
+    target.className = "db-target";
+    target.value = targetFor(database);
+    target.title = "Hedef veritabanı adı";
+    target.oninput = () => targetNames.set(database, target.value);
+
+    row.append(pick, target);
+    host.appendChild(row);
+  }
+  showSelection();
+}
+
+function showSelection() {
+  if (!sourceDatabases.length) return setMsg("srcMsg", "");
+  const filtered = visibleCount === sourceDatabases.length ? "" : ` · ${visibleCount} listeleniyor`;
+  setMsg("srcMsg",
+    `${sourceDatabases.length} veritabanı · ${selectedDatabases.size} seçili${filtered}`,
+    selectedDatabases.size ? "ok" : undefined);
+}
+
+async function loadSourceDatabases() {
+  sourceDatabases = [];
+  selectedDatabases.clear();
+  targetNames.clear();
+  const serverId = $("srcServer").value;
+  if (!serverId) { renderDatabases(); return setMsg("srcMsg", ""); }
+  setMsg("srcMsg", "Veritabanları okunuyor…");
   try {
-    const databases = await api(`/api/servers/${serverId}/databases`);
-    databases.forEach(name => {
-      const option = document.createElement("option");
-      option.value = name;
-      list.appendChild(option);
-    });
-    setMsg(msgId, `${databases.length} veritabanı bulundu — yazarak filtreleyebilirsin.`, "ok");
-    return databases;
+    sourceDatabases = await api(`/api/servers/${serverId}/databases`);
+    renderDatabases();
   } catch (e) {
-    setMsg(msgId, e.message, "err");
-    return [];
+    renderDatabases();
+    setMsg("srcMsg", e.message, "err");
   }
 }
 
-$("srcServer").onchange = () => loadDatabases($("srcServer").value, "srcDbList", "srcMsg");
-$("tgtServer").onchange = () => loadDatabases($("tgtServer").value, "tgtDbList", "tgtMsg");
+async function loadTargetDatabases() {
+  const serverId = $("tgtServer").value;
+  if (!serverId) return setMsg("tgtMsg", "");
+  setMsg("tgtMsg", "Bağlantı deneniyor…");
+  try {
+    const databases = await api(`/api/servers/${serverId}/databases`);
+    setMsg("tgtMsg", `Bağlantı tamam — sunucuda ${databases.length} veritabanı var.`, "ok");
+  } catch (e) {
+    setMsg("tgtMsg", e.message, "err");
+  }
+}
 
-// The target name defaults to the source's; once the user edits it, we leave it alone.
-let targetNameTouched = false;
-$("tgtDb").oninput = () => { targetNameTouched = true; };
-$("srcDbFilter").onchange = () => {
-  if (!targetNameTouched) $("tgtDb").value = $("srcDbFilter").value;
+$("srcServer").onchange = loadSourceDatabases;
+$("tgtServer").onchange = loadTargetDatabases;
+$("srcFilter").oninput = renderDatabases;
+$("tgtPattern").oninput = renderDatabases;
+$("btnAll").onclick = () => { visibleDatabases().forEach(d => selectedDatabases.add(d)); renderDatabases(); };
+$("btnNone").onclick = () => { selectedDatabases.clear(); renderDatabases(); };
+
+$("optUsers").onchange = () => { $("userOpts").hidden = !$("optUsers").checked; };
+
+// Verifying must leave the target exactly as it was, and creating a role would not.
+$("optVerifyOnly").onchange = () => {
+  const verifying = $("optVerifyOnly").checked;
+  $("optUsers").disabled = verifying;
+  if (verifying) {
+    $("optUsers").checked = false;
+    $("userOpts").hidden = true;
+  }
 };
 
 // ── Translation ─────────────────────────────────────────────────────────────
@@ -196,6 +279,22 @@ const TR = {
   "warn.collationMismatchAllowed": "Hedef collation '{0}' — beklenen ICU '{1}'. İzin verildiği için devam ediliyor.",
   "error.collationMismatch": "Hedef collation '{0}' — beklenen ICU '{1}'. Yanlış collation sessizdir: arama ve sıralama fark edilmeden yanlış davranır.",
 
+  "step.creatingUser": "'{0}' veritabanı kullanıcısı oluşturuluyor",
+  "success.userCreated": "'{0}' rolü oluşturuldu.",
+  "warn.userExists": "'{0}' rolü zaten var — parolası değiştirilmedi.",
+  "info.userPrivileges": "'{0}' veritabanının yetkileri '{1}' rolüne verildi.",
+  "info.databaseIsolated": "'{1}' veritabanına artık yalnızca '{0}' bağlanabilir.",
+  "warn.userOwnership": "Sahiplik '{0}' rolüne devredilemedi — tam yetkisi var ama nesneleri değiştiremez/silemez. Superuser ile bağlanırsan devredilir.",
+  "error.userFailed": "'{0}' kullanıcısı oluşturulamadı: {1}",
+
+  "step.batchDatabase": "[{0}/{1}] {2} → {3}",
+  "info.batchSummary": "Toplu taşıma bitti: {0} başarılı, {1} başarısız, {2} satır.",
+  "info.reportReady": "PDF raporu indirilmeye hazır.",
+  "warn.reportFailed": "PDF raporu üretilemedi: {0}",
+  "error.serverNotFound": "Kayıtlı sunucu bulunamadı.",
+  "success.batchAll": "{0} veritabanı taşındı.",
+  "fail.batchPartial": "{0} veritabanı taşındı, {1} tanesi başarısız.",
+
   "info.postgresNotice": "(pg) {0}",
 
   "success.migrated": "{0} satır taşındı ve doğrulandı.",
@@ -240,22 +339,31 @@ function appendLog(kind, text) {
 }
 
 $("btnRun").onclick = async () => {
+  const databases = sourceDatabases
+    .filter(database => selectedDatabases.has(database))
+    .map(database => ({ sourceDatabase: database, targetDatabase: targetFor(database).trim() }));
+
   const body = {
     sourceServerId: $("srcServer").value,
-    sourceDatabase: $("srcDbFilter").value.trim(),
     targetServerId: $("tgtServer").value,
-    targetDatabase: $("tgtDb").value.trim(),
+    databases,
     targetIcuLocale: $("tgtLocale").value.trim(),
+    createUsers: $("optUsers").checked,
+    userNamePattern: $("userPattern").value.trim(),
     allowSourceOnly: $("optSourceOnly").checked,
     mirrorMissingTables: $("optMirror").checked,
     allowSchemaRisk: $("optSchemaRisk").checked,
     allowCollationMismatch: $("optCollation").checked,
     verifyOnly: $("optVerifyOnly").checked,
   };
-  if (!body.sourceServerId || !body.sourceDatabase) return setMsg("runState", "Kaynak seç.", "err");
-  if (!body.targetServerId || !body.targetDatabase) return setMsg("runState", "Hedef seç.", "err");
+  if (!body.sourceServerId) return setMsg("runState", "Kaynak sunucu seç.", "err");
+  if (!body.targetServerId) return setMsg("runState", "Hedef sunucu seç.", "err");
+  if (!databases.length) return setMsg("runState", "En az bir veritabanı seç.", "err");
+  const blank = databases.find(d => !d.targetDatabase);
+  if (blank) return setMsg("runState", `'${blank.sourceDatabase}' için hedef ad boş.`, "err");
 
   $("log").textContent = "";
+  $("btnReport").hidden = true;
   $("btnRun").disabled = true;
   setMsg("runState", "Çalışıyor…");
 
@@ -284,6 +392,11 @@ async function followJob(jobId) {
       setMsg("runState", summary, state.succeeded ? "ok" : "err");
       appendLog(state.succeeded ? "Success" : "Error",
         (state.succeeded ? "✔ " : "✖ ") + summary);
+      if (state.hasReport) {
+        $("btnReport").hidden = false;
+        // Content-Disposition makes this a download, so the page stays where it is.
+        $("btnReport").onclick = () => { location.href = `/api/jobs/${jobId}/report.pdf`; };
+      }
       return;
     }
     await new Promise(r => setTimeout(r, 500));

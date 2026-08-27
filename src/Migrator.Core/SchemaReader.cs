@@ -40,6 +40,18 @@ public static class SchemaReader
         return result;
     }
 
+    /// <summary>
+    /// Opens the source and closes it again. Callers that create something in the target
+    /// use this first: a target database created for a source that turns out to be
+    /// unreachable is an empty database nobody asked for, and in a batch there would be
+    /// one of them per item.
+    /// </summary>
+    public static async Task ProbeSqlServerAsync(string connectionString, CancellationToken ct = default)
+    {
+        await using var connection = new SqlConnection(connectionString);
+        await connection.OpenAsync(ct);
+    }
+
     public static async Task<Dictionary<string, List<ColumnInfo>>> ReadSqlServerAsync(SqlConnection sql, CancellationToken ct = default)
     {
         const string query = """

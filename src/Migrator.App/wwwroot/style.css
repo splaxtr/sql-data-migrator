@@ -41,6 +41,18 @@ button:disabled { opacity:.5; cursor:not-allowed; }
 .server .grow { flex:1; }
 .server button { padding:.25rem .55rem; font-size:.8rem; }
 details summary { cursor:pointer; font-size:.9rem; color:var(--accent); margin-bottom:.6rem; }
+code { background:var(--bg); border:1px solid var(--line); border-radius:4px;
+  padding:0 .25rem; font-size:.85em; font-family:ui-monospace, Menlo, Consolas, monospace; }
+.db-list { display:grid; gap:.15rem; max-height:20rem; overflow:auto; margin-top:.8rem;
+  border:1px solid var(--line); border-radius:8px; padding:.4rem; }
+.db-list:empty { display:none; }
+.db-row { display:flex; align-items:center; gap:.6rem; padding:.25rem .35rem; border-radius:6px; }
+.db-row:hover { background:var(--bg); }
+.db-pick { flex:1; flex-direction:row; align-items:center; gap:.5rem; min-width:0;
+  color:var(--text); font-size:.9rem; cursor:pointer; }
+.db-pick span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.db-target { flex:0 1 15rem; min-width:7rem; font-size:.85rem; padding:.3rem .45rem; }
+.sub-opt { margin:0 0 .4rem 1.6rem; max-width:22rem; }
 .log { margin:.9rem 0 0; padding:.8rem; max-height:22rem; overflow:auto; white-space:pre-wrap;
   background:var(--bg); border:1px solid var(--line); border-radius:8px;
   font:12.5px/1.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; }

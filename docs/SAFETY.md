@@ -76,6 +76,18 @@ accident. It does **not** protect against someone with your logged-in session on
 machine, because the app has to be able to decrypt them to connect. Treat the machine that
 holds production connection strings accordingly.
 
+## Generated database passwords
+
+The password for a user created by the "one user per database" option is generated in
+memory, written into the PDF report, and held only until the process exits. It is never
+stored: not in the connections file, not in a log, not in a temporary file. PostgreSQL keeps
+a SCRAM verifier, which cannot be reversed into the password.
+
+The consequence is symmetric, and worth stating plainly. Nobody can recover those passwords
+from the machine that ran the migration — and neither can you. If the report is lost, the
+password is gone and has to be reset with `ALTER ROLE`. The PDF is a credential; handle it
+as one.
+
 ## Operational prerequisites
 
 **The target user needs enough rights.** Suspending constraint triggers

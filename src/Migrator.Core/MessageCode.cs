@@ -66,6 +66,15 @@ public static class MessageCode
     public const string WarnCollationMismatchAllowed = "warn.collationMismatchAllowed";
     public const string ErrorCollationMismatch = "error.collationMismatch";
 
+    // ── Database user ────────────────────────────────────────────────────────
+    public const string StepCreatingUser = "step.creatingUser";
+    public const string SuccessUserCreated = "success.userCreated";
+    public const string WarnUserExists = "warn.userExists";
+    public const string InfoUserPrivileges = "info.userPrivileges";
+    public const string InfoDatabaseIsolated = "info.databaseIsolated";
+    public const string WarnUserOwnership = "warn.userOwnership";
+    public const string ErrorUserFailed = "error.userFailed";
+
     // ── PostgreSQL notices ───────────────────────────────────────────────────
     public const string InfoPostgresNotice = "info.postgresNotice";
 

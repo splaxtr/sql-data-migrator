@@ -2,6 +2,13 @@ namespace Migrator.Core;
 
 using Npgsql;
 
+/// <summary>
+/// What preparing the target database turned out to require. The distinction matters to
+/// anything that wants to change the database's own settings afterwards: a database this
+/// run brought into existence has no other users yet, and one that was already there does.
+/// </summary>
+public enum TargetDatabaseState { Failed, Created, AlreadyExisted }
+
 /// <summary>Prepares the target database and verifies its collation.</summary>
 public static class TargetDatabase
 {
@@ -10,7 +17,7 @@ public static class TargetDatabase
     /// An existing one is left untouched: PostgreSQL does not allow changing a database's
     /// collation once it is created.
     /// </summary>
-    public static async Task<bool> EnsureCreatedAsync(
+    public static async Task<TargetDatabaseState> EnsureCreatedAsync(
         string connectionString, string? icuLocale, IProgress<ProgressMessage> progress, CancellationToken ct = default)
     {
         var target = new NpgsqlConnectionStringBuilder(connectionString);
@@ -19,7 +26,7 @@ public static class TargetDatabase
         {
             progress.Report(new(ProgressKind.Error, "The target connection string has no database name.",
                 MessageCode.ErrorTargetDbNameMissing));
-            return false;
+            return TargetDatabaseState.Failed;
         }
 
         var maintenance = new NpgsqlConnectionStringBuilder(connectionString) { Database = "postgres" };
@@ -34,7 +41,7 @@ public static class TargetDatabase
                 progress.Report(new(ProgressKind.Info,
                     $"Target database '{databaseName}' already exists — left untouched.",
                     MessageCode.InfoTargetDbExists, new object?[] { databaseName }));
-                return true;
+                return TargetDatabaseState.AlreadyExisted;
             }
         }
 
@@ -53,7 +60,7 @@ public static class TargetDatabase
             progress.Report(new(ProgressKind.Success,
                 $"Target database '{databaseName}' created (collation: {icuLocale}).",
                 MessageCode.SuccessTargetDbCreatedCollation, new object?[] { databaseName, icuLocale }));
-        return true;
+        return TargetDatabaseState.Created;
     }
 
     /// <summary>

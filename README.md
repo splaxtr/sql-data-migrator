@@ -80,19 +80,25 @@ the published executable itself requires nothing.
 on your own machine, not in this repository and not in any cloud. Passwords are encrypted
 with the OS data-protection API. See [docs/SAFETY.md](docs/SAFETY.md#stored-credentials).
 
-**Source** — Pick a saved SQL Server, then pick the database. The list is read live from the
-server and filters as you type, so a server with two hundred databases is still usable.
+**Source** — Pick a saved SQL Server, then tick the databases to move. The list is read live
+from the server and filters as you type, so a server with two hundred databases is still
+usable. Tick as many as you like: they are migrated one after another, and one failing does
+not stop the rest.
 
-**Target** — Pick a saved PostgreSQL server. The target database name defaults to the
-source name, and you can either accept it, choose an existing database from the list, or
-type a new name. A database that does not exist is created for you.
+**Target** — Pick a saved PostgreSQL server. Target names come from a pattern — `{db}` is
+the source name, so `{db}_pg` renames the lot in one go — and any single name can still be
+edited by hand. A database that does not exist is created for you.
 
 **Options** — Every gate that can be relaxed is off by default and has to be turned on
 deliberately. They exist because a real migration sometimes needs them, not because
-skipping checks is normal. Each one explains what it lets through.
+skipping checks is normal. Each one explains what it lets through. Two do more than relax a
+check: **mirror** creates the tables the target is missing from the source schema, and
+**one user per database** gives each migrated database its own PostgreSQL login.
 
-**Run** — Progress streams live: which table, how many rows, what was verified. The final
-line is the only thing that matters, and it is honest.
+**Run** — Progress streams live: which database, which table, how many rows, what was
+verified. The final line is the only thing that matters, and it is honest. When the run
+ends you can download a PDF report of what moved — and, if you asked for logins, the
+usernames and passwords, which appear there and nowhere else.
 
 ## Documentation
 

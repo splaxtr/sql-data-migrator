@@ -71,15 +71,18 @@ app.MapGet("/api/servers/{id}/databases", async (ConnectionStore store, string i
 
 // ── Migration ───────────────────────────────────────────────────────────────
 
-app.MapPost("/api/migrate", async (ConnectionStore store, JobRegistry jobs, MigrateRequest request) =>
+app.MapPost("/api/migrate", (ConnectionStore store, JobRegistry jobs, MigrateRequest request) =>
 {
-    if (string.IsNullOrWhiteSpace(request.TargetDatabase))
-        return Results.BadRequest(new { error = "Hedef veritabanı adı zorunludur." });
+    if (request.Databases is not { Count: > 0 })
+        return Results.BadRequest(new { error = "Taşınacak veritabanı seçilmedi." });
+    if (request.Databases.Any(d => string.IsNullOrWhiteSpace(d.SourceDatabase) || string.IsNullOrWhiteSpace(d.TargetDatabase)))
+        return Results.BadRequest(new { error = "Her satırda kaynak ve hedef veritabanı adı dolu olmalıdır." });
 
-    var source = await store.BuildConnectionStringAsync(request.SourceServerId, request.SourceDatabase);
-    var target = await store.BuildConnectionStringAsync(request.TargetServerId, request.TargetDatabase);
-    if (source is null || target is null)
-        return Results.BadRequest(new { error = "Kayıtlı sunucu bulunamadı." });
+    var duplicate = request.Databases
+        .GroupBy(d => d.TargetDatabase, StringComparer.OrdinalIgnoreCase)
+        .FirstOrDefault(g => g.Count() > 1);
+    if (duplicate is not null)
+        return Results.BadRequest(new { error = $"'{duplicate.Key}' hedef adı birden fazla kez kullanılmış." });
 
     var job = jobs.Create();
 
@@ -89,29 +92,7 @@ app.MapPost("/api/migrate", async (ConnectionStore store, JobRegistry jobs, Migr
     {
         try
         {
-            var progress = new Progress<ProgressMessage>(m => job.Add(m));
-            if (!request.VerifyOnly)
-            {
-                var created = await TargetDatabase.EnsureCreatedAsync(
-                    target, request.TargetIcuLocale, progress);
-                if (!created)
-                {
-                    job.Finish(false, "The target database could not be prepared.", MessageCode.FailTargetDbNotReady);
-                    return;
-                }
-            }
-
-            var engine = new MigrationEngine(progress);
-            var result = await engine.RunAsync(source, target, new MigrationOptions
-            {
-                AllowSourceOnlyTables = request.AllowSourceOnly,
-                MirrorMissingTables = request.MirrorMissingTables,
-                AllowSchemaRisk = request.AllowSchemaRisk,
-                AllowCollationMismatch = request.AllowCollationMismatch,
-                VerifyOnly = request.VerifyOnly,
-                ExpectedIcuLocale = string.IsNullOrWhiteSpace(request.TargetIcuLocale) ? null : request.TargetIcuLocale,
-            });
-            job.Finish(result.Succeeded, result.Summary, result.Code, result.Args);
+            await BatchRunner.RunAsync(store, job, request);
         }
         catch (Exception ex)
         {
@@ -127,6 +108,16 @@ app.MapGet("/api/jobs/{id}", (JobRegistry jobs, string id, int from) =>
 {
     var job = jobs.Get(id);
     return job is null ? Results.NotFound() : Results.Ok(job.Read(from));
+});
+
+// The report exists only in this process's memory: it carries plain-text passwords, and
+// writing it to disk would leave them behind long after the browser was done with them.
+app.MapGet("/api/jobs/{id}/report.pdf", (JobRegistry jobs, string id) =>
+{
+    var job = jobs.Get(id);
+    return job?.Report is null
+        ? Results.NotFound()
+        : Results.File(job.Report, "application/pdf", job.ReportFileName);
 });
 
 // Answers a second copy's question: "is the thing on 5099 really me?"
@@ -190,12 +181,17 @@ static void OpenBrowser()
 internal sealed record SaveServerRequest(
     string? Id, string Name, ServerKind Kind, string Host, int Port, string? User, string? Password);
 
+/// <summary>
+/// One run over one or more databases. A single migration is a batch of one — the shape
+/// does not change, so neither does the code path behind it.
+/// </summary>
 internal sealed record MigrateRequest(
     string SourceServerId,
-    string SourceDatabase,
     string TargetServerId,
-    string TargetDatabase,
+    List<BatchDatabase> Databases,
     string? TargetIcuLocale,
+    bool CreateUsers,
+    string? UserNamePattern,
     bool AllowSourceOnly,
     bool MirrorMissingTables,
     bool AllowSchemaRisk,
@@ -231,9 +227,22 @@ internal sealed class Job
     public string? SummaryCode { get; private set; }
     public object?[]? SummaryArgs { get; private set; }
 
+    /// <summary>The finished PDF, held in memory only. Set before <see cref="Done"/>.</summary>
+    public byte[]? Report { get; private set; }
+    public string? ReportFileName { get; private set; }
+
     public void Add(ProgressMessage message)
     {
         lock (_gate) _messages.Add(message);
+    }
+
+    public void AttachReport(byte[] pdf, string fileName)
+    {
+        lock (_gate)
+        {
+            Report = pdf;
+            ReportFileName = fileName;
+        }
     }
 
     public void Finish(bool succeeded, string summary, string? code = null, object?[]? args = null)
@@ -259,6 +268,7 @@ internal sealed class Job
             {
                 done = Done, succeeded = Succeeded,
                 summary = Summary, summaryCode = SummaryCode, summaryArgs = SummaryArgs,
+                hasReport = Report is not null,
                 next = _messages.Count, messages = slice,
             };
         }

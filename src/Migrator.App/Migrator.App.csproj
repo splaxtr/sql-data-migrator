@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.11" />
+    <PackageReference Include="PDFsharp" Version="6.2.4" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -22,6 +23,13 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="wwwroot/**" />
+  </ItemGroup>
+
+  <!-- The PDF report's font travels inside the assembly: the published binary has to draw
+       the same Turkish letters on a machine that has no fonts installed at all. -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets/DejaVuSans.ttf" />
+    <None Include="Assets/DejaVuSans-LICENSE.txt" />
   </ItemGroup>
 
   <!-- Single-file publish: `dotnet publish -c Release -r win-x64` produces one exe.
