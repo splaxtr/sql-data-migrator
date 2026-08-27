@@ -18,6 +18,12 @@
   <div class="brand">
     <h1>SQL → SQL Taşıyıcı</h1>
     <p class="sub">Şu an desteklenen: <strong>SQL Server → PostgreSQL</strong></p>
+    <div class="tabs" role="tablist" aria-label="Bölümler">
+      <button id="tabMigrate" class="tab" type="button" role="tab"
+              aria-selected="true" aria-controls="viewMigrate">Taşıma</button>
+      <button id="tabAdmin" class="tab" type="button" role="tab"
+              aria-selected="false" aria-controls="viewAdmin">Yönetim</button>
+    </div>
   </div>
   <button id="btnTheme" class="icon-btn" type="button" aria-label="Koyu / açık tema değiştir">
     <svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -33,6 +39,7 @@
 </header>
 
 <main>
+  <div id="viewMigrate" class="view" role="tabpanel" aria-labelledby="tabMigrate">
   <section class="card">
     <h2><span class="step">1</span> Kayıtlı sunucular</h2>
     <p class="hint">Sunucular yalnızca bu bilgisayarda saklanır. Şifreler makineye bağlı
@@ -313,8 +320,215 @@
     </div>
     <pre id="log" class="log" role="log" aria-live="polite"></pre>
   </section>
+  </div>
+
+  <!-- ── Management ─────────────────────────────────────────────────────────
+       A different job from migrating, and it says so before it offers a button:
+       nothing here runs in a transaction and nothing here can be rolled back. -->
+  <div id="viewAdmin" class="view" role="tabpanel" aria-labelledby="tabAdmin" hidden>
+    <section class="card">
+      <h2>Sunucu yönetimi</h2>
+      <p class="hint">Buradaki işlemler <strong>taşımanın güvencelerini taşımaz</strong>.
+        Taşıma tek bir transaction'da çalışır ve doğrulama geçmezse hiçbir şey yazmaz; bu
+        panel ise doğrudan oluşturur, değiştirir ve siler. <strong>Geri alma yoktur.</strong>
+        Silinen bir veritabanı gider.</p>
+      <div class="grid">
+        <label for="admServer">Sunucu<select id="admServer"></select></label>
+      </div>
+      <div class="row">
+        <button id="admRefresh" type="button">Yenile</button>
+        <span id="admMsg" class="msg grow" role="status"></span>
+      </div>
+    </section>
+
+    <section class="card" id="admDbCard" hidden>
+      <h2>Veritabanları <span id="admDbCount" class="count"></span></h2>
+      <div class="picker adm-scroll">
+        <div class="picker-bar">
+          <label class="flag bar-flag"><input type="checkbox" id="admDbSystem"><span>Sistem</span></label>
+          <input id="admDbFilter" class="bar-input" placeholder="ada göre süz"
+                 aria-label="Veritabanlarını ada göre süz">
+          <button id="btnNewDb" class="primary" type="button">Yeni veritabanı</button>
+        </div>
+        <div class="adm-head adm-db-head">
+          <span>Ad</span><span>Sahip</span><span>Collation</span>
+          <span class="num">Boyut</span><span class="num">Bağlantı</span><span></span>
+        </div>
+        <div id="admDbList" class="adm-list"></div>
+        <p id="admDbEmpty" class="empty" hidden></p>
+      </div>
+    </section>
+
+    <section class="card" id="admRoleCard" hidden>
+      <h2><span id="admRoleTitle">Roller</span> <span id="admRoleCount" class="count"></span></h2>
+      <p class="hint" id="admRoleHint"></p>
+      <div class="picker adm-scroll">
+        <div class="picker-bar">
+          <label class="flag bar-flag"><input type="checkbox" id="admRoleSystem"><span>Sistem</span></label>
+          <input id="admRoleFilter" class="bar-input" placeholder="ada göre süz"
+                 aria-label="Rolleri ada göre süz">
+          <button id="btnNewRole" class="primary" type="button">Yeni</button>
+        </div>
+        <div class="adm-head adm-role-head">
+          <span>Ad</span><span>Tür</span><span>Yetkiler</span><span>Üyesi</span><span></span>
+        </div>
+        <div id="admRoleList" class="adm-list"></div>
+        <p id="admRoleEmpty" class="empty" hidden></p>
+      </div>
+    </section>
+  </div>
 </main>
 
+<!-- ── Dialogs ───────────────────────────────────────────────────────────────
+     Native <dialog>: focus trapping, Esc to close and a backdrop, with no library
+     and no build step to get them. -->
+
+<dialog id="dlgDatabase" class="dlg">
+  <form method="dialog">
+    <h3>Yeni veritabanı</h3>
+    <div class="dlg-body">
+      <label for="dbName">Ad<input id="dbName" autocomplete="off"></label>
+      <label for="dbCollation" id="dbCollationRow">Collation<input id="dbCollation" autocomplete="off"></label>
+      <p class="dlg-note" id="dbCollationNote"></p>
+      <label for="dbOwner">Sahip<select id="dbOwner"></select></label>
+      <p class="dlg-note">Sahip, veritabanını ve içindeki nesneleri değiştirip silebilen roldür.
+        Boş bırakırsan bağlanan hesap sahibi olur.</p>
+    </div>
+    <div class="dlg-actions">
+      <span class="msg grow" id="dbMsg"></span>
+      <button value="cancel" type="submit">Vazgeç</button>
+      <button id="dbCreate" class="primary" value="ok" type="button">Oluştur</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlgOwner" class="dlg">
+  <form method="dialog">
+    <h3>Sahibi değiştir</h3>
+    <div class="dlg-body">
+      <p class="dlg-note" id="ownerWhat"></p>
+      <label for="ownerRole">Yeni sahip<select id="ownerRole"></select></label>
+      <p class="dlg-note">Veritabanının kendisi ve <code>public</code> şemasındaki tablolar,
+        sequence'lar ve view'lar bu role devredilir.</p>
+    </div>
+    <div class="dlg-actions">
+      <span class="msg grow" id="ownerMsg"></span>
+      <button value="cancel" type="submit">Vazgeç</button>
+      <button id="ownerApply" class="primary" value="ok" type="button">Devret</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlgGrants" class="dlg dlg-wide">
+  <form method="dialog">
+    <h3>Yetkiler</h3>
+    <div class="dlg-body">
+      <p class="dlg-note" id="grantsWhat"></p>
+      <div id="grantsList" class="grant-list"></div>
+      <label class="opt" id="publicConnectRow">
+        <input type="checkbox" id="publicConnect">
+        <span class="opt-text">
+          <span class="opt-title">PUBLIC bağlanabilsin</span>
+          <span class="opt-desc">PostgreSQL her veritabanına varsayılan olarak PUBLIC'e
+            <code>CONNECT</code> verir; yani yetkisi ayrıca alınmamış her rol bağlanabilir.
+            Kapatınca yalnızca açıkça yetkilendirilenler bağlanır.</span>
+        </span>
+      </label>
+      <p class="dlg-note">Superuser rolleri listelenmez: her yetkiye zaten sahiptirler, bu
+        yüzden burada göründükleri şey kimsenin verdiği bir yetki olmaz.</p>
+    </div>
+    <div class="dlg-actions">
+      <span class="msg grow" id="grantsMsg"></span>
+      <button value="ok" class="primary" type="submit">Kapat</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlgRole" class="dlg">
+  <form method="dialog">
+    <h3 id="roleTitle">Yeni rol</h3>
+    <div class="dlg-body">
+      <label for="roleName">Ad<input id="roleName" autocomplete="off"></label>
+      <label for="rolePassword">Parola<input id="rolePassword" autocomplete="new-password"
+             placeholder="boş bırak = üret"></label>
+      <div class="row dlg-row">
+        <button id="rolePasswordReset" type="button" hidden>Parolayı sıfırla</button>
+      </div>
+      <p class="dlg-note">Boş bıraktığında 24 karakterlik rastgele bir parola üretilir ve
+        <strong>yalnızca bir kez</strong> gösterilir — hiçbir yere kaydedilmez.</p>
+      <fieldset class="role-flags">
+        <legend>Yetkiler</legend>
+        <label class="flag"><input type="checkbox" id="roleLogin" checked><span id="lblLogin">Giriş yapabilir</span></label>
+        <label class="flag"><input type="checkbox" id="roleCreateDb"><span id="lblCreateDb">Veritabanı oluşturabilir</span></label>
+        <label class="flag"><input type="checkbox" id="roleCreateRole"><span id="lblCreateRole">Rol oluşturabilir</span></label>
+        <label class="flag"><input type="checkbox" id="roleSuper"><span id="lblSuper">Superuser</span></label>
+      </fieldset>
+      <p class="dlg-note" id="roleFlagNote"></p>
+      <div id="membershipBox" hidden>
+        <p class="dlg-label" id="membershipLabel">Üyesi olduğu roller</p>
+        <div id="membershipList" class="grant-list"></div>
+      </div>
+    </div>
+    <div class="dlg-actions">
+      <span class="msg grow" id="roleMsg"></span>
+      <button value="cancel" type="submit">Vazgeç</button>
+      <button id="roleApply" class="primary" value="ok" type="button">Oluştur</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlgDrop" class="dlg">
+  <form method="dialog">
+    <h3 id="dropTitle">Sil</h3>
+    <div class="dlg-body">
+      <div class="danger" id="dropWhat"></div>
+      <div class="copy-row">
+        <output id="dropName" class="secret"></output>
+        <button id="dropCopy" type="button">Kopyala</button>
+      </div>
+      <label for="dropConfirm">Silmek için adı birebir yaz<input id="dropConfirm" autocomplete="off"></label>
+      <div id="dropReassignRow" hidden>
+        <label for="dropReassign">Önce sahipliği devret<select id="dropReassign"></select></label>
+        <p class="dlg-note">Bu hesap nesnelere sahip olduğu için olduğu gibi silinemez —
+          PostgreSQL de SQL Server da sahibi olan bir hesabı kaldırmaz. Seçtiğin role
+          devredilir, sonra silinir. <strong>Hiçbir tablo silinmez</strong>: yalnızca sahibi
+          değişir ve bu hesaba verilmiş yetki kayıtları temizlenir.</p>
+      </div>
+      <label class="opt" id="dropForceRow">
+        <input type="checkbox" id="dropForce">
+        <span class="opt-text">
+          <span class="opt-title">Açık bağlantıları kapat</span>
+          <span class="opt-desc">Başka oturumlar bağlıysa silme normalde reddedilir. Bu
+            seçenek onları zorla düşürür — o oturumların yaptığı iş geri alınır.</span>
+        </span>
+      </label>
+    </div>
+    <div class="dlg-actions">
+      <span class="msg grow" id="dropMsg"></span>
+      <button value="cancel" type="submit">Vazgeç</button>
+      <button id="dropApply" class="danger-btn" value="ok" type="button" disabled>Kalıcı olarak sil</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlgSecret" class="dlg">
+  <form method="dialog">
+    <h3>Parola</h3>
+    <div class="dlg-body">
+      <p class="dlg-note" id="secretWhat"></p>
+      <output id="secretValue" class="secret"></output>
+      <div class="danger">Bu parola hiçbir yere kaydedilmedi ve bir daha gösterilmeyecek.
+        Şimdi kopyalayın; kaybolursa yalnızca sıfırlanabilir.</div>
+    </div>
+    <div class="dlg-actions">
+      <button id="secretCopy" type="button">Kopyala</button>
+      <span class="msg grow" id="secretMsg"></span>
+      <button value="ok" class="primary" type="submit">Kapattım, aldım</button>
+    </div>
+  </form>
+</dialog>
+
 <script src="app.js"></script>
+<script src="admin.js"></script>
 </body>
 </html>

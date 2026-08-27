@@ -13,7 +13,7 @@
 // Exits non-zero when anything fails, so it can gate a change.
 
 import { chromium } from 'playwright';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,7 +29,7 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../.
 
 const URL = flag('--url', 'http://localhost:5099');
 const SHOTS = flag('--shots', null);
-const APP_JS = path.join(REPO, 'src/Migrator.App/wwwroot/app.js');
+const WWWROOT = path.join(REPO, 'src/Migrator.App/wwwroot');
 const WIDTHS = [390, 768, 1280];
 
 /** Runs in the page: every visible text node vs its real background. */
@@ -119,13 +119,16 @@ for (const theme of ['light', 'dark']) {
     await page.waitForTimeout(250);
   }
 
-  // 1 · Wiring: every element app.js reaches for has to exist.
-  const ids = [...new Set([...(await readFile(APP_JS, 'utf8')).matchAll(/\$\("([^"]+)"\)/g)]
-    .map((m) => m[1]))];
+  // 1 · Wiring: every element the page's scripts reach for has to exist. Every .js in
+  // wwwroot, not a named one — a second script file must not be able to opt out of this.
+  const scripts = (await readdir(WWWROOT)).filter((f) => f.endsWith('.js')).sort();
+  const sources = await Promise.all(scripts.map((f) => readFile(path.join(WWWROOT, f), 'utf8')));
+  const ids = [...new Set(sources.flatMap((src) =>
+    [...src.matchAll(/\$\("([^"]+)"\)/g)].map((m) => m[1])))];
   const missing = await page.evaluate((list) => list.filter((id) => !document.getElementById(id)), ids);
   missing.length
-    ? fail(`app.js references ${missing.length} missing element(s): ${missing.join(', ')}`)
-    : pass(`${ids.length} element ids referenced by app.js all exist`);
+    ? fail(`${scripts.join(' + ')} reference ${missing.length} missing element(s): ${missing.join(', ')}`)
+    : pass(`${ids.length} element ids referenced by ${scripts.join(' + ')} all exist`);
 
   // 2 · Every control reachable by name, not just by position.
   const unlabelled = await page.evaluate(() =>
@@ -159,6 +162,36 @@ for (const theme of ['light', 'dark']) {
     }
   } else {
     pass('all rendered text meets WCAG AA contrast');
+  }
+
+  // 3b · The management tab is a second page's worth of surface behind one button, and a
+  //      hidden element is invisible to a contrast pass. Open it and measure it too.
+  if (await page.$('#tabAdmin')) {
+    await page.click('#tabAdmin');
+    await page.evaluate(() => {
+      // The tables only appear once a server has answered; reveal them so their chrome —
+      // headers, empty states, action buttons — is measured rather than skipped.
+      for (const id of ['admDbCard', 'admRoleCard'])
+        document.getElementById(id)?.removeAttribute('hidden');
+      for (const id of ['admDbEmpty', 'admRoleEmpty']) {
+        const el = document.getElementById(id);
+        if (el) { el.textContent = 'Örnek boş durum satırı — ÇĞİÖŞÜ çğıöşü'; el.hidden = false; }
+      }
+    });
+    await page.waitForTimeout(150);
+
+    const adminContrast = await page.evaluate(CONTRAST);
+    if (adminContrast.length) {
+      fail(`management tab: ${adminContrast.length} text element(s) below WCAG AA`);
+      for (const c of adminContrast) {
+        console.error(`        ${c.measured}:1 (needs ${c.required}) ${c.colour} ` +
+          `${c.size}px/${c.weight} — "${c.text}"`);
+      }
+    } else {
+      pass('management tab text meets WCAG AA contrast');
+    }
+    await page.click('#tabMigrate');
+    await page.waitForTimeout(100);
   }
 
   // 4 · Focus has to be visible, not merely present.

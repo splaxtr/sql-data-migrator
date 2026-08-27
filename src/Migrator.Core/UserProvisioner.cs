@@ -196,7 +196,12 @@ public static class UserProvisioner
         return builder.ToString();
     }
 
-    private static string GeneratePassword()
+    /// <summary>
+    /// Also used by the management panel, so a password created there is the same shape as
+    /// one created by a migration — one alphabet, one length, one set of characters a human
+    /// can read off a screen without guessing.
+    /// </summary>
+    public static string GeneratePassword()
     {
         var buffer = new char[PasswordLength];
         for (var i = 0; i < buffer.Length; i++)

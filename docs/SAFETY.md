@@ -5,10 +5,17 @@ guaranteed" section — it is the more useful half.
 
 ## Guaranteed
 
-**The source is never written to.** Every statement sent to the source database is a
-`SELECT`. There is no `INSERT`, `UPDATE`, `DELETE`, or DDL anywhere in the source path.
-This is what makes rollback trivial: if anything goes wrong, point your application back at
-the source and nothing has been lost.
+**A migration never writes to the source.** Every statement a migration sends to the source
+database is a `SELECT`. There is no `INSERT`, `UPDATE`, `DELETE`, or DDL anywhere in the
+migration's source path. This is what makes rollback trivial: if anything goes wrong, point
+your application back at the source and nothing has been lost.
+
+> **This promise was narrowed, deliberately.** It used to read "the source is never written
+> to", full stop. The app now also has a **management panel** (see
+> [Server management](#server-management)) which can create, alter and drop databases and
+> logins on *any* registered server — including one you also migrate from. No migration ever
+> uses it, and it cannot be reached from a migration; but the app as a whole is no longer a
+> program that only reads from your source, and saying otherwise would be untrue.
 
 **A failure leaves the target untouched.** The truncate, the copy, the sequence fixup and
 the verification all share one transaction. If any of them fails, the transaction rolls
@@ -82,6 +89,50 @@ The honesty rule holds in both. A verification that fails is a failed run, not a
 And a "create database only" run that made the database but could not make the login you
 asked for is reported as **failed** — the database existing is not what you asked for, and
 saying otherwise would be reporting success it did not earn.
+
+## Server management
+
+The management panel is a different tool that happens to live in the same window, and none
+of the guarantees above apply to it. They are guarantees about a migration; the panel exists
+to change servers, and it does exactly what you tell it to.
+
+**It writes to both products.** PostgreSQL and SQL Server alike, on any server saved in the
+app. A server you use as a migration *source* can be administered here — that is the point
+of narrowing the promise at the top of this page.
+
+**Nothing here is transactional and nothing is reversible.** A dropped database is gone.
+There is no verification step, no rollback, and no report afterwards.
+
+What it does instead:
+
+- **A drop says what is being lost first** — owner, size, table count, estimated rows and the
+  number of open connections for a database; owned databases for a login. A confirmation
+  that does not name a cost is one people learn to click through.
+- **A drop only proceeds when the object's name is typed back.** The server checks this too,
+  so a request that skips the browser is refused on the same terms. The name is shown next to
+  the box and can be copied: the gate is there to establish that the deletion was meant, not
+  to test anyone's typing.
+- **System objects are refused outright.** `postgres`, `template0`, `template1`, `master`,
+  `model`, `msdb`, `tempdb`, the `pg_*` roles, `sa` and the fixed server roles have no delete
+  button, and the endpoint rejects them even if one is asked for directly.
+- **Closing other sessions is opt-in.** A drop blocked by open connections stays blocked
+  until you tick the option that forces them shut, which says that their work is rolled back.
+- **A blocked delete explains itself and offers a way through.** Neither product drops a
+  principal that still owns objects, so the dialog names them — which databases, how many
+  objects in each — and can reassign them to another role first. The reassignment moves
+  ownership and clears the privilege entries naming the old role; it drops nothing.
+- **The server's own error is shown, not a summary of it.** PostgreSQL's `DETAIL` line names
+  precisely what depends on a role, and it is the answer; the admin connection asks for it
+  explicitly rather than letting the driver redact it. Nothing here reads rows, so that
+  detail is about catalog objects and never about your data.
+- **Generated passwords are shown once and stored nowhere** — same rule as the migration
+  report, and the value is removed from the page when the dialog closes.
+
+**Every identifier is quoted before it reaches a statement.** No SQL dialect accepts a bound
+parameter where an identifier goes, so names from the browser are quoted for their product
+(`"` doubled for PostgreSQL, `]` doubled for SQL Server) and rejected outright if they carry
+a control character. The one value that cannot be quoted — a SQL Server collation name, which
+sits in a keyword position — is checked against letters, digits and underscores instead.
 
 ## Stored credentials
 

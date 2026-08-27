@@ -5,14 +5,27 @@
 Two projects, and the split matters:
 
 ```
-src/Migrator.Core/     the migration engine — no UI, no HTTP, no console
-src/Migrator.App/      a local web app: minimal API + one HTML page
+src/Migrator.Core/        the migration engine — no UI, no HTTP, no console
+src/Migrator.Core/Admin/  server administration — not part of the engine
+src/Migrator.App/         a local web app: minimal API + one HTML page
 ```
 
 `Migrator.Core` knows nothing about how it is driven. It reports progress through
 `IProgress<ProgressMessage>` rather than writing to a console, which is why the same engine
 can serve a web page today, a CLI tomorrow, and a test harness in between. Anything that
 writes to `Console` in the engine is a bug.
+
+`Migrator.Core/Admin` is in this project for one reason: it is where the product-specific
+SQL lives, and `Migrator.App` has none. It is **not** part of the engine and takes no part in
+a migration — nothing under it is reachable from `MigrationEngine`, and none of the
+guarantees in [SAFETY.md](SAFETY.md) about a migration apply to it. It exists to create,
+alter and drop things, which is the opposite of what the engine promises, and keeping the two
+in separate namespaces is what stops that distinction from blurring.
+
+The seam there is `IServerAdmin`, with a `PostgresAdmin` and a `SqlServerAdmin` behind it.
+This is a real interface rather than the file-layout seam the engine uses, because there were
+two implementations from the start — the reason [ROADMAP.md](ROADMAP.md) gives for not
+extracting the engine's one yet does not apply.
 
 ## The pipeline
 

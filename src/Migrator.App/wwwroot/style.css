@@ -32,6 +32,12 @@
   --warn: #92400E;
   --err: #B91C1C;
 
+  /* The management panel deletes things; a destructive surface needs its own ground
+     rather than a red border on the same white as everything else. */
+  --danger-bg: #FEF2F2;
+  --danger-line: #F0A9A9;
+  --overlay: rgba(17, 45, 50, .45);
+
   --radius: 12px;
   --radius-sm: 8px;
   --shadow: 0 1px 2px rgba(17, 45, 50, .06), 0 1px 3px rgba(17, 45, 50, .04);
@@ -63,6 +69,10 @@
   --ok: #5FBF8B;
   --warn: #E0A458;
   --err: #F08A8A;
+
+  --danger-bg: #3A2124;
+  --danger-line: #7E4448;
+  --overlay: rgba(0, 0, 0, .6);
 
   --shadow: 0 1px 2px rgba(0, 0, 0, .28), 0 1px 3px rgba(0, 0, 0, .2);
 }
@@ -124,9 +134,8 @@ main {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  display: grid;
-  gap: 1rem;
 }
+.view { display: grid; gap: 1rem; }
 
 .card {
   background: var(--surface);
@@ -539,8 +548,205 @@ details[open] summary { margin-bottom: .7rem; }
   .db-target { grid-area: 2 / 1 / 3 / 3; width: 100%; }
   .db-head { display: none; }
   .picker-bar .msg { flex-basis: 100%; text-align: left; }
+  .tabs { margin-top: .75rem; }
+  .dlg-body { padding: .9rem 1rem; }
+  .dlg h3, .dlg-actions { padding-left: 1rem; padding-right: 1rem; }
+  .grant-row { grid-template-columns: 1fr; gap: .25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: 0ms !important; animation-duration: 0ms !important; }
 }
+
+
+/* ── Tabs ───────────────────────────────────────────────────────────────── */
+
+/* Migrating and administering are different jobs on the same servers. They are two
+   tabs rather than two more cards, so the migration flow stays a flow. */
+.tabs { display: flex; gap: .3rem; margin-top: .9rem; }
+.tab {
+  min-height: 34px;
+  padding: .35rem .85rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: .9rem;
+  font-weight: 550;
+}
+.tab:hover { background: var(--surface-2); border-color: var(--line); color: var(--text); }
+.tab[aria-selected="true"] {
+  background: var(--surface);
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+.tab[aria-selected="true"]:hover { background: var(--surface); }
+
+/* ── Management tables ──────────────────────────────────────────────────── */
+
+.count { color: var(--text-muted); font-size: .8rem; font-weight: 400; }
+
+.bar-input { flex: 1; min-width: 8rem; min-height: 34px; font-size: .85rem; padding: .3rem .55rem; }
+
+/* Every column stays readable rather than being squeezed off: the panel scrolls
+   sideways inside its own box, which is not the same thing as the page doing it. */
+.picker.adm-scroll { overflow-x: auto; overflow-y: hidden; }
+.adm-list { display: grid; max-height: 26rem; overflow-y: auto; }
+.adm-list:empty { display: none; }
+
+.adm-head, .adm-row { display: grid; align-items: center; gap: .6rem; padding: .45rem .65rem; }
+.adm-head {
+  border-bottom: 1px solid var(--line);
+  color: var(--text-muted);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.adm-row { border-bottom: 1px solid var(--line); font-size: .875rem; }
+.adm-row:last-child { border-bottom: 0; }
+.adm-row:hover { background: var(--surface-2); }
+.adm-row > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.adm-row .strong { font-weight: 600; }
+.adm-head .num, .adm-row .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.adm-db-head, .adm-db-row {
+  grid-template-columns:
+    minmax(8rem, 1.5fr) minmax(6rem, 1fr) minmax(6rem, 1fr) 5.5rem 5rem minmax(13rem, auto);
+  min-width: 47rem;
+}
+.adm-role-head, .adm-role-row {
+  grid-template-columns:
+    minmax(9rem, 1.4fr) 4.5rem minmax(8rem, 1.1fr) minmax(7rem, 1fr) minmax(9rem, auto);
+  min-width: 45rem;
+}
+
+.adm-actions { display: flex; gap: .35rem; justify-content: flex-end; }
+.adm-actions button { min-height: 30px; padding: .2rem .55rem; font-size: .8rem; }
+
+.adm-tag {
+  padding: .1rem .45rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: .7rem;
+  font-weight: 600;
+}
+
+/* ── Destructive surfaces ───────────────────────────────────────────────── */
+
+/* Outline rather than filled: --err is a dark red in one theme and a pale one in the
+   other, and no single text colour sits on both at 4.5:1. */
+button.danger-btn { border-color: var(--danger-line); color: var(--err); font-weight: 600; }
+button.danger-btn:hover { background: var(--danger-bg); border-color: var(--err); }
+button.danger-btn:disabled:hover { background: var(--surface); border-color: var(--danger-line); }
+
+.danger {
+  padding: .7rem .8rem;
+  border: 1px solid var(--danger-line);
+  border-left: 3px solid var(--err);
+  border-radius: var(--radius-sm);
+  background: var(--danger-bg);
+  color: var(--text);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+
+/* ── Dialogs ────────────────────────────────────────────────────────────── */
+
+.dlg {
+  width: min(30rem, calc(100vw - 2rem));
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+.dlg.dlg-wide { width: min(38rem, calc(100vw - 2rem)); }
+.dlg::backdrop { background: var(--overlay); }
+.dlg h3 {
+  margin: 0;
+  padding: 1rem 1.2rem .8rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 1rem;
+  font-weight: 650;
+}
+.dlg-body {
+  display: grid;
+  gap: .75rem;
+  padding: 1.1rem 1.2rem;
+  max-height: min(60vh, 32rem);
+  overflow-y: auto;
+}
+.dlg-row { margin-top: 0; }
+.dlg-note { margin: -.35rem 0 0; color: var(--text-muted); font-size: .8rem; line-height: 1.45; }
+.dlg-label { margin: .2rem 0 -.3rem; color: var(--text-muted); font-size: .8rem; font-weight: 500; }
+.dlg-actions {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .85rem 1.2rem;
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.grant-list { display: grid; gap: .3rem; }
+.grant-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(8rem, 11rem);
+  align-items: center;
+  gap: .6rem;
+  padding: .3rem .1rem;
+  font-size: .9rem;
+}
+.grant-row select { min-height: 34px; font-size: .85rem; padding: .3rem .5rem; }
+.grant-row > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.role-flags { min-width: 0; margin: 0; padding: 0; border: 0; }
+.role-flags > legend {
+  padding: 0 0 .35rem;
+  color: var(--text-muted);
+  font-size: .8rem;
+  font-weight: 500;
+}
+.flag {
+  flex-direction: row;
+  align-items: center;
+  gap: .5rem;
+  padding: .18rem 0;
+  color: var(--text);
+  font-size: .875rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* A password shown once. Monospace because it will be read off the screen and typed. */
+.secret {
+  display: block;
+  padding: .65rem .75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font: 15px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+/* The system-rows switch sits in the filter bar, where the list it changes can be seen. */
+.bar-flag {
+  flex: none;
+  gap: .4rem;
+  padding: 0 .2rem 0 0;
+  color: var(--text-muted);
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+/* The name a deletion is about, sitting where it can be read and copied. */
+.copy-row { display: flex; align-items: stretch; gap: .5rem; }
+.copy-row .secret { flex: 1; min-width: 0; font-size: 14px; }
+.copy-row button { flex: none; }
+
+.adm-row .muted { color: var(--text-muted); }

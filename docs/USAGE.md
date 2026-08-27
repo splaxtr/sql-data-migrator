@@ -210,6 +210,76 @@ ALTER ROLE sales_user PASSWORD 'a-new-one';
 Treat the file as the credential it is: store it somewhere safe, do not mail it around, and
 delete it when the credentials have been handed over.
 
+## Management
+
+The **Yönetim** tab is a second screen on the same servers, and a different job: it creates,
+alters and drops databases and logins. Nothing on it runs in a transaction and nothing on it
+can be undone — see [SAFETY.md](SAFETY.md#server-management) before the first drop.
+
+Pick any saved server, PostgreSQL or SQL Server. The panel adapts to which one it is rather
+than showing controls the product does not have.
+
+### Databases
+
+The table lists every database with its owner, collation, size and open connection count.
+System databases are hidden behind the **Sistem** switch and can never be dropped.
+
+| Action | What it does |
+|---|---|
+| **Yeni veritabanı** | Creates one with a collation and an owner. PostgreSQL wants an ICU locale (`und`); SQL Server wants a collation name |
+| **Yetkiler** | Who can do what on this database — see below |
+| **Sahip** | Hands the database, and everything in its `public` schema, to another role |
+| **Sil** | Drops it, after showing what is in it and asking for the name |
+
+### Privileges
+
+Four levels, because the four are what an operator reaches for and a panel that can express
+every `GRANT` is a worse tool than `psql`:
+
+| Level | PostgreSQL | SQL Server |
+|---|---|---|
+| **yetki yok** | Every grant this tool made, revoked | The database user is dropped |
+| **bağlanabilir** | `CONNECT` on the database | A user exists, in no role |
+| **okur ve yazar** | Plus every privilege on the `public` schema, its tables and sequences, and on ones created later | Plus `db_datareader` and `db_datawriter` |
+| **sahibi** | Owns the database and its objects | Owns the database — which in SQL Server means being `dbo` in it |
+
+Superusers are left out of the list. They hold every privilege implicitly, so listing them
+would put every superuser on every database and say nothing about what anybody granted.
+
+PostgreSQL grants `CONNECT` to `PUBLIC` by default, which means a role with no grant at all
+can still connect. The **PUBLIC bağlanabilsin** switch is that grant; turning it off leaves
+only the roles you named. SQL Server has no equivalent, so the switch is not shown there.
+
+### Users and roles
+
+PostgreSQL has no separate user object: a role that can log in **is** a user, and one that
+cannot is a group. Both are in the list, and the **Tür** column says which is which. On SQL
+Server the same column separates logins from fixed server roles.
+
+| Action | What it does |
+|---|---|
+| **Yeni** | Creates a login. Leave the password empty and a 24-character one is generated and shown **once** — it is stored nowhere |
+| **Düzenle** | Server-wide powers, group membership, and a password reset |
+| **Sil** | Drops it, after listing what it owns — and offering to hand that over first |
+
+Neither product will drop a principal that still owns something, and the roles this tool
+creates own a great deal: a per-database login owns its database and every table in it. So
+the delete dialog names what is in the way — which databases, and how many objects in each —
+and offers to reassign it all to another role before dropping.
+
+**The hand-over destroys nothing.** It changes owners and then clears the privilege entries
+that named the old role, which is the other half of what blocks the drop. Your tables, and
+the rows in them, are untouched.
+
+If you decline the hand-over the drop is still attempted, and the server's own refusal is
+shown verbatim — including the `DETAIL` line naming exactly what depends on the role.
+
+The power switches mean the same thing in different mechanisms. PostgreSQL has per-role
+flags (`CREATEDB`, `CREATEROLE`, `SUPERUSER`); SQL Server has fixed server roles
+(`dbcreator`, `securityadmin`, `sysadmin`). The panel labels each with the name that server
+uses, and does not offer the three SQL Server ones twice by listing them under membership as
+well.
+
 ## When a run stops
 
 Read the last error, not the first. The pipeline stops at the earliest problem, so the final

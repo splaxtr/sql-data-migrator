@@ -12,6 +12,9 @@ target, press **Migrate**, watch it happen.
 The migration is verified before it is committed. If row counts, or foreign key
 integrity, do not line up, nothing is written — the target is left exactly as it was.
 
+It also has a management tab for the everyday work around a migration: creating the target
+database, giving it its own login, handing ownership over, and cleaning up afterwards.
+
 > **Currently implemented:** SQL Server → PostgreSQL.
 > **What this is meant to be:** any SQL database to any SQL database. The engine is built
 > around a source reader and a target writer, so adding a provider is additive work rather
@@ -102,6 +105,13 @@ and each one explains what it lets through. Two do more than relax a check: **mi
 creates the tables the target is missing from the source schema, and **one user per
 database** gives each migrated database its own PostgreSQL login. Options a mode would
 ignore are locked with the reason, so the page never offers work the run will not do.
+
+**Management** — A second tab, on the same saved servers. It lists databases and logins on
+either product, creates them, hands ownership around, grants and revokes, and drops. It is a
+different job from migrating and says so: nothing on it runs in a transaction, nothing is
+reversible, a drop shows what is about to be lost and will not proceed until the name is
+typed back, and system objects have no delete button at all. See
+[docs/SAFETY.md](docs/SAFETY.md#server-management).
 
 **Run** — Progress streams live: which database, which table, how many rows, what was
 verified. The final line is the only thing that matters, and it is honest. When the run

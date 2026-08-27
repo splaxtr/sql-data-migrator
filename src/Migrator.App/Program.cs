@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.FileProviders;
 using Migrator.App;
 using Migrator.Core;
+using Migrator.Core.Admin;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDataProtection().SetApplicationName("SqlToSqlMigrator");
@@ -120,6 +121,119 @@ app.MapGet("/api/jobs/{id}/report.pdf", (JobRegistry jobs, string id) =>
         : Results.File(job.Report, "application/pdf", job.ReportFileName);
 });
 
+// ── Server administration ────────────────────────────────────────────────────
+// A separate job from migrating, on purpose, and it does not inherit the engine's
+// guarantees: these endpoints exist to create, alter and drop things. Every one of them
+// carries its object's name in the body rather than in the route — a database may legally
+// be called "a/b", and a name that has to survive URL encoding to be correct is a name
+// this panel would eventually get wrong.
+
+app.MapGet("/api/admin/{serverId}/overview", (ConnectionStore store, string serverId) =>
+    AdminAsync(store, serverId, async admin => new
+    {
+        capabilities = admin.Capabilities,
+        databases = await admin.ListDatabasesAsync(),
+        roles = await admin.ListRolesAsync(),
+    }));
+
+app.MapPost("/api/admin/{serverId}/database/create", (ConnectionStore store, string serverId, CreateDatabaseRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        await admin.CreateDatabaseAsync(r.Name, Blank(r.Collation), Blank(r.Owner));
+        return new { created = r.Name };
+    }));
+
+app.MapPost("/api/admin/{serverId}/database/owner", (ConnectionStore store, string serverId, DatabaseOwnerRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        await admin.SetDatabaseOwnerAsync(r.Database, r.Owner);
+        return new { owner = r.Owner };
+    }));
+
+app.MapPost("/api/admin/{serverId}/database/drop-preview", (ConnectionStore store, string serverId, NamedRequest r) =>
+    AdminAsync(store, serverId, async admin => await admin.PreviewDatabaseDropAsync(r.Name)));
+
+app.MapPost("/api/admin/{serverId}/database/drop", (ConnectionStore store, string serverId, DropDatabaseRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        RequireTypedName(r.Database, r.Confirm);
+        var preview = await admin.PreviewDatabaseDropAsync(r.Database);
+        if (preview.IsSystem)
+            throw new InvalidOperationException($"'{r.Database}' bir sistem veritabanı; bu araç onu silmez.");
+        await admin.DropDatabaseAsync(r.Database, r.CloseConnections);
+        return new { dropped = r.Database };
+    }));
+
+app.MapPost("/api/admin/{serverId}/database/grants", (ConnectionStore store, string serverId, NamedRequest r) =>
+    AdminAsync(store, serverId, async admin => await admin.ListGrantsAsync(r.Name)));
+
+app.MapPost("/api/admin/{serverId}/database/grant", (ConnectionStore store, string serverId, GrantRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        await admin.SetPrivilegeAsync(r.Database, r.Role, r.Level);
+        return new { role = r.Role, level = r.Level.ToString() };
+    }));
+
+app.MapPost("/api/admin/{serverId}/database/public-connect", (ConnectionStore store, string serverId, PublicConnectRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        await admin.SetPublicConnectAsync(r.Database, r.Allowed);
+        return new { allowed = r.Allowed };
+    }));
+
+// The generated password travels in this response and is never written anywhere else —
+// same rule as the migration report, for the same reason.
+app.MapPost("/api/admin/{serverId}/role/create", (ConnectionStore store, string serverId, CreateRoleRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        var password = Blank(r.Password) ?? UserProvisioner.GeneratePassword();
+        await admin.CreateRoleAsync(r.Name, password, r.Attributes ?? new RoleAttributes());
+        return new { role = r.Name, password, generated = Blank(r.Password) is null };
+    }));
+
+app.MapPost("/api/admin/{serverId}/role/password", (ConnectionStore store, string serverId, RolePasswordRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        var password = Blank(r.Password) ?? UserProvisioner.GeneratePassword();
+        await admin.SetRolePasswordAsync(r.Name, password);
+        return new { role = r.Name, password, generated = Blank(r.Password) is null };
+    }));
+
+app.MapPost("/api/admin/{serverId}/role/attributes", (ConnectionStore store, string serverId, RoleAttributesRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        await admin.SetRoleAttributesAsync(r.Name, r.Attributes);
+        return new { role = r.Name };
+    }));
+
+app.MapPost("/api/admin/{serverId}/role/drop-preview", (ConnectionStore store, string serverId, NamedRequest r) =>
+    AdminAsync(store, serverId, async admin => await admin.PreviewRoleDropAsync(r.Name)));
+
+app.MapPost("/api/admin/{serverId}/role/drop", (ConnectionStore store, string serverId, DropRoleRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        RequireTypedName(r.Name, r.Confirm);
+        var preview = await admin.PreviewRoleDropAsync(r.Name);
+        if (preview.IsSystem)
+            throw new InvalidOperationException($"'{r.Name}' bir sistem hesabı; bu araç onu silmez.");
+        await admin.DropRoleAsync(r.Name);
+        return new { dropped = r.Name };
+    }));
+
+app.MapPost("/api/admin/{serverId}/role/reassign", (ConnectionStore store, string serverId, ReassignRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        await admin.ReassignOwnedAsync(r.Name, r.Owner);
+        return new { role = r.Name, owner = r.Owner };
+    }));
+
+app.MapPost("/api/admin/{serverId}/role/membership", (ConnectionStore store, string serverId, MembershipRequest r) =>
+    AdminAsync(store, serverId, async admin =>
+    {
+        await admin.SetMembershipAsync(r.Name, r.Group, r.Member);
+        return new { role = r.Name, group = r.Group, member = r.Member };
+    }));
+
 // Answers a second copy's question: "is the thing on 5099 really me?"
 app.MapGet("/api/ping", () => Results.Ok(new { app = "SqlDataMigrator" }));
 
@@ -170,6 +284,45 @@ static async Task<bool> IsAlreadyRunningAsync()
     }
 }
 
+/// <summary>
+/// Opens the right admin for a saved server and turns whatever it throws into a message the
+/// page can show. Driver exceptions are the useful half of this feature — PostgreSQL saying
+/// which objects still depend on a role is better than anything this code could compose —
+/// so they are passed through rather than replaced with a generic failure.
+/// </summary>
+static async Task<IResult> AdminAsync(ConnectionStore store, string serverId, Func<IServerAdmin, Task<object?>> work)
+{
+    var server = (await store.ListAsync()).FirstOrDefault(s => s.Id == serverId);
+    var connectionString = await store.BuildConnectionStringAsync(serverId, null);
+    if (server is null || connectionString is null)
+        return Results.NotFound(new { error = "Kayıtlı sunucu bulunamadı." });
+
+    IServerAdmin admin = server.Kind == ServerKind.SqlServer
+        ? new SqlServerAdmin(connectionString)
+        : new PostgresAdmin(connectionString);
+
+    try
+    {
+        return Results.Ok(await work(admin));
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(title: "İşlem tamamlanamadı", detail: ex.Message, statusCode: 400);
+    }
+}
+
+/// <summary>
+/// A drop only proceeds when the caller retyped the object's name. A checkbox can be
+/// clicked past; a name has to be read first, which is the entire point of asking.
+/// </summary>
+static void RequireTypedName(string name, string? confirm)
+{
+    if (!string.Equals(name, confirm, StringComparison.Ordinal))
+        throw new InvalidOperationException($"Silmek için adı birebir yazın: {name}");
+}
+
+static string? Blank(string? value) => string.IsNullOrWhiteSpace(value) ? null : value;
+
 static void OpenBrowser()
 {
     try { Process.Start(new ProcessStartInfo("http://localhost:5099") { UseShellExecute = true }); }
@@ -177,6 +330,19 @@ static void OpenBrowser()
 }
 
 // ── Request types ───────────────────────────────────────────────────────────
+
+internal sealed record NamedRequest(string Name);
+internal sealed record CreateDatabaseRequest(string Name, string? Collation, string? Owner);
+internal sealed record DatabaseOwnerRequest(string Database, string Owner);
+internal sealed record DropDatabaseRequest(string Database, string? Confirm, bool CloseConnections);
+internal sealed record GrantRequest(string Database, string Role, PrivilegeLevel Level);
+internal sealed record PublicConnectRequest(string Database, bool Allowed);
+internal sealed record CreateRoleRequest(string Name, string? Password, RoleAttributes? Attributes);
+internal sealed record RolePasswordRequest(string Name, string? Password);
+internal sealed record RoleAttributesRequest(string Name, RoleAttributes Attributes);
+internal sealed record DropRoleRequest(string Name, string? Confirm);
+internal sealed record ReassignRequest(string Name, string Owner);
+internal sealed record MembershipRequest(string Name, string Group, bool Member);
 
 internal sealed record SaveServerRequest(
     string? Id, string Name, ServerKind Kind, string Host, int Port, string? User, string? Password);

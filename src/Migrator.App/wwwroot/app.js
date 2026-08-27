@@ -18,6 +18,9 @@ async function loadServers() {
   servers = await api("/api/servers");
   renderServers();
   fillServerSelects();
+  // The management panel keeps its own picker; adding a server here has to fill that one
+  // too, without this file having to know the panel exists.
+  window.onServersLoaded?.();
 }
 
 function renderServers() {
