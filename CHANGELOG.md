@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.0](https://github.com/splaxtr/sql-data-migrator/compare/v0.5.0...v0.6.0) (2026-08-27)
+
+
+### Features
+
+* add ORM history table detection, schema-level warning reports, and enhanced migration diagnostic logging ([aac4f98](https://github.com/splaxtr/sql-data-migrator/commit/aac4f984f8b998d3d798425b458317b6abb412b0))
+* add run mode support and target database availability indicators to UI ([9a12ad1](https://github.com/splaxtr/sql-data-migrator/commit/9a12ad19b117923cb18213feb9767f87e48fbf65))
+* introduce server management infrastructure with IServerAdmin and cross-platform identifier sanitization ([d7a961c](https://github.com/splaxtr/sql-data-migrator/commit/d7a961c30e75450c8e9bcc8d57c4134dee028dfd))
+
 ## [0.5.0](https://github.com/splaxtr/sql-data-migrator/compare/v0.4.0...v0.5.0) (2026-08-27)
 
 
