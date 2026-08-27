@@ -163,16 +163,37 @@ function renderDatabases() {
     const target = document.createElement("input");
     target.className = "db-target";
     target.value = targetFor(database);
+    // The column heading disappears on narrow screens, so the field carries its
+    // own name rather than borrowing one.
     target.title = "Hedef veritabanı adı";
+    target.setAttribute("aria-label", `${database} için hedef veritabanı adı`);
     target.oninput = () => targetNames.set(database, target.value);
 
     row.append(pick, target);
     host.appendChild(row);
   }
+  showEmptyState(visible.length);
   showSelection();
 }
 
+// An empty area explains nothing. Whatever the reason there is no list, say it.
+function showEmptyState(visibleCount) {
+  const empty = $("dbEmpty");
+  if (!$("srcServer").value)
+    empty.textContent = "Önce bir SQL Server seç — veritabanları buraya gelir.";
+  else if (!sourceDatabases.length)
+    empty.textContent = "Bu sunucuda listelenecek veritabanı yok.";
+  else
+    empty.textContent = "Aramaya uyan veritabanı yok.";
+
+  empty.hidden = visibleCount > 0;
+  $("dbHead").hidden = visibleCount === 0;
+  $("btnAll").disabled = visibleCount === 0;
+  $("btnNone").disabled = selectedDatabases.size === 0;
+}
+
 function showSelection() {
+  $("btnNone").disabled = selectedDatabases.size === 0;
   if (!sourceDatabases.length) return setMsg("srcMsg", "");
   const filtered = visibleCount === sourceDatabases.length ? "" : ` · ${visibleCount} listeleniyor`;
   setMsg("srcMsg",
@@ -403,4 +424,17 @@ async function followJob(jobId) {
   }
 }
 
+// ── Theme ───────────────────────────────────────────────────────────────────
+// Light is the default and the OS preference is deliberately not followed: this
+// runs next to a terminal in daylight far more often than not, and the one
+// choice that matters is remembered. index.html applies it before first paint.
+
+$("btnTheme").onclick = () => {
+  const goingDark = document.documentElement.dataset.theme !== "dark";
+  if (goingDark) document.documentElement.dataset.theme = "dark";
+  else delete document.documentElement.dataset.theme;
+  try { localStorage.setItem("theme", goingDark ? "dark" : "light"); } catch { /* private mode */ }
+};
+
+renderDatabases();
 loadServers().catch(e => setMsg("serverMsg", e.message, "err"));

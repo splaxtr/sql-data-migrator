@@ -1,60 +1,428 @@
+/* ── Tokens ─────────────────────────────────────────────────────────────────
+   Built from a five-colour palette: #88BDBC #254E58 #112D32 #4F4A41 #6E6658.
+   Every pairing below was chosen against the 4.5:1 text rule rather than by eye
+   — #88BDBC is 2.1:1 on white, so it is only ever a surface or a dark-theme
+   accent, never light-theme text.
+
+   Status colours sit deliberately outside that palette. A log has to separate
+   "it worked" from "it failed" at a glance, and two teals cannot do that. */
 :root {
-  --bg: #0f1117; --card: #171a23; --line: #262b38;
-  --text: #e8eaf0; --muted: #8b93a7;
-  --accent: #6ea8fe; --ok: #4ec9a0; --warn: #e6b055; --err: #f2777a;
-  --radius: 10px;
+  color-scheme: light;
+
+  --bg: #F1F6F6;
+  --surface: #FFFFFF;
+  --surface-2: #EAF2F2;
+  --line: #D8E5E5;
+  --line-strong: #BED2D2;
+
+  --text: #112D32;          /* 15.5:1 on white */
+  --text-muted: #6E6658;    /*  5.7:1 on white — warm, from the palette      */
+  --text-strong-muted: #4F4A41;
+
+  --primary: #254E58;       /* 10.2:1 with white text                        */
+  --primary-hover: #1B3C44;
+  --on-primary: #FFFFFF;
+  --focus: #254E58;
+  --tint: #88BDBC;
+
+  /* Darker than the usual 700-weights: these are read on the tinted log panel,
+     not on white, which costs about half a point of contrast. Measured on
+     --surface-2 — ok 6.3:1, warn 6.3:1, err 5.7:1. */
+  --ok: #166534;
+  --warn: #92400E;
+  --err: #B91C1C;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 2px rgba(17, 45, 50, .06), 0 1px 3px rgba(17, 45, 50, .04);
+  --speed: 180ms;
 }
-@media (prefers-color-scheme: light) {
-  :root { --bg:#f6f7fa; --card:#fff; --line:#e2e5ec; --text:#1a1d26; --muted:#5f6675; }
+
+/* Dark is opt-in through the header toggle. It reuses the same palette with the
+   roles swapped: the darkest teal becomes the page, the lightest becomes the
+   accent (6.9:1 against it). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0D2429;
+  --surface: #142F35;
+  --surface-2: #1B3B42;
+  --line: #26505A;
+  --line-strong: #35646F;
+
+  --text: #E6F0F0;
+  --text-muted: #A8B4AE;
+  --text-strong-muted: #C3CCC5;
+
+  --primary: #88BDBC;
+  --primary-hover: #9BCBCA;
+  --on-primary: #0D2429;
+  --focus: #88BDBC;
+  --tint: #254E58;
+
+  --ok: #5FBF8B;
+  --warn: #E0A458;
+  --err: #F08A8A;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, .28), 0 1px 3px rgba(0, 0, 0, .2);
 }
+
 * { box-sizing: border-box; }
-body { margin:0; padding:0 0 3rem; background:var(--bg); color:var(--text);
-  font:15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-header { padding:1.6rem 1.5rem 1rem; max-width:900px; margin:0 auto; }
-h1 { margin:0; font-size:1.4rem; letter-spacing:-.01em; }
-.sub { margin:.3rem 0 0; color:var(--muted); font-size:.9rem; }
-main { max-width:900px; margin:0 auto; padding:0 1.5rem; display:grid; gap:1rem; }
-.card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem 1.2rem; }
-h2 { margin:0 0 .5rem; font-size:1rem; font-weight:600; }
-.hint { margin:.2rem 0 .8rem; color:var(--muted); font-size:.85rem; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.7rem; }
-label { display:flex; flex-direction:column; gap:.3rem; font-size:.85rem; color:var(--muted); }
-input, select { padding:.5rem .6rem; border:1px solid var(--line); border-radius:8px;
-  background:var(--bg); color:var(--text); font:inherit; font-size:.9rem; min-width:0; }
-input:focus, select:focus { outline:2px solid var(--accent); outline-offset:-1px; }
-.row { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin-top:.8rem; }
-button { padding:.5rem .9rem; border:1px solid var(--line); border-radius:8px;
-  background:var(--bg); color:var(--text); font:inherit; font-size:.9rem; cursor:pointer; }
-button:hover { border-color:var(--accent); }
-button.primary { background:var(--accent); border-color:var(--accent); color:#0b0d12; font-weight:600; }
-button.big { padding:.65rem 1.4rem; font-size:1rem; }
-button:disabled { opacity:.5; cursor:not-allowed; }
-.check { flex-direction:row; align-items:flex-start; gap:.5rem; color:var(--text);
-  font-size:.9rem; padding:.35rem 0; }
-.check em { color:var(--muted); font-style:normal; font-size:.85rem; }
-.msg { font-size:.85rem; color:var(--muted); }
-.msg.ok { color:var(--ok); } .msg.err { color:var(--err); }
-.server-list { display:grid; gap:.4rem; margin-bottom:.8rem; }
-.server { display:flex; align-items:center; gap:.6rem; padding:.5rem .7rem;
-  border:1px solid var(--line); border-radius:8px; font-size:.9rem; }
-.server .kind { color:var(--muted); font-size:.8rem; }
-.server .grow { flex:1; }
-.server button { padding:.25rem .55rem; font-size:.8rem; }
-details summary { cursor:pointer; font-size:.9rem; color:var(--accent); margin-bottom:.6rem; }
-code { background:var(--bg); border:1px solid var(--line); border-radius:4px;
-  padding:0 .25rem; font-size:.85em; font-family:ui-monospace, Menlo, Consolas, monospace; }
-.db-list { display:grid; gap:.15rem; max-height:20rem; overflow:auto; margin-top:.8rem;
-  border:1px solid var(--line); border-radius:8px; padding:.4rem; }
-.db-list:empty { display:none; }
-.db-row { display:flex; align-items:center; gap:.6rem; padding:.25rem .35rem; border-radius:6px; }
-.db-row:hover { background:var(--bg); }
-.db-pick { flex:1; flex-direction:row; align-items:center; gap:.5rem; min-width:0;
-  color:var(--text); font-size:.9rem; cursor:pointer; }
-.db-pick span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.db-target { flex:0 1 15rem; min-width:7rem; font-size:.85rem; padding:.3rem .45rem; }
-.sub-opt { margin:0 0 .4rem 1.6rem; max-width:22rem; }
-.log { margin:.9rem 0 0; padding:.8rem; max-height:22rem; overflow:auto; white-space:pre-wrap;
-  background:var(--bg); border:1px solid var(--line); border-radius:8px;
-  font:12.5px/1.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-.log .Error { color:var(--err); } .log .Warning { color:var(--warn); }
-.log .Success { color:var(--ok); font-weight:600; } .log .Step { color:var(--accent); font-weight:600; }
+
+/* Author display rules below (buttons are inline-flex, rows are grid) outrank the
+   user-agent rule behind the `hidden` attribute, so restate it with priority —
+   otherwise `hidden` silently stops hiding anything. */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  padding: 0 0 4rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1.25rem;
+}
+.brand { flex: 1; min-width: 0; }
+h1 { margin: 0; font-size: 1.5rem; font-weight: 650; letter-spacing: -.02em; }
+.sub { margin: .35rem 0 0; color: var(--text-muted); font-size: .9rem; }
+.sub strong { color: var(--text-strong-muted); font-weight: 600; }
+
+.icon-btn {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--speed), border-color var(--speed), background var(--speed);
+}
+.icon-btn:hover { color: var(--text); border-color: var(--line-strong); }
+/* One icon shows the theme you would switch *to*, so only one is ever visible. */
+.i-sun { display: none; }
+:root[data-theme="dark"] .i-sun { display: block; }
+:root[data-theme="dark"] .i-moon { display: none; }
+
+/* ── Layout ─────────────────────────────────────────────────────────────── */
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.35rem 1.4rem;
+  box-shadow: var(--shadow);
+}
+.card.action { border-color: var(--line-strong); }
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: 0 0 .55rem;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -.01em;
+}
+/* A numbered badge instead of "1 · " reads as a sequence at a glance, which is
+   what a five-step form needs most. */
+.step {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: .8rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.hint { margin: .1rem 0 1rem; color: var(--text-muted); font-size: .875rem; }
+.hint strong { color: var(--text-strong-muted); }
+
+code {
+  padding: .1em .35em;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface-2);
+  color: var(--text-strong-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .85em;
+}
+
+/* ── Form controls ──────────────────────────────────────────────────────── */
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .85rem; }
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+input, select {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: .5rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: .925rem;
+  transition: border-color var(--speed), box-shadow var(--speed);
+}
+input::placeholder { color: var(--text-muted); opacity: .7; }
+input:hover, select:hover { border-color: var(--line-strong); }
+
+/* Focus is never removed, only replaced with something more legible than the
+   platform default. */
+:where(input, select, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+input:focus, select:focus { border-color: var(--focus); }
+
+input[type="checkbox"] {
+  width: 18px; height: 18px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.row { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
+.grow { flex: 1; min-width: 0; }
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 40px;
+  padding: .5rem .95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--speed), border-color var(--speed), color var(--speed);
+}
+button:hover { background: var(--surface-2); border-color: var(--line-strong); }
+
+button.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+}
+button.primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+button.big { min-height: 46px; padding: .7rem 1.5rem; font-size: 1rem; }
+button.report { border-color: var(--line-strong); font-weight: 600; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button:disabled:hover { background: var(--surface); border-color: var(--line); }
+
+.msg { font-size: .85rem; color: var(--text-muted); }
+.msg.ok { color: var(--ok); font-weight: 500; }
+.msg.err { color: var(--err); font-weight: 500; }
+
+/* ── Options ────────────────────────────────────────────────────────────── */
+
+/* Two columns: the box, then everything else. The description lives *under*
+   its own title rather than beside it, which is what stops a long explanation
+   from squeezing the title into a four-line column. */
+.opt {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .1rem .7rem;
+  align-items: start;
+  padding: .6rem;
+  margin: 0 -.6rem;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: .925rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background var(--speed);
+}
+.opt:hover { background: var(--surface-2); }
+/* A ticked option has to stay obvious once the pointer leaves it — this list is
+   the difference between a checked migration and a forced one. */
+.opt:has(input:checked) .opt-title { color: var(--primary); }
+.opt > input[type="checkbox"] { margin-top: .15rem; }
+.opt-text { display: flex; flex-direction: column; gap: .15rem; min-width: 0; }
+.opt-title { font-weight: 550; }
+.opt-desc { color: var(--text-muted); font-size: .85rem; line-height: 1.45; }
+.opt:has(input:disabled) { opacity: .5; cursor: not-allowed; }
+
+.sub-opt { margin: .35rem 0 .1rem 2.05rem; max-width: 22rem; }
+
+/* ── Saved servers ──────────────────────────────────────────────────────── */
+
+.server-list { display: grid; gap: .45rem; margin-bottom: 1rem; }
+.server {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .65rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: .925rem;
+}
+.server .grow { display: flex; flex-direction: column; gap: .1rem; }
+.server .kind { color: var(--text-muted); font-size: .8rem; }
+.server button { min-height: 32px; padding: .25rem .6rem; font-size: .82rem; }
+
+/* --primary is the deep teal in light and the pale teal in dark, so it is the
+   right accent in both without a per-theme override. */
+details summary {
+  display: inline-block;
+  padding: .3rem 0;
+  color: var(--primary);
+  font-size: .9rem;
+  font-weight: 550;
+  cursor: pointer;
+}
+details[open] summary { margin-bottom: .7rem; }
+
+/* ── Database picker ────────────────────────────────────────────────────── */
+
+.picker {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.picker-bar {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  padding: .6rem .65rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+}
+.picker-bar button { min-height: 34px; padding: .3rem .7rem; font-size: .85rem; }
+.picker-bar .msg { text-align: right; }
+
+.db-list { display: grid; max-height: 21rem; overflow-y: auto; }
+.db-list:empty { display: none; }
+
+/* Without this the right-hand field is an unlabelled box, and nobody guesses
+   that it is the name the database will be given in the target. */
+.db-head {
+  display: grid;
+  grid-template-columns: 1fr minmax(9rem, 15rem);
+  gap: .6rem;
+  padding: .45rem .65rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-muted);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.db-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(9rem, 15rem);
+  align-items: center;
+  gap: .6rem;
+  padding: .4rem .65rem;
+  border-bottom: 1px solid var(--line);
+}
+.db-row:last-child { border-bottom: 0; }
+.db-row:hover { background: var(--surface-2); }
+.db-pick {
+  flex-direction: row;
+  align-items: center;
+  gap: .55rem;
+  min-width: 0;
+  color: var(--text);
+  font-size: .9rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.db-pick span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.db-target { font-size: .85rem; min-height: 34px; padding: .3rem .5rem; }
+
+.empty {
+  margin: 0;
+  padding: 1.4rem .8rem;
+  color: var(--text-muted);
+  font-size: .875rem;
+  text-align: center;
+}
+
+/* ── Log ────────────────────────────────────────────────────────────────── */
+
+/* An empty box below the button is a promise of content that is not there. */
+.log:empty { display: none; }
+.log {
+  margin: 1rem 0 0;
+  padding: .85rem;
+  max-height: 24rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--text-strong-muted);
+  font: 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.log .Error { color: var(--err); }
+.log .Warning { color: var(--warn); }
+.log .Success { color: var(--ok); font-weight: 600; }
+.log .Step { color: var(--primary); font-weight: 600; }
+
+/* ── Narrow screens ─────────────────────────────────────────────────────── */
+
+@media (max-width: 620px) {
+  header { padding: 1.5rem 1rem 1rem; }
+  main { padding: 0 1rem; }
+  .card { padding: 1.1rem 1rem; }
+  /* The target name needs the full width once it can no longer sit beside the
+     database it belongs to — and column headings describe columns that no
+     longer exist, so they go with them. The field keeps its aria-label. */
+  .db-row { grid-template-columns: 1fr; gap: .35rem; padding: .55rem .65rem; }
+  .db-target { width: 100%; }
+  .db-head { display: none; }
+  .picker-bar .msg { flex-basis: 100%; text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}

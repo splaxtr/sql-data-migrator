@@ -100,6 +100,9 @@ verified. The final line is the only thing that matters, and it is honest. When 
 ends you can download a PDF report of what moved — and, if you asked for logins, the
 usernames and passwords, which appear there and nowhere else.
 
+The screen is light by default; the button in the top right switches to a dark theme and
+remembers the choice. Both themes are checked against WCAG AA contrast.
+
 ## Documentation
 
 | Document | What it covers |
