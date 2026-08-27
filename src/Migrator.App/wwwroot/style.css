@@ -750,3 +750,10 @@ button.danger-btn:disabled:hover { background: var(--surface); border-color: var
 .copy-row button { flex: none; }
 
 .adm-row .muted { color: var(--text-muted); }
+
+/* An option that overwrites correct target state is not a gate that lets something through,
+   and must not borrow the badge that means one. */
+.opt-flag.overwrite { color: var(--err); }
+.opt:has(input:checked) .opt-title .opt-flag.overwrite { color: var(--err); }
+
+.opt-danger { margin: .1rem 0 .5rem 2.05rem; }

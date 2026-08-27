@@ -45,6 +45,7 @@ internal static class MigrationReportPdf
         DrawHeader(layout, report);
         DrawStats(layout, report);
         DrawResults(layout, report);
+        if (report.HasSchemaNotes) DrawSchemaNotes(layout, report);
         if (report.HasUsers)
         {
             DrawUsers(layout, report);
@@ -223,6 +224,31 @@ internal static class MigrationReportPdf
     /// wrong one — and the operator has no way to tell, because the ellipsis looks like
     /// formatting. A block can wrap, so nothing here is ever abbreviated.</para>
     /// </summary>
+    /// <summary>
+    /// What the run did that no number above can show.
+    ///
+    /// <para>A report whose only measure is "rows arrived" hides the interesting half: a
+    /// column filled with an invented zero, a source column with nowhere to go, a schema
+    /// left behind. Those scroll past in the log and are gone; here they keep.</para>
+    /// </summary>
+    private static void DrawSchemaNotes(Layout layout, MigrationReport report)
+    {
+        Heading(layout, "Şema notları");
+
+        foreach (var database in report.Databases)
+        {
+            if (database.SchemaNotes is not { Count: > 0 } notes) continue;
+
+            layout.Ensure(30);
+            layout.Gfx.DrawString(database.TargetDatabase, Font(9.5, true), Brush(Ink),
+                new XRect(Margin, layout.Y, ContentWidth, 13), XStringFormats.TopLeft);
+            layout.Y += 15;
+            foreach (var note in notes) NoteLine(layout, "• " + note);
+            layout.Y += 6;
+        }
+        layout.Y += 8;
+    }
+
     private static void DrawUsers(Layout layout, MigrationReport report)
     {
         Heading(layout, "Veritabanı kullanıcıları");

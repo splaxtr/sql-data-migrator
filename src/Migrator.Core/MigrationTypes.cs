@@ -70,6 +70,17 @@ public sealed class MigrationOptions
 
     /// <summary>Expected ICU collation; when empty, no collation check is performed.</summary>
     public string? ExpectedIcuLocale { get; init; }
+
+    /// <summary>
+    /// Copies the source's ORM migration-history tables over the target's own.
+    ///
+    /// <para>Off by default, and it is the one option here that defaults to <em>not</em>
+    /// doing something rather than to refusing something. The others are gates that let
+    /// questionable data through; this one overwrites correct target state with a false
+    /// answer — see <see cref="MigrationHistory"/>. Turn it on for a byte-for-byte copy of a
+    /// database whose target is not managed by an ORM.</para>
+    /// </summary>
+    public bool MigrateHistoryTables { get; init; }
 }
 
 /// <summary>

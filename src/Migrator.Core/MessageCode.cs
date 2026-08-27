@@ -24,7 +24,46 @@ public static class MessageCode
     public const string InfoTablesToMigrate = "info.tablesToMigrate";
     public const string ErrorNoTablesToCopy = "error.noTablesToCopy";
     public const string ErrorColumnNotSynthesizable = "error.columnNotSynthesizable";
+
+    /// <summary>
+    /// A NOT NULL target column with no source counterpart, filled with a made-up value.
+    /// The run continues, but a fabricated zero is indistinguishable from a real one
+    /// afterwards, so it is never allowed to pass unmentioned.
+    /// </summary>
+    public const string WarnColumnSynthesized = "warn.columnSynthesized";
+
+    /// <summary>A source column with no target counterpart: its data does not travel.</summary>
+    public const string WarnSourceColumnDropped = "warn.sourceColumnDropped";
+
     public const string WarnSourceOnlyTable = "warn.sourceOnlyTable";
+
+    /// <summary>Base tables the source holds outside <c>dbo</c>, which this tool does not read.</summary>
+    public const string WarnSourceSchemaSkipped = "warn.sourceSchemaSkipped";
+    public const string ErrorSourceSchemaSkipped = "error.sourceSchemaSkipped";
+
+    /// <summary>
+    /// What TRUNCATE CASCADE is going to empty, worked out before the transaction opens
+    /// rather than read back from PostgreSQL's notices once the locks are held.
+    /// </summary>
+    public const string WarnCascadePreview = "warn.cascadePreview";
+
+    // ── ORM migration history ─────────────────────────────────────────────────
+    public const string InfoHistoryPreserved = "info.historyPreserved";
+    public const string InfoHistorySourceOnly = "info.historySourceOnly";
+    public const string WarnHistoryCopied = "warn.historyCopied";
+    public const string WarnMirrorNoHistory = "warn.mirrorNoHistory";
+    public const string WarnMirrorOrmManaged = "warn.mirrorOrmManaged";
+
+    /// <summary>
+    /// A preserved history table sits inside the TRUNCATE CASCADE closure, so keeping it out
+    /// of the copy plan does not keep its rows. Fatal: the promise cannot be honoured, and a
+    /// run that continued would be reporting a guarantee it did not deliver.
+    /// </summary>
+    public const string ErrorHistoryCascade = "error.historyCascade";
+
+    /// <summary>A mirrored column that carries no meaning off its own server.</summary>
+    public const string WarnMirrorSkippedRowVersion = "warn.mirrorSkippedRowVersion";
+    public const string FailHistoryCascade = "fail.historyCascade";
     public const string ErrorSourceOnlyTable = "error.sourceOnlyTable";
 
     // ── Mirror ───────────────────────────────────────────────────────────────

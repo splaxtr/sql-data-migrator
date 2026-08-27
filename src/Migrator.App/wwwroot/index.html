@@ -198,6 +198,14 @@
             sütun tipi varsa taşıma hiç başlamaz.</span>
         </span>
       </label>
+      <div id="mirrorOrmWarning" class="danger opt-danger" hidden>
+        Seçilen kaynak veritabanları bir ORM tarafından yönetiliyor
+        (<span id="mirrorOrmList"></span>). Şemaları o ORM'in migration'larına aittir;
+        aynalama, ORM'in eşlemediği provider'a özgü kolonlar üretir ve
+        <code>rowversion</code> gibi kolonlar hedefte doldurulamaz hâle gelir.
+        <strong>Hedefin şemasını ORM'in kendi migration'larıyla kurmak doğrusudur.</strong>
+        Aynalanan hedefin ORM migration geçmişi de olmayacak; ORM o şemayı tanımaz.
+      </div>
       <div class="opt-notes" data-for="optMirror">
         <p id="noteMirrorVerify" class="opt-note" hidden>Yalnız doğrula açıkken aynalama
           yapılmaz: doğrulama, hedefi bulduğu gibi bırakmak zorunda.</p>
@@ -223,6 +231,31 @@
         <p id="noteSourceOnlyMirror" class="opt-note" hidden>Aynalama açıkken bu izne gerek
           kalmaz: eksik tablolar zaten hedefte oluşturulur.</p>
       </div>
+    </div>
+
+    <div class="opt-group">
+      <h3 class="opt-group-title">ORM migration geçmişi</h3>
+
+      <label class="opt">
+        <input type="checkbox" id="optHistory">
+        <span class="opt-text">
+          <span class="opt-title">ORM migration geçmişini de kopyala
+            <span class="opt-flag overwrite">üzerine yazar</span></span>
+          <span class="opt-desc">Normalde <code>__EFMigrationsHistory</code>,
+            <code>django_migrations</code>, <code>schema_migrations</code>,
+            <code>flyway_schema_history</code> ve <code>__drizzle_migrations</code> tabloları
+            taşımanın tamamen dışında bırakılır: ne boşaltılır ne doldurulur, hedefin kendi
+            satırları olduğu gibi kalır.</span>
+          <span class="opt-desc">Bu tabloların içeriği <strong>taşınan veriye değil hedefe
+            aittir</strong> — hangi migration'ların uygulandığını söyler ve bu cevap hedefin
+            provider'ına özgüdür. Kaynağınkini üzerine yazmak iki geçmişi birleştirmez, doğru
+            bir cevabın yerine yanlışını koyar; ORM bunu okur, baseline'ının hiç
+            uygulanmadığı sonucuna varır, baştan çalıştırır ve var olan tablolara çarpar.</span>
+          <span class="opt-desc">Bu seçenek bir kapı gevşetmez — <strong>hedefteki doğru
+            durumu siler</strong>. Yalnızca ORM tarafından yönetilmeyen bir hedefe birebir
+            kopya çıkarıyorsan aç.</span>
+        </span>
+      </label>
     </div>
 
     <div class="opt-group">
@@ -292,6 +325,13 @@
             PostgreSQL'de <code>ALTER ROLE</code> ile sıfırlanması gerekir.</span>
         </span>
       </label>
+      <div class="opt-notes" data-for="optHistory">
+        <p id="noteHistoryVerify" class="opt-note" hidden>Yalnız doğrula açıkken hiçbir tablo
+          yazılmaz; migration geçmişi zaten olduğu gibi kalır.</p>
+        <p id="noteHistoryProvision" class="opt-note" hidden>Yalnız veritabanı oluştur
+          modunda hiçbir tablo kopyalanmaz; bu seçeneğin etkisi olmaz.</p>
+      </div>
+
       <div class="opt-notes" data-for="optUsers">
         <p id="noteUsersVerify" class="opt-note" hidden>Yalnız doğrula açıkken kullanıcı
           oluşturulmaz: doğrulama, hedefi bulduğu gibi bırakmak zorunda.</p>

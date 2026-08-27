@@ -107,6 +107,53 @@ public static class SchemaReader
         return result;
     }
 
+    /// <summary>
+    /// Base tables the source holds outside <c>dbo</c>, grouped by schema.
+    ///
+    /// <para>Everything else in this class filters to <c>dbo</c>, which is what makes those
+    /// tables invisible: absent from <c>sourceSchema</c>, they are not source-only tables
+    /// either, so nothing ever mentions them. This query exists purely so the run can name
+    /// what it is leaving behind.</para>
+    /// </summary>
+    public static async Task<List<(string Schema, int Tables)>> ReadSqlServerOtherSchemasAsync(
+        SqlConnection sql, CancellationToken ct = default)
+    {
+        const string query = """
+            SELECT s.name, COUNT(*)
+            FROM sys.tables t
+            JOIN sys.schemas s ON s.schema_id = t.schema_id
+            WHERE s.name <> 'dbo' AND t.is_ms_shipped = 0
+            GROUP BY s.name
+            ORDER BY s.name
+            """;
+        var result = new List<(string, int)>();
+        await using var command = new SqlCommand(query, sql) { CommandTimeout = 0 };
+        await using var reader = await command.ExecuteReaderAsync(ct);
+        while (await reader.ReadAsync(ct))
+            result.Add((reader.GetString(0), reader.GetInt32(1)));
+        return result;
+    }
+
+    /// <summary>
+    /// The ORM migration-history tables a source database carries, if any.
+    ///
+    /// <para>Cheap on purpose: one catalog query, no columns read. It exists so the browser
+    /// can tell an operator that the database they are about to mirror is ORM-managed at the
+    /// moment they tick the box, rather than in the log of a run they already started.</para>
+    /// </summary>
+    public static async Task<List<string>> ReadSqlServerHistoryTablesAsync(
+        string connectionString, CancellationToken ct = default)
+    {
+        await using var connection = new SqlConnection(connectionString);
+        await connection.OpenAsync(ct);
+        await using var command = new SqlCommand(
+            "SELECT name FROM sys.tables WHERE is_ms_shipped = 0", connection) { CommandTimeout = 0 };
+        await using var reader = await command.ExecuteReaderAsync(ct);
+        var tables = new List<string>();
+        while (await reader.ReadAsync(ct)) tables.Add(reader.GetString(0));
+        return MigrationHistory.In(tables);
+    }
+
     public static async Task<List<ForeignKey>> ReadSqlServerForeignKeysAsync(
         SqlConnection sql, CancellationToken ct = default)
     {

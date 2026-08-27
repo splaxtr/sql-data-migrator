@@ -121,6 +121,30 @@ app.MapGet("/api/jobs/{id}/report.pdf", (JobRegistry jobs, string id) =>
         : Results.File(job.Report, "application/pdf", job.ReportFileName);
 });
 
+// Answers, before a run starts, which of the chosen source databases are ORM-managed. The
+// mirror's warning belongs at the moment the box is ticked; a log line arrives too late to
+// be a decision.
+app.MapPost("/api/source/history-check", async (ConnectionStore store, HistoryCheckRequest request) =>
+{
+    var found = new List<object>();
+    foreach (var database in request.Databases ?? new List<string>())
+    {
+        var connectionString = await store.BuildConnectionStringAsync(request.ServerId, database);
+        if (connectionString is null) continue;
+        try
+        {
+            var tables = await SchemaReader.ReadSqlServerHistoryTablesAsync(connectionString);
+            if (tables.Count > 0) found.Add(new { database, tables });
+        }
+        catch (Exception)
+        {
+            // A database that cannot be opened is the run's problem to report, not this
+            // hint's. Staying quiet here keeps a probe from becoming a second error channel.
+        }
+    }
+    return Results.Ok(found);
+});
+
 // ── Server administration ────────────────────────────────────────────────────
 // A separate job from migrating, on purpose, and it does not inherit the engine's
 // guarantees: these endpoints exist to create, alter and drop things. Every one of them
@@ -331,6 +355,7 @@ static void OpenBrowser()
 
 // ── Request types ───────────────────────────────────────────────────────────
 
+internal sealed record HistoryCheckRequest(string ServerId, List<string>? Databases);
 internal sealed record NamedRequest(string Name);
 internal sealed record CreateDatabaseRequest(string Name, string? Collation, string? Owner);
 internal sealed record DatabaseOwnerRequest(string Database, string Owner);
@@ -362,6 +387,7 @@ internal sealed record MigrateRequest(
     bool MirrorMissingTables,
     bool AllowSchemaRisk,
     bool AllowCollationMismatch,
+    bool MigrateHistoryTables,
     RunMode Mode);
 
 /// <summary>Holds running migrations' progress in memory; gone when the app exits.</summary>

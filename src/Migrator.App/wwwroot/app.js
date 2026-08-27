@@ -234,6 +234,7 @@ function showEmptyState(visibleCount) {
 
 function showSelection() {
   $("btnNone").disabled = selectedDatabases.size === 0;
+  checkOrmManaged();
   if (!sourceDatabases.length) return setMsg("srcMsg", "");
   const filtered = visibleCount === sourceDatabases.length ? "" : ` · ${visibleCount} listeleniyor`;
   setMsg("srcMsg",
@@ -316,6 +317,8 @@ function syncOptions() {
   lockOption("optCollation", provisioning || noLocale,
     provisioning ? "noteCollationProvision" : "noteCollationNoLocale");
   lockOption("optUsers", verifying, "noteUsersVerify");
+  lockOption("optHistory", verifying || provisioning,
+    verifying ? "noteHistoryVerify" : "noteHistoryProvision");
 
   $("userOpts").hidden = !$("optUsers").checked;
   // Mirroring creates the missing tables, so permission to skip them has nothing left to
@@ -327,6 +330,32 @@ function syncOptions() {
   // "var" / "oluşturulacak" on each row depends on the mode: nothing is created while
   // verifying, so the badge cannot be decided once and left alone.
   renderDatabases();
+  checkOrmManaged();
+}
+
+// Whether the chosen source databases are ORM-managed. Asked only when the mirror is on,
+// because that is the only time the answer changes what anyone should do — and asked here
+// rather than left to the run's log, which arrives after the decision.
+async function checkOrmManaged() {
+  const warning = $("mirrorOrmWarning");
+  const databases = [...selectedDatabases];
+  if (!$("optMirror").checked || $("optMirror").disabled || !$("srcServer").value || !databases.length) {
+    warning.hidden = true;
+    return;
+  }
+  try {
+    const found = await api("/api/source/history-check", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ serverId: $("srcServer").value, databases }),
+    });
+    $("mirrorOrmList").textContent = found.map(f => `${f.database}: ${f.tables.join(", ")}`).join(" · ");
+    warning.hidden = found.length === 0;
+  } catch {
+    // A probe that cannot answer must not invent a warning, and the run reports the same
+    // fact anyway.
+    warning.hidden = true;
+  }
 }
 
 // A locked gate is also an unticked one: what the page shows and what the run receives
@@ -363,7 +392,20 @@ const TR = {
   "info.tablesToMigrate": "{0} tablo taşınacak.",
   "error.noTablesToCopy": "Kopyalanacak tablo bulunamadı — kaynak/hedef yanlış olabilir ya da hedefte şema yok.",
   "error.columnNotSynthesizable": "{0}.{1}: kaynakta yok, NOT NULL ve güvenli varsayılan üretilemiyor ({2}).",
+  "warn.columnSynthesized": "{0}.{1}: kaynakta yok ve NOT NULL — her satıra {3} yazıldı ({2}). Bu değer uydurmadır; sonradan gerçek bir değerden ayırt edilemez.",
+  "warn.sourceColumnDropped": "{0}.{1}: hedefte karşılığı yok ({2}) — verisi taşınmayacak.",
   "warn.sourceOnlyTable": "Kaynak tablosu '{0}' hedefte yok — verisi taşınmayacak.",
+  "warn.sourceSchemaSkipped": "Kaynakta dbo dışında {0} tablo var: {1}. Bu araç yalnızca dbo şemasını okur — hiçbiri taşınmayacak.",
+  "error.sourceSchemaSkipped": "Kaynakta dbo dışında {0} tablo var: {1}. Bu araç yalnızca dbo şemasını okur — hiçbiri taşınmaz. Bilinçliyse 'hedefte olmayan kaynak tablolarına izin ver' seçeneğini işaretleyin.",
+  "info.historyPreserved": "'{0}' hedefin kendi ORM migration geçmişi ({1} satır) — dokunulmadı, kopyalanmadı.",
+  "info.historySourceOnly": "'{0}' kaynakta var, hedefte yok — bir ORM'in migration geçmişi tarif ettiği veritabanına aittir, taşınmaz.",
+  "warn.historyCopied": "'{0}': hedefin kendi migration geçmişinin ÜZERİNE kaynaktaki yazılıyor. Bunu sonra okuyan ORM bu veritabanını tanımayacak.",
+  "warn.mirrorNoHistory": "{0} hedefte oluşturulmadı: boş bir migration geçmişi, ORM'e baseline'ı hiç uygulanmamış gibi görünür ve aynalamanın az önce kurduğu tabloların üzerine yeniden çalıştırır. Bu aynalanan hedefin ORM migration geçmişi yok — ORM bu şemayı tanımaz.",
+  "warn.mirrorOrmManaged": "Kaynak bir ORM tarafından yönetiliyor ({0}). Şeması o ORM'in migration'larına ait; aynalama, ORM'in eşlemediği provider'a özgü kolonlar üretir. Hedefin şemasını ORM'in kendi migration'larıyla kurun.",
+  "warn.mirrorSkippedRowVersion": "{0}.{1}: rowversion aynalanmadı — kaynak sunucunun ürettiği bir sayaçtır, hedefte anlamı yoktur ve doldurulamayacak bir NOT NULL kolon olurdu.",
+  "error.historyCascade": "'{0}' korunacaktı ama TRUNCATE CASCADE ona ulaşıyor: {1}. Satırları boşalır ve yeniden doldurulmaz; taşıma verdiği sözü tutamaz.",
+  "fail.historyCascade": "Korunan migration geçmişi TRUNCATE CASCADE kapsamında.",
+  "warn.cascadePreview": "TRUNCATE CASCADE, kopyalanmayacak {0} hedef tabloyu da boşaltacak: {1}. Kaynakta karşılığı olmadığı için boş kalacaklar.",
   "error.sourceOnlyTable": "Kaynak tablosu '{0}' hedefte yok — verisi taşınmayacak. Bilinçliyse 'hedefte olmayan tablolara izin ver', hedefte oluşturulsun istiyorsan 'aynala' seçeneğini işaretleyin.",
 
   "step.mirroring": "Eksik tablolar aynalanıyor",
@@ -481,6 +523,7 @@ $("btnRun").onclick = async () => {
     mirrorMissingTables: $("optMirror").checked,
     allowSchemaRisk: $("optSchemaRisk").checked,
     allowCollationMismatch: $("optCollation").checked,
+    migrateHistoryTables: $("optHistory").checked,
     mode: runMode(),
   };
   if (!body.sourceServerId) return setMsg("runState", "Kaynak sunucu seç.", "err");

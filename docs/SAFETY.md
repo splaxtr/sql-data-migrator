@@ -17,6 +17,12 @@ your application back at the source and nothing has been lost.
 > uses it, and it cannot be reached from a migration; but the app as a whole is no longer a
 > program that only reads from your source, and saying otherwise would be untrue.
 
+**What CASCADE will empty is known before the locks are taken.** The truncate is
+`TRUNCATE ... RESTART IDENTITY CASCADE`, so it reaches every target table referencing one
+being copied. Those outside the copy set are not refilled, and they are computed from the
+target's foreign keys and listed during pre-flight — before the transaction opens — rather
+than read back from PostgreSQL's notices once every table is exclusively locked.
+
 **A failure leaves the target untouched.** The truncate, the copy, the sequence fixup and
 the verification all share one transaction. If any of them fails, the transaction rolls
 back and the target is byte-identical to what it was before the run.
@@ -47,8 +53,21 @@ tool describes itself as a cutover tool.
 
 **That the target schema is right.** The tool moves data into tables that already exist. If
 the target schema is missing a column, that column's data does not travel and the run still
-succeeds — the missing column is reported, not treated as failure, because dropped columns
-are a normal outcome of a schema change. Read the report.
+succeeds — the column is named in the run and in the PDF report, not treated as failure,
+because dropped columns are a normal outcome of a schema change. Read the report.
+
+The reverse case is reported the same way and is the more dangerous one: a target column
+that is `NOT NULL`, has no default and has no source counterpart is **given a made-up
+value** — `0`, `false` or `''` — in every row. The run says which column and which value.
+Afterwards an invented `0` is indistinguishable from a measured one, so that line is the
+only chance to catch it.
+
+**Anything outside `dbo`.** The source is read from the `dbo` schema only, and the target is
+written in `public` only. Base tables in any other source schema are counted and named, and
+the run stops unless *allow tables missing from target* is on — they are source data with no
+target counterpart, which is what that option already governs. Mirroring does not help here
+and is not offered as a remedy: it creates tables in `public`, so a `reporting.Invoice`
+would land next to `dbo.Invoice` under the same name.
 
 **That your data was correct to begin with.** Row counts and foreign keys are checked.
 Business meaning is not. If the source contains a wrong balance, the target will contain
@@ -71,6 +90,53 @@ migration occasionally needs it:
 | Verify only | Skips the copy entirely | Checking an earlier migration without touching anything |
 
 Turning one on without reading what it reported cancels the reason this tool exists.
+
+## ORM migration history is the target's, and is kept
+
+An ORM keeps a table of the migrations a database has had applied — `__EFMigrationsHistory`,
+`django_migrations`, `schema_migrations`, `flyway_schema_history`, `__drizzle_migrations`.
+Its rows describe **the target**, not the data being moved, and the answer is specific to the
+provider the target runs on: a PostgreSQL branch of an application has different migration
+IDs from the SQL Server branch it was ported from.
+
+So these tables are left out of the migration entirely. They are neither truncated nor
+filled, and the target's rows survive untouched.
+
+This is not one of the escape hatches above, and it is deliberately not in that table. Those
+options let questionable *data* through; this is the opposite direction. Copying the source's
+rows over the target's does not merge two histories — it replaces a true statement with a
+false one, and the ORM believes it. Entity Framework then finds no record of its baseline,
+re-applies it, and fails on tables that already exist. That is a real failure this tool
+caused, not a hypothetical.
+
+It is the same class of loss the tool already refuses elsewhere, in the other direction: a
+source table with no target counterpart stops the run because data would be left behind, and
+the target's own migration history being truncated and overwritten is exactly that, reversed.
+
+**The preservation is proven, not assumed.** Leaving a table out of the copy plan keeps it out
+of the `TRUNCATE` list; it does not keep `TRUNCATE ... CASCADE` away from it, and a history
+table with a foreign key into a copied table would be emptied anyway. The cascade closure is
+already computed before the transaction opens, so it is checked: if a preserved table falls
+inside it, the run **fails**, naming the table and the foreign-key path that reaches it. No
+ORM gives that table a foreign key today, which makes it safe in practice and unverified in
+principle — and a guarantee is not something to build on the second of those.
+
+**Mirroring does not create one.** If the source has a history table the target lacks, the
+mirror leaves it out and says so. Creating an empty one would produce the very crash this
+protects against: the mirror has just built the schema, the ORM reads a history with nothing
+in it, concludes no migration was ever applied, re-runs its baseline and hits tables that
+already exist. A mirrored target has no ORM migration history and the ORM will not recognise
+its schema — that is the honest outcome, and it is reported as such.
+
+**`rowversion` is never mirrored.** SQL Server's `rowversion`/`timestamp` is a counter the
+source server hands out and compares against itself; its bytes mean nothing anywhere else and
+PostgreSQL cannot maintain one. Mirrored as `bytea NOT NULL` with no default it becomes a
+column nothing can ever fill, so every insert an application makes fails — after the tool has
+reported the migration verified. Each skipped column is named in the run.
+
+**Copying the history anyway is an option**, for a byte-for-byte copy into a target no ORM
+manages. It is off by default, it says in the interface that it overwrites rather than
+permits, and every table it overwrites is reported.
 
 ## The modes that move nothing
 

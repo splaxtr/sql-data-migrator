@@ -30,6 +30,7 @@ internal static class BatchRunner
             AllowSchemaRisk = request.AllowSchemaRisk,
             AllowCollationMismatch = request.AllowCollationMismatch,
             VerifyOnly = request.Mode == RunMode.VerifyOnly,
+            MigrateHistoryTables = request.MigrateHistoryTables,
             ExpectedIcuLocale = string.IsNullOrWhiteSpace(request.TargetIcuLocale) ? null : request.TargetIcuLocale,
         };
 
@@ -46,7 +47,17 @@ internal static class BatchRunner
                     AppMessageCode.StepBatchDatabase,
                     new object?[] { i + 1, total, database.SourceDatabase, database.TargetDatabase }));
 
-            outcomes.Add(await RunOneAsync(store, request, options, database, progress, ct));
+            // Watches the same stream the browser sees and keeps the lines that belong in
+            // the report. Collecting by code rather than changing the engine's result type:
+            // these are observations about a run, and the engine already reports them.
+            var notes = new List<string>();
+            var watched = new InlineProgress<ProgressMessage>(m =>
+            {
+                if (TurkishNote(m) is { } note) notes.Add(note);
+                progress.Report(m);
+            });
+            var outcome = await RunOneAsync(store, request, options, database, watched, ct);
+            outcomes.Add(notes.Count > 0 ? outcome with { SchemaNotes = notes } : outcome);
         }
 
         var report = new MigrationReport(
@@ -199,6 +210,36 @@ internal static class BatchRunner
         var kind = server.Kind == ServerKind.SqlServer ? "SQL Server" : "PostgreSQL";
         return $"{server.Name} · {kind} · {server.Host}:{server.Port} · {server.User}";
     }
+
+    /// <summary>
+    /// The handful of progress lines that outlive the run, worded for the PDF.
+    ///
+    /// <para>A row count says the data arrived; it cannot say that four of those columns
+    /// were invented, or that a schema was left behind. Those facts scroll past in the log
+    /// and are gone, so the ones that change what the target actually contains are kept.</para>
+    /// </summary>
+    private static string? TurkishNote(ProgressMessage message) => message.Code switch
+    {
+        MessageCode.WarnColumnSynthesized =>
+            $"{message.Args?[0]}.{message.Args?[1]}: kaynakta yok, NOT NULL — her satıra {message.Args?[3]} yazıldı ({message.Args?[2]}).",
+        MessageCode.WarnSourceColumnDropped =>
+            $"{message.Args?[0]}.{message.Args?[1]}: hedefte karşılığı yok ({message.Args?[2]}) — verisi taşınmadı.",
+        MessageCode.WarnSourceOnlyTable =>
+            $"Kaynak tablosu '{message.Args?[0]}' hedefte yok — verisi taşınmadı.",
+        MessageCode.WarnSourceSchemaSkipped =>
+            $"dbo dışında {message.Args?[0]} tablo var ({message.Args?[1]}) — bu araç yalnızca dbo okur, taşınmadılar.",
+        MessageCode.InfoHistoryPreserved =>
+            $"'{message.Args?[0]}' hedefin kendi migration geçmişi ({message.Args?[1]} satır) — dokunulmadı, kopyalanmadı.",
+        MessageCode.WarnHistoryCopied =>
+            $"'{message.Args?[0]}': hedefin migration geçmişi kaynaktakiyle DEĞİŞTİRİLDİ. ORM bu hedefi tanımayabilir.",
+        MessageCode.WarnMirrorNoHistory =>
+            $"{message.Args?[0]} hedefte oluşturulmadı — aynalanan şemanın ORM migration geçmişi yok, ORM bu şemayı tanımaz.",
+        MessageCode.WarnMirrorSkippedRowVersion =>
+            $"{message.Args?[0]}.{message.Args?[1]}: rowversion aynalanmadı — kaynak sunucunun ürettiği bir değer, hedefte karşılığı yok.",
+        MessageCode.WarnCascadePreview =>
+            $"TRUNCATE CASCADE, kopyalanmayan {message.Args?[0]} hedef tabloyu da boşalttı: {message.Args?[1]}. Boş kaldılar.",
+        _ => null,
+    };
 
     /// <summary>
     /// The engine reports in English and leaves translation to whoever displays the message.

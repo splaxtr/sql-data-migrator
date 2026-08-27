@@ -61,6 +61,41 @@ public sealed class MigrationEngine
                 .Except(targetSchema.Keys, StringComparer.Ordinal)
                 .OrderBy(t => t, StringComparer.Ordinal)
                 .ToList();
+
+            // An ORM-managed source says so by carrying a migration history, and its schema
+            // is the ORM's to define. Warned here, at the point the mirror is about to run,
+            // and never used to override the choice: the detection is by table name and a
+            // false positive must not cancel something the operator asked for.
+            var sourceHistory = MigrationHistory.In(sourceSchema.Keys);
+            if (sourceHistory.Count > 0)
+                _progress.Report(new(ProgressKind.Warning,
+                    $"The source is ORM-managed ({string.Join(", ", sourceHistory)}). Its schema belongs to that ORM's " +
+                    "migrations; mirroring reproduces provider-specific columns the ORM does not map. " +
+                    "Apply the ORM's own migrations to the target instead.",
+                    MessageCode.WarnMirrorOrmManaged,
+                    new object?[] { string.Join(", ", sourceHistory) }));
+
+            if (!options.MigrateHistoryTables)
+            {
+                // Creating an empty one would produce the exact crash this tool now exists to
+                // prevent: the mirror has just built the schema, the ORM reads a history with
+                // nothing in it, concludes no migration was ever applied, re-runs the baseline
+                // and hits tables that already exist. A target that has the schema but no
+                // history was not built by an ORM in the first place — if an ORM built the
+                // schema it wrote the history too.
+                var skipped = MigrationHistory.In(missing);
+                if (skipped.Count > 0)
+                {
+                    missing = missing.Except(skipped, StringComparer.Ordinal).ToList();
+                    _progress.Report(new(ProgressKind.Warning,
+                        $"Not creating {string.Join(", ", skipped)} in the target: an empty migration history " +
+                        "makes an ORM re-apply its baseline over the schema the mirror just built. " +
+                        "This mirrored target has no ORM migration history and the ORM will not recognise its schema.",
+                        MessageCode.WarnMirrorNoHistory,
+                        new object?[] { string.Join(", ", skipped) }));
+                }
+            }
+
             if (missing.Count > 0)
             {
                 if (!await SchemaMirror.CreateMissingTablesAsync(sql, pg, sourceSchema, missing, targetSchema.Keys, _progress, ct))
@@ -71,8 +106,28 @@ public sealed class MigrationEngine
 
         var foreignKeys = await SchemaReader.ReadForeignKeysAsync(pg, ct);
 
-        var plan = BuildPlan(sourceSchema, targetSchema, options.AllowSourceOnlyTables);
-        if (plan is null)
+        // Two sets, because they answer different questions: everything the plan must leave
+        // alone, and — of those — the target tables whose rows the run has promised to keep.
+        var preservedInTarget = new HashSet<string>(StringComparer.Ordinal);
+        var preserved = new HashSet<string>(StringComparer.Ordinal);
+        if (options.MigrateHistoryTables)
+        {
+            foreach (var table in MigrationHistory.In(targetSchema.Keys).Intersect(sourceSchema.Keys, StringComparer.Ordinal))
+                _progress.Report(new(ProgressKind.Warning,
+                    $"'{table}': the target's own migration history is being replaced by the source's. " +
+                    "An ORM reading it afterwards will not recognise this database.",
+                    MessageCode.WarnHistoryCopied, new object?[] { table }));
+        }
+        else
+        {
+            preservedInTarget = new HashSet<string>(
+                MigrationHistory.In(targetSchema.Keys), StringComparer.Ordinal);
+            preserved = await ReportHistoryAsync(pg, sourceSchema.Keys, targetSchema.Keys, ct);
+        }
+
+        var plan = BuildPlan(sourceSchema, targetSchema, options.AllowSourceOnlyTables, preserved);
+        var schemasOk = await ReportOtherSchemasAsync(sql, options.AllowSourceOnlyTables, ct);
+        if (plan is null || !schemasOk)
             return Fail(stopwatch, "Schema mismatch — details above.", MessageCode.FailSchemaMismatch);
 
         var copyTables = plan.Where(p => p.CopyColumns.Count > 0).Select(p => p.Table).ToHashSet(StringComparer.Ordinal);
@@ -94,6 +149,10 @@ public sealed class MigrationEngine
                 ? Succeed(stopwatch, 0, "Verification passed.", MessageCode.SuccessVerifyPassed)
                 : Fail(stopwatch, "Verification failed.", MessageCode.FailVerifyFailed);
         }
+
+        if (!ReportCascadePreview(foreignKeys, copyTables, preservedInTarget))
+            return Fail(stopwatch, "A preserved migration history is inside the TRUNCATE CASCADE closure.",
+                MessageCode.FailHistoryCascade);
 
         if (!await PreflightAsync(sql, plan, options.AllowSchemaRisk, ct))
             return Fail(stopwatch, "Preflight mismatches were not resolved.", MessageCode.FailPreflightUnresolved);
@@ -158,13 +217,17 @@ public sealed class MigrationEngine
     private List<TablePlan>? BuildPlan(
         Dictionary<string, List<ColumnInfo>> sourceSchema,
         Dictionary<string, List<ColumnInfo>> targetSchema,
-        bool allowSourceOnly)
+        bool allowSourceOnly,
+        IReadOnlySet<string> preserved)
     {
         var plan = new List<TablePlan>();
         var fatal = false;
 
         foreach (var (table, targetColumns) in targetSchema.OrderBy(x => x.Key, StringComparer.Ordinal))
         {
+            // Not in the plan means not in the TRUNCATE set and not written to. The rows the
+            // target already holds are the ones that belong there.
+            if (preserved.Contains(table)) continue;
             if (!sourceSchema.TryGetValue(table, out var sourceColumns)) continue;
 
             var sourceByName = sourceColumns.ToDictionary(c => c.Name, StringComparer.Ordinal);
@@ -179,7 +242,19 @@ public sealed class MigrationEngine
                     continue;
                 }
                 if (column.IsNullable || column.HasDefault) continue;
-                if (CanSynthesize(column.StoreType)) { synthesized.Add(column); continue; }
+                if (CanSynthesize(column.StoreType))
+                {
+                    // The value is made up. Once it is in the table a fabricated 0 reads
+                    // exactly like a measured one, so the only moment it can be pointed at
+                    // is this one.
+                    var value = Describe(SynthesizeDefault(column.StoreType));
+                    _progress.Report(new(ProgressKind.Warning,
+                        $"{table}.{column.Name}: missing from the source and NOT NULL — every row was given {value} ({column.StoreType}).",
+                        MessageCode.WarnColumnSynthesized,
+                        new object?[] { table, column.Name, column.StoreType, value }));
+                    synthesized.Add(column);
+                    continue;
+                }
 
                 _progress.Report(new(ProgressKind.Error,
                     $"{table}.{column.Name}: missing from the source, NOT NULL, and no safe default can be synthesized ({column.StoreType}).",
@@ -187,15 +262,28 @@ public sealed class MigrationEngine
                 fatal = true;
             }
 
+            // SAFETY.md promises this one by name: "the missing column is reported, not
+            // treated as failure". Only the target's columns were ever walked above, so
+            // until now nothing looked at the source's, and a dropped column's data left
+            // without a word.
+            var targetByName = targetColumns.Select(c => c.Name).ToHashSet(StringComparer.Ordinal);
+            foreach (var column in sourceColumns.Where(c => !targetByName.Contains(c.Name)))
+                _progress.Report(new(ProgressKind.Warning,
+                    $"{table}.{column.Name}: no counterpart in the target ({column.StoreType}) — its data will not be migrated.",
+                    MessageCode.WarnSourceColumnDropped,
+                    new object?[] { table, column.Name, column.StoreType }));
+
             plan.Add(new TablePlan(table, copy, synthesized));
         }
 
-        // __EFMigrationsHistory is deliberately NOT special-cased: a mirror is a mirror,
-        // and which tables move is not this tool's opinion to have. An EF-managed target
-        // therefore gets its provider-specific history overwritten by the source's — an
-        // operator who cares reruns `dotnet ef database update` afterwards.
+        // ORM migration-history tables are excluded above unless the operator asked for
+        // them: their rows describe the target, not the data. Re-running the ORM afterwards
+        // does not repair a copied history — the target then holds the source provider's
+        // migration IDs and not its own baseline's, so the ORM re-applies the baseline and
+        // fails on tables that already exist. See MigrationHistory.
         var sourceOnly = sourceSchema.Keys
             .Except(targetSchema.Keys, StringComparer.Ordinal)
+            .Except(preserved, StringComparer.Ordinal)
             .OrderBy(t => t, StringComparer.Ordinal)
             .ToList();
 
@@ -224,12 +312,174 @@ public sealed class MigrationEngine
         _ => false,
     };
 
+    /// <summary>Renders a synthesized value the way it will look in the table.</summary>
+    private static string Describe(object value) => value switch
+    {
+        string text => $"'{text}'",
+        bool flag => flag ? "true" : "false",
+        _ => Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture) ?? "",
+    };
+
     private static object SynthesizeDefault(string udt) => udt switch
     {
         "bool" => false, "int2" => (short)0, "int4" => 0, "int8" => 0L,
         "numeric" => 0m, "float4" => 0f, "float8" => 0d, "text" or "varchar" => "",
         _ => throw new InvalidOperationException($"Cannot synthesize a default: {udt}"),
     };
+
+    /// <summary>
+    /// Decides which tables are the target's own to keep, and says so with numbers.
+    ///
+    /// <para>Returns the target tables that will be left out of the plan entirely. Silence
+    /// is what made the original failure expensive to diagnose, so every history table found
+    /// on either side produces a line — including the ones there is nothing to do about.</para>
+    /// </summary>
+    private async Task<HashSet<string>> ReportHistoryAsync(
+        NpgsqlConnection pg,
+        IEnumerable<string> sourceTables,
+        IEnumerable<string> targetTables,
+        CancellationToken ct)
+    {
+        var preserved = new HashSet<string>(MigrationHistory.In(targetTables), StringComparer.Ordinal);
+        foreach (var table in preserved.OrderBy(t => t, StringComparer.Ordinal))
+        {
+            long rows;
+            await using (var command = new NpgsqlCommand(
+                $"SELECT count(*) FROM {TargetDatabase.Quote(table)}", pg) { CommandTimeout = 0 })
+                rows = (long)(await command.ExecuteScalarAsync(ct) ?? 0L);
+
+            _progress.Report(new(ProgressKind.Info,
+                $"'{table}' is the target's own migration history ({rows} rows) — left untouched, not copied.",
+                MessageCode.InfoHistoryPreserved, new object?[] { table, rows }));
+        }
+
+        // A source history table with no target counterpart is deliberately not migrated, so
+        // it must also leave the source-only gate alone. That gate asks the operator to
+        // approve data being left behind; this data is not being left behind by accident,
+        // and making it stop the run would be asking permission for a decision the tool has
+        // already made on principle.
+        var excluded = new HashSet<string>(preserved, StringComparer.Ordinal);
+        foreach (var table in MigrationHistory.In(sourceTables).Except(preserved, StringComparer.Ordinal))
+        {
+            excluded.Add(table);
+            _progress.Report(new(ProgressKind.Info,
+                $"'{table}' exists in the source and not in the target — an ORM's history belongs to the database it describes, so it is not migrated.",
+                MessageCode.InfoHistorySourceOnly, new object?[] { table }));
+        }
+
+        return excluded;
+    }
+
+    /// <summary>
+    /// Names the source schemas this tool does not read.
+    ///
+    /// <para>Judged on the same gate as a source-only table, because that is what these
+    /// are: source data with no target counterpart, differing only in that a whole schema
+    /// goes at once. Reusing <see cref="MigrationOptions.AllowSourceOnlyTables"/> keeps one
+    /// switch for one meaning — "I know data is being left behind" — rather than adding a
+    /// second one an operator could have on while the first is off.</para>
+    ///
+    /// <para>The mirror is deliberately not offered as a remedy here. It creates missing
+    /// tables in <c>public</c>, and a <c>reporting.Invoice</c> arriving beside a
+    /// <c>dbo.Invoice</c> would collide by name — silently, since only the base name
+    /// travels.</para>
+    /// </summary>
+    private async Task<bool> ReportOtherSchemasAsync(
+        SqlConnection sql, bool allowSourceOnly, CancellationToken ct)
+    {
+        var schemas = await SchemaReader.ReadSqlServerOtherSchemasAsync(sql, ct);
+        if (schemas.Count == 0) return true;
+
+        var total = schemas.Sum(s => s.Tables);
+        var listed = string.Join(", ", schemas.Select(s => $"{s.Schema} ({s.Tables})"));
+        var text = $"The source has {total} base tables outside dbo, in: {listed}. " +
+                   "This tool reads dbo only, so none of them will be migrated.";
+
+        if (allowSourceOnly)
+        {
+            _progress.Report(new(ProgressKind.Warning, text,
+                MessageCode.WarnSourceSchemaSkipped, new object?[] { total, listed }));
+            return true;
+        }
+
+        _progress.Report(new(ProgressKind.Error,
+            text + " If this is intentional, enable the 'allow source-only tables' option.",
+            MessageCode.ErrorSourceSchemaSkipped, new object?[] { total, listed }));
+        return false;
+    }
+
+    /// <summary>
+    /// Works out which target tables TRUNCATE CASCADE will empty, before the transaction
+    /// opens and the exclusive locks are taken.
+    ///
+    /// <para>CASCADE reaches every table that references one being truncated, transitively.
+    /// The ones inside the copy set get refilled; the ones outside it do not, and those are
+    /// the loss worth naming. PostgreSQL reports them afterwards through notices, which is
+    /// too late to be a decision.</para>
+    /// </summary>
+    private bool ReportCascadePreview(
+        List<ForeignKey> foreignKeys, HashSet<string> copyTables, IReadOnlySet<string> preserved)
+    {
+        // Each entry records the table whose truncation reaches this one, so a path can be
+        // spelled out afterwards. Seeds map to null.
+        var reachedBy = copyTables.ToDictionary(t => t, _ => (string?)null, StringComparer.Ordinal);
+        for (var grew = true; grew;)
+        {
+            grew = false;
+            foreach (var fk in foreignKeys)
+                if (reachedBy.ContainsKey(fk.ParentTable) && !reachedBy.ContainsKey(fk.ChildTable))
+                {
+                    reachedBy[fk.ChildTable] = fk.ParentTable;
+                    grew = true;
+                }
+        }
+
+        // Leaving a table out of the plan keeps it out of the TRUNCATE list; it does not keep
+        // CASCADE away from it. A preserved history table with a foreign key into a copied
+        // one would be emptied anyway — and the run would have promised otherwise. Today no
+        // ORM gives that table a foreign key, which makes this safe in practice and unproven
+        // in principle, and unproven is not a thing to build a guarantee on.
+        var doomed = preserved.Where(reachedBy.ContainsKey)
+            .OrderBy(t => t, StringComparer.Ordinal)
+            .ToList();
+        if (doomed.Count > 0)
+        {
+            foreach (var table in doomed)
+                _progress.Report(new(ProgressKind.Error,
+                    $"'{table}' was to be preserved, but TRUNCATE CASCADE reaches it: {PathTo(reachedBy, table)}. " +
+                    "Its rows would be emptied and not refilled, so the migration cannot keep the promise it made.",
+                    MessageCode.ErrorHistoryCascade,
+                    new object?[] { table, PathTo(reachedBy, table) }));
+            return false;
+        }
+
+        var collateral = reachedBy.Keys.Except(copyTables, StringComparer.Ordinal)
+            .OrderBy(t => t, StringComparer.Ordinal)
+            .ToList();
+        if (collateral.Count == 0) return true;
+
+        var sample = string.Join(", ", collateral.Take(8));
+        var more = collateral.Count > 8 ? $" (+{collateral.Count - 8} more)" : "";
+        _progress.Report(new(ProgressKind.Warning,
+            $"TRUNCATE CASCADE will also empty {collateral.Count} target tables that are not being copied: " +
+            $"{sample}{more}. They have no source counterpart, so they will stay empty.",
+            MessageCode.WarnCascadePreview,
+            new object?[] { collateral.Count, sample + more }));
+        return true;
+    }
+
+    /// <summary>Walks the trail back to the copied table the cascade starts from.</summary>
+    private static string PathTo(Dictionary<string, string?> reachedBy, string table)
+    {
+        var path = new List<string> { table };
+        for (var at = reachedBy[table]; at is not null; at = reachedBy[at])
+        {
+            path.Add(at);
+            if (path.Count > 32) break; // a cycle would otherwise walk forever
+        }
+        path.Reverse();
+        return string.Join(" -> ", path);
+    }
 
     // ── Preflight ─────────────────────────────────────────────────────────────
 

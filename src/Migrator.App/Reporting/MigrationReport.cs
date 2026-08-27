@@ -15,7 +15,11 @@ public sealed record DatabaseOutcome(
     string? Password = null,
     bool UserCreated = false,
     string? UserNote = null,
-    bool TargetCreated = false);
+    bool TargetCreated = false,
+    // Things the run did that a row count cannot show: a value invented for a NOT NULL
+    // column, a source column with nowhere to go, a schema left behind, a table CASCADE
+    // will empty. Turkish and ready to print — the PDF has no translation layer after it.
+    IReadOnlyList<string>? SchemaNotes = null);
 
 /// <summary>Everything a completed batch has to say about itself.</summary>
 public sealed record MigrationReport(
@@ -30,4 +34,5 @@ public sealed record MigrationReport(
     public long TotalRows => Databases.Sum(d => d.RowsCopied);
     public int CreatedCount => Databases.Count(d => d.TargetCreated);
     public bool HasUsers => Databases.Any(d => d.UserName is not null);
+    public bool HasSchemaNotes => Databases.Any(d => d.SchemaNotes is { Count: > 0 });
 }
