@@ -4,3 +4,13 @@ obj/
 .vs/
 .idea/
 *.swp
+
+# Dev-time UI audit tooling (see .claude/skills/verify-ui) — the shipped app has
+# no JavaScript dependencies.
+node_modules/
+package-lock.json
+
+# Personal Claude Code settings and MCP wiring; both are machine-specific and
+# MCP config is where a credential would leak from.
+.claude/settings.local.json
+.mcp.json

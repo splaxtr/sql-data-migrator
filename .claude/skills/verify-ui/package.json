@@ -1,0 +1,13 @@
+{
+  "name": "sql-data-migrator-verify-ui",
+  "private": true,
+  "type": "module",
+  "description": "Dev-time UI audit for sql-data-migrator. Kept out of the solution: the shipped app has no JavaScript dependencies.",
+  "scripts": {
+    "audit": "node scripts/audit-ui.mjs",
+    "postinstall": "playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}
