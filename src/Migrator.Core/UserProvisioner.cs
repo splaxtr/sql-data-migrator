@@ -178,7 +178,7 @@ public static class UserProvisioner
     /// underscores, never starting with a digit, never longer than PostgreSQL's 63-byte
     /// identifier limit. The pattern may use <c>{db}</c> for the sanitized database name.
     /// </summary>
-    public static string BuildRoleName(string pattern, string databaseName)
+    public static string BuildRoleName(string? pattern, string databaseName)
     {
         var sanitized = Sanitize(databaseName);
         var name = Sanitize((string.IsNullOrWhiteSpace(pattern) ? "{db}_user" : pattern)
