@@ -27,6 +27,15 @@ public static class MessageCode
     public const string WarnSourceOnlyTable = "warn.sourceOnlyTable";
     public const string ErrorSourceOnlyTable = "error.sourceOnlyTable";
 
+    // ── Mirror ───────────────────────────────────────────────────────────────
+    public const string StepMirroring = "step.mirroring";
+    public const string InfoMirrorPlan = "info.mirrorPlan";
+    public const string InfoTableCreated = "info.tableCreated";
+    public const string InfoMirrorForeignKeys = "info.mirrorForeignKeys";
+    public const string WarnMirrorFkSkipped = "warn.mirrorFkSkipped";
+    public const string WarnMirrorFkFailed = "warn.mirrorFkFailed";
+    public const string ErrorMirrorUnsupportedType = "error.mirrorUnsupportedType";
+
     // ── Preflight ────────────────────────────────────────────────────────────
     public const string InfoPreflightClean = "info.preflightClean";
     public const string ErrorPreflightNulls = "error.preflightNulls";
@@ -65,6 +74,7 @@ public static class MessageCode
     public const string SuccessVerifyPassed = "success.verifyPassed";
     public const string FailCollationMismatch = "fail.collationMismatch";
     public const string FailSchemaMismatch = "fail.schemaMismatch";
+    public const string FailMirrorFailed = "fail.mirrorFailed";
     public const string FailEmptyIntersection = "fail.emptyIntersection";
     public const string FailVerifyFailed = "fail.verifyFailed";
     public const string FailPreflightUnresolved = "fail.preflightUnresolved";

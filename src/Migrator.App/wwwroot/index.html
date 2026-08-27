@@ -67,7 +67,8 @@
     </div>
     <p class="hint">Var olmayan bir veritabanı adı yazarsan doğru collation ile oluşturulur.
       Var olanı seçersen ona dokunulmaz. <strong>Hedef tablolar önceden var olmalıdır</strong> —
-      bu araç veri taşır, şema yaratmaz.</p>
+      bu araç veri taşır, şema yaratmaz. Eksik tabloları 4. adımdaki <strong>aynala</strong>
+      seçeneği kaynaktan oluşturabilir.</p>
     <span id="tgtMsg" class="msg"></span>
   </section>
 
@@ -75,6 +76,9 @@
     <h2>4 · Seçenekler</h2>
     <p class="hint">Hepsi kapalıdır ve bilinçli açılır. Ne geçirdiklerini okumadan açmak,
       bu aracın var oluş sebebini iptal eder.</p>
+    <label class="check"><input type="checkbox" id="optMirror">
+      Hedefte olmayan tabloları oluştur (aynala) <em>— kaynak şemadan tablo, PK ve FK üretilir;
+      verisi birebir taşınır. Default, index ve check constraint kopyalanmaz</em></label>
     <label class="check"><input type="checkbox" id="optSourceOnly">
       Hedefte olmayan kaynak tablolarına izin ver <em>— verileri taşınmaz</em></label>
     <label class="check"><input type="checkbox" id="optSchemaRisk">

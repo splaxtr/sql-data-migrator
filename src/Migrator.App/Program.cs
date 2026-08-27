@@ -105,6 +105,7 @@ app.MapPost("/api/migrate", async (ConnectionStore store, JobRegistry jobs, Migr
             var result = await engine.RunAsync(source, target, new MigrationOptions
             {
                 AllowSourceOnlyTables = request.AllowSourceOnly,
+                MirrorMissingTables = request.MirrorMissingTables,
                 AllowSchemaRisk = request.AllowSchemaRisk,
                 AllowCollationMismatch = request.AllowCollationMismatch,
                 VerifyOnly = request.VerifyOnly,
@@ -196,6 +197,7 @@ internal sealed record MigrateRequest(
     string TargetDatabase,
     string? TargetIcuLocale,
     bool AllowSourceOnly,
+    bool MirrorMissingTables,
     bool AllowSchemaRisk,
     bool AllowCollationMismatch,
     bool VerifyOnly);

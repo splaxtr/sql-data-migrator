@@ -7,7 +7,9 @@ public sealed record ColumnInfo(
     bool IsNullable,
     bool IsIdentity,
     bool HasDefault,
-    int? MaxLength);
+    int? MaxLength,
+    int? Precision = null,
+    int? Scale = null);
 
 /// <summary>The copy plan for a single table.</summary>
 public sealed record TablePlan(
@@ -19,7 +21,8 @@ public sealed record ForeignKey(
     string Name,
     string ChildTable,
     string ParentTable,
-    List<(string Child, string Parent)> Columns);
+    List<(string Child, string Parent)> Columns,
+    string? DeleteAction = null);
 
 public enum ProgressKind { Info, Warning, Error, Success, Step }
 
@@ -47,6 +50,14 @@ public sealed class MigrationOptions
 {
     /// <summary>Ignores source tables with no target counterpart (their data is not migrated).</summary>
     public bool AllowSourceOnlyTables { get; init; }
+
+    /// <summary>
+    /// Creates source-only tables in the target from the source schema (mirror mode):
+    /// columns, NOT NULL, identity, primary keys and foreign keys. Defaults, indexes and
+    /// check constraints are not copied. Ignored when <see cref="VerifyOnly"/> is set —
+    /// a verification must not mutate the target.
+    /// </summary>
+    public bool MirrorMissingTables { get; init; }
 
     /// <summary>Proceeds despite the NULL/length mismatches the preflight found.</summary>
     public bool AllowSchemaRisk { get; init; }

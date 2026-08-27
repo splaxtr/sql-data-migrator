@@ -11,12 +11,11 @@ using NpgsqlTypes;
 /// Design decision: the copy AND its verification run inside one transaction; nothing is
 /// committed until verification passes. A successful exit therefore means the data really
 /// moved, and a failure leaves no half-filled target. The schema must already EXIST in
-/// the target — this tool only moves data, it creates no tables.
+/// the target — except in mirror mode, which first creates source-only tables from the
+/// source schema (see <see cref="SchemaMirror"/>).
 /// </summary>
 public sealed class MigrationEngine
 {
-    private static readonly string[] SkipTables = { "__EFMigrationsHistory" };
-
     private readonly IProgress<ProgressMessage> _progress;
 
     public MigrationEngine(IProgress<ProgressMessage> progress) => _progress = progress;
@@ -54,6 +53,22 @@ public sealed class MigrationEngine
         _progress.Report(new(ProgressKind.Step, "Reading schemas", MessageCode.StepReadingSchemas));
         var sourceSchema = await SchemaReader.ReadSqlServerAsync(sql, ct);
         var targetSchema = await SchemaReader.ReadPostgresAsync(pg, ct);
+
+        // VerifyOnly promises to not touch the target, and that promise outranks the mirror.
+        if (options.MirrorMissingTables && !options.VerifyOnly)
+        {
+            var missing = sourceSchema.Keys
+                .Except(targetSchema.Keys, StringComparer.Ordinal)
+                .OrderBy(t => t, StringComparer.Ordinal)
+                .ToList();
+            if (missing.Count > 0)
+            {
+                if (!await SchemaMirror.CreateMissingTablesAsync(sql, pg, sourceSchema, missing, targetSchema.Keys, _progress, ct))
+                    return Fail(stopwatch, "Schema mirroring failed — details above.", MessageCode.FailMirrorFailed);
+                targetSchema = await SchemaReader.ReadPostgresAsync(pg, ct);
+            }
+        }
+
         var foreignKeys = await SchemaReader.ReadForeignKeysAsync(pg, ct);
 
         var plan = BuildPlan(sourceSchema, targetSchema, options.AllowSourceOnlyTables);
@@ -150,7 +165,6 @@ public sealed class MigrationEngine
 
         foreach (var (table, targetColumns) in targetSchema.OrderBy(x => x.Key, StringComparer.Ordinal))
         {
-            if (SkipTables.Contains(table)) continue;
             if (!sourceSchema.TryGetValue(table, out var sourceColumns)) continue;
 
             var sourceByName = sourceColumns.ToDictionary(c => c.Name, StringComparer.Ordinal);
@@ -176,9 +190,12 @@ public sealed class MigrationEngine
             plan.Add(new TablePlan(table, copy, synthesized));
         }
 
+        // __EFMigrationsHistory is deliberately NOT special-cased: a mirror is a mirror,
+        // and which tables move is not this tool's opinion to have. An EF-managed target
+        // therefore gets its provider-specific history overwritten by the source's — an
+        // operator who cares reruns `dotnet ef database update` afterwards.
         var sourceOnly = sourceSchema.Keys
             .Except(targetSchema.Keys, StringComparer.Ordinal)
-            .Where(t => !SkipTables.Contains(t))
             .OrderBy(t => t, StringComparer.Ordinal)
             .ToList();
 
@@ -191,7 +208,8 @@ public sealed class MigrationEngine
             else
             {
                 _progress.Report(new(ProgressKind.Error,
-                    text + " If this is intentional, enable the 'allow source-only tables' option.",
+                    text + " If this is intentional, enable the 'allow source-only tables' option;" +
+                    " to create it in the target, enable the mirror option.",
                     MessageCode.ErrorSourceOnlyTable, new object?[] { table }));
                 fatal = true;
             }
