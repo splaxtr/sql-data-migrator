@@ -15,8 +15,11 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(o =>
     o.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 // Localhost only: the app holds credentials for production databases, and staying
-// local is a security feature.
-builder.WebHost.UseUrls("http://localhost:5099");
+// local is a security feature. The window loads this address too — the desktop shell is a
+// window around the same server, not a second way in.
+const int Port = 5099;
+var address = $"http://localhost:{Port}";
+builder.WebHost.UseUrls(address);
 
 var app = builder.Build();
 
@@ -261,29 +264,42 @@ app.MapPost("/api/admin/{serverId}/role/membership", (ConnectionStore store, str
 // Answers a second copy's question: "is the thing on 5099 really me?"
 app.MapGet("/api/ping", () => Results.Ok(new { app = "SqlDataMigrator" }));
 
-// A second double-click opens the running copy's UI instead of crashing.
-if (await IsAlreadyRunningAsync())
+// ── Starting up ──────────────────────────────────────────────────────────────
+
+// Nothing below this line awaits, and that is deliberate. DesktopShell.Run has to own the
+// process's main thread, but an `await` in a console application resumes on a thread-pool
+// thread — which macOS refuses to run a window loop on. Blocking keeps the main thread.
+
+// The window is the application. --browser hands the interface to the default browser
+// instead, for a machine whose WebView is missing or whose user prefers it; the same path
+// is taken automatically when a window cannot be opened.
+var preferBrowser = args.Contains("--browser", StringComparer.OrdinalIgnoreCase);
+
+// A second double-click does not start a second server. It opens another window onto the
+// copy that is already running, and closing that window leaves the server alone.
+if (IsAlreadyRunning(address))
 {
-    Console.WriteLine("Uygulama zaten çalışıyor — tarayıcıda http://localhost:5099 açılıyor.");
-    OpenBrowser();
+    Console.WriteLine("Uygulama zaten çalışıyor — çalışan kopya açılıyor.");
+    if (!preferBrowser)
+    {
+        var reason = DesktopShell.Run(address);
+        if (reason is null) return;
+        Console.WriteLine(reason);
+    }
+    OpenBrowser(address);
     return;
 }
 
-// Double-clicking the exe opens the UI by itself; production only, so development
-// restarts don't keep launching browsers.
-if (!app.Environment.IsDevelopment())
-    app.Lifetime.ApplicationStarted.Register(OpenBrowser);
-
 try
 {
-    app.Run();
+    app.StartAsync().GetAwaiter().GetResult();
 }
 catch (IOException ex) when (ex.InnerException is Microsoft.AspNetCore.Connections.AddressInUseException)
 {
     // Whoever holds the port is not us (the check above passed): tell the user what to
     // do instead of crashing, and keep the window from vanishing on double-click.
     Console.WriteLine();
-    Console.WriteLine("HATA: 5099 portu başka bir uygulama tarafından kullanılıyor.");
+    Console.WriteLine($"HATA: {Port} portu başka bir uygulama tarafından kullanılıyor.");
     Console.WriteLine("O uygulamayı kapatıp bunu yeniden başlatın.");
     if (!Console.IsInputRedirected)
     {
@@ -293,12 +309,43 @@ catch (IOException ex) when (ex.InnerException is Microsoft.AspNetCore.Connectio
     Environment.Exit(1);
 }
 
-static async Task<bool> IsAlreadyRunningAsync()
+// Double-clicking the exe opens the interface by itself. Development is the exception:
+// `dotnet watch` restarts would put a new window on screen every time a file is saved, so
+// there the server runs alone and --window asks for the shell explicitly.
+var showInterface = !app.Environment.IsDevelopment()
+                    || args.Contains("--window", StringComparer.OrdinalIgnoreCase);
+
+if (showInterface && !preferBrowser)
+{
+    // Blocks until the user closes the window, which is what ends the application: there
+    // is no tray icon and no background mode, so an invisible server would be a leak.
+    var reason = DesktopShell.Run(address);
+    if (reason is null)
+    {
+        app.StopAsync().GetAwaiter().GetResult();
+        return;
+    }
+
+    // No window, but the server is up and the interface still works. Say what happened
+    // rather than exiting on a failure the user can neither see nor act on.
+    Console.WriteLine(reason);
+    Console.WriteLine("Arayüz tarayıcıda açılıyor.");
+    OpenBrowser(address);
+}
+else if (showInterface)
+{
+    OpenBrowser(address);
+}
+
+Console.WriteLine($"Arayüz: {address} — kapatmak için Ctrl+C.");
+app.WaitForShutdown();
+
+static bool IsAlreadyRunning(string address)
 {
     try
     {
         using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(2) };
-        var body = await http.GetStringAsync("http://localhost:5099/api/ping");
+        var body = http.GetStringAsync($"{address}/api/ping").GetAwaiter().GetResult();
         return body.Contains("SqlDataMigrator", StringComparison.Ordinal);
     }
     catch
@@ -347,9 +394,9 @@ static void RequireTypedName(string name, string? confirm)
 
 static string? Blank(string? value) => string.IsNullOrWhiteSpace(value) ? null : value;
 
-static void OpenBrowser()
+static void OpenBrowser(string address)
 {
-    try { Process.Start(new ProcessStartInfo("http://localhost:5099") { UseShellExecute = true }); }
+    try { Process.Start(new ProcessStartInfo(address) { UseShellExecute = true }); }
     catch { /* if no browser opened, the address is on the console */ }
 }
 
