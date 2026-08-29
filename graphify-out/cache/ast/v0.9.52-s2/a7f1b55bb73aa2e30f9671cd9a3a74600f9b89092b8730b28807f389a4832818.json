@@ -1,0 +1,58 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_sqldatamigrator_sln",
+            "label": "SqlDataMigrator.sln",
+            "file_type": "code",
+            "source_file": "SqlDataMigrator.sln",
+            "source_location": null
+        },
+        {
+            "id": "src",
+            "label": "src",
+            "file_type": "code",
+            "source_file": "src",
+            "source_location": null
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "label": "Migrator.Core",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "source_location": null
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "label": "Migrator.App",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_sqldatamigrator_sln",
+            "target": "src",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "SqlDataMigrator.sln",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_sqldatamigrator_sln",
+            "target": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "SqlDataMigrator.sln",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_sqldatamigrator_sln",
+            "target": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "SqlDataMigrator.sln",
+            "weight": 1.0
+        }
+    ]
+}

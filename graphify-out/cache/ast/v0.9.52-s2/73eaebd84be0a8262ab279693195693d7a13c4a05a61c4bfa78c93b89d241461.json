@@ -1,0 +1,4141 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_cs",
+            "label": "MigrationEngine.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:6fd09b4656d9c278",
+            "label": "Migrator.Core",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.Core"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "label": "MigrationEngine",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L17",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "iprogress",
+            "label": "IProgress",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "progressmessage",
+            "label": "ProgressMessage",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "label": ".RunAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L23",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "migrationoptions",
+            "label": "MigrationOptions",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "cancellationtoken",
+            "label": "CancellationToken",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "task",
+            "label": "Task",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "migrationresult",
+            "label": "MigrationResult",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_succeed",
+            "label": ".Succeed()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L207",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "stopwatch",
+            "label": "Stopwatch",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fail",
+            "label": ".Fail()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L213",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "label": ".BuildPlan()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "dictionary",
+            "label": "Dictionary",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "list",
+            "label": "List",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "columninfo",
+            "label": "ColumnInfo",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "ireadonlyset",
+            "label": "IReadOnlySet",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "tableplan",
+            "label": "TablePlan",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_cansynthesize",
+            "label": ".CanSynthesize()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L309",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_describe",
+            "label": ".Describe()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L316",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_synthesizedefault",
+            "label": ".SynthesizeDefault()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L323",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "label": ".ReportHistoryAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "npgsqlconnection",
+            "label": "NpgsqlConnection",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "ienumerable",
+            "label": "IEnumerable",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "hashset",
+            "label": "HashSet",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "label": ".ReportOtherSchemasAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L387",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "sqlconnection",
+            "label": "SqlConnection",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "label": ".ReportCascadePreview()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L420",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "foreignkey",
+            "label": "ForeignKey",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "label": ".PathTo()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L472",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "label": ".PreflightAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L486",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "label": ".CopyAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "npgsqltransaction",
+            "label": "NpgsqlTransaction",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "label": ".WriteValueAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L608",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "npgsqlbinaryimporter",
+            "label": "NpgsqlBinaryImporter",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "label": ".FixIdentitySequencesAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L648",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "label": ".VerifyRowCountsAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "label": ".ValidateForeignKeysAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "label": ".ExecAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L741",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "label": ".ScalarPgAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L747",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "label": ".ScalarSqlAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L753",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_cs",
+            "target": "csharp_namespace:6fd09b4656d9c278",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_cs",
+            "target": "system_diagnostics",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L3",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "System.Diagnostics",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_cs",
+            "target": "microsoft_data_sqlclient",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L4",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "Microsoft.Data.SqlClient",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_cs",
+            "target": "npgsql",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L5",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "Npgsql",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_cs",
+            "target": "npgsqltypes",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L6",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "NpgsqlTypes",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L17",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "iprogress",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L19",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "IProgress"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "progressmessage",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L19",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ProgressMessage"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L23",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "migrationoptions",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L23",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "MigrationOptions"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L23",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L23",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "migrationresult",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L23",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "MigrationResult"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_succeed",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L207",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_succeed",
+            "target": "stopwatch",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L207",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Stopwatch"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_succeed",
+            "target": "migrationresult",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L207",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "MigrationResult"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fail",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L213",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fail",
+            "target": "stopwatch",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L213",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Stopwatch"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fail",
+            "target": "migrationresult",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L213",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "MigrationResult"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "dictionary",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Dictionary"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "columninfo",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ColumnInfo"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "dictionary",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Dictionary"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "columninfo",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ColumnInfo"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "ireadonlyset",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "IReadOnlySet"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "tableplan",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L217",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "TablePlan"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_cansynthesize",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L309",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_describe",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L316",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_synthesizedefault",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L323",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "target": "ienumerable",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "IEnumerable"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "target": "ienumerable",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "IEnumerable"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "target": "hashset",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L337",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "HashSet"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L387",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "target": "sqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L387",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "SqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L387",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L387",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L420",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L420",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "target": "foreignkey",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L420",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ForeignKey"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "target": "hashset",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L420",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "HashSet"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "target": "ireadonlyset",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L420",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "IReadOnlySet"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L472",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "target": "dictionary",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L472",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Dictionary"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L486",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "target": "sqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L486",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "SqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L486",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "target": "tableplan",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L486",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "TablePlan"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L486",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L486",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "sqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "SqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "tableplan",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "TablePlan"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "npgsqltransaction",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlTransaction"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L548",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L608",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "target": "npgsqlbinaryimporter",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L608",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlBinaryImporter"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L608",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L608",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L648",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L648",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "target": "npgsqltransaction",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L648",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlTransaction"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L648",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L648",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "sqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "SqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "tableplan",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "TablePlan"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "npgsqltransaction",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlTransaction"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L677",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "foreignkey",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ForeignKey"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "hashset",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "HashSet"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "npgsqltransaction",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlTransaction"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L705",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L741",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L741",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "target": "npgsqltransaction",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L741",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlTransaction"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L741",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L741",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L747",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L747",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "target": "npgsqltransaction",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L747",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlTransaction"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L747",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L747",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L753",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "target": "sqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L753",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "SqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L753",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L753",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "sqlconnection",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L31",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "npgsqlconnection",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L33",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "list",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L39",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fail",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L51",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "hashset",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L111",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L125",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L128",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L129",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L146",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L147",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_succeed",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L149",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L153",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L157",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L161",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L202",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_succeed",
+            "target": "migrationresult",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L210",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "list",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L223",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_cansynthesize",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L245",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_describe",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L250",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_synthesizedefault",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L250",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "target": "tableplan",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L276",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "target": "hashset",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L343",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L449",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "target": "list",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L474",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "target": "list",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L489",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L555",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L584",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_synthesizedefault",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L592",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L604",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "target": "list",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L654",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L664",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L685",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L686",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "target": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L719",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "StartNew",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L29",
+            "receiver": "Stopwatch",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "OpenAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L32",
+            "receiver": "sql",
+            "lang": "csharp",
+            "receiver_type": "SqlConnection"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "OpenAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L34",
+            "receiver": "pg",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlConnection"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "IndexOf",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L44",
+            "receiver": "text",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L45",
+            "receiver": "cascaded",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Trim",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L45",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L46",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "CheckCollationAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L50",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L53",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "ReadSqlServerAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L54",
+            "receiver": "SchemaReader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "ReadPostgresAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L55",
+            "receiver": "SchemaReader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L60",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "OrderBy",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L60",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Except",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L60",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "In",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L69",
+            "receiver": "MigrationHistory",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L71",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L72",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L76",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "In",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L86",
+            "receiver": "MigrationHistory",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L89",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Except",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L89",
+            "receiver": "missing",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L90",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L91",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L95",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "CreateMissingTablesAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L101",
+            "receiver": "SchemaMirror",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "ReadPostgresAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L103",
+            "receiver": "SchemaReader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "ReadForeignKeysAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L107",
+            "receiver": "SchemaReader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Intersect",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L115",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "In",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L115",
+            "receiver": "MigrationHistory",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L116",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "In",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L124",
+            "receiver": "MigrationHistory",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "ToHashSet",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L133",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L133",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Where",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L133",
+            "receiver": "plan",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L136",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L141",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "BeginTransactionAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L160",
+            "receiver": "pg",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlConnection"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L162",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L167",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Take",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L167",
+            "receiver": "cascaded",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L169",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L174",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L182",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "RollbackAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L185",
+            "receiver": "transaction",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L194",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "RollbackAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L197",
+            "receiver": "transaction",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_runasync",
+            "callee": "CommitAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L201",
+            "receiver": "transaction",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_succeed",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L209",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "OrderBy",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L226",
+            "receiver": "targetSchema",
+            "lang": "csharp",
+            "receiver_type": "Dictionary"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Contains",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L230",
+            "receiver": "preserved",
+            "lang": "csharp",
+            "receiver_type": "IReadOnlySet"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "TryGetValue",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L231",
+            "receiver": "sourceSchema",
+            "lang": "csharp",
+            "receiver_type": "Dictionary"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "ToDictionary",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L233",
+            "receiver": "sourceColumns",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "TryGetValue",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L239",
+            "receiver": "sourceByName",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L241",
+            "receiver": "copy",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L251",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L255",
+            "receiver": "synthesized",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L259",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "ToHashSet",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L269",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L269",
+            "receiver": "targetColumns",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Where",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L270",
+            "receiver": "sourceColumns",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Contains",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L270",
+            "receiver": "targetByName",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L271",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L276",
+            "receiver": "plan",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L284",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "OrderBy",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L284",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Except",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L284",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Except",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L284",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L294",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_buildplan",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L298",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_describe",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L320",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_synthesizedefault",
+            "callee": "InvalidOperationException",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L327",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "In",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L343",
+            "receiver": "MigrationHistory",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "OrderBy",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L344",
+            "receiver": "preserved",
+            "lang": "csharp",
+            "receiver_type": "HashSet"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L347",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L348",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "ExecuteScalarAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L349",
+            "receiver": "command",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L351",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "Except",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L362",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "In",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L362",
+            "receiver": "MigrationHistory",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L364",
+            "receiver": "excluded",
+            "lang": "csharp",
+            "receiver_type": "HashSet"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reporthistoryasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L365",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "callee": "ReadSqlServerOtherSchemasAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L390",
+            "receiver": "SchemaReader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "callee": "Sum",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L393",
+            "receiver": "schemas",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L394",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L394",
+            "receiver": "schemas",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L400",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportotherschemasasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L405",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "ToDictionary",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L425",
+            "receiver": "copyTables",
+            "lang": "csharp",
+            "receiver_type": "HashSet"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "ContainsKey",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L430",
+            "receiver": "reachedBy",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "ContainsKey",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L430",
+            "receiver": "reachedBy",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L442",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "OrderBy",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L442",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "Where",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L442",
+            "receiver": "preserved",
+            "lang": "csharp",
+            "receiver_type": "IReadOnlySet"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L448",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L456",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "OrderBy",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L456",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "Except",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L456",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L461",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "Take",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L461",
+            "receiver": "collateral",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_reportcascadepreview",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L463",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L477",
+            "receiver": "path",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "callee": "Reverse",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L480",
+            "receiver": "path",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_pathto",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L481",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L488",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L494",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Where",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L494",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L495",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Where",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L495",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Concat",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L500",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L500",
+            "receiver": "nullChecks",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L502",
+            "receiver": "lengthChecks",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "SqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L504",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L505",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "ExecuteReaderAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L506",
+            "receiver": "command",
+            "lang": "csharp",
+            "receiver_type": "SqlCommand"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "ReadAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L507",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "IsDBNull",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L511",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "ToInt64",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L511",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "GetValue",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L511",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L513",
+            "receiver": "violations",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "IsDBNull",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L520",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "ToInt64",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L520",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "GetValue",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L520",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L523",
+            "receiver": "violations",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L531",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L537",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_preflightasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L540",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L551",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L557",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L557",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Where",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L557",
+            "receiver": "plan",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L557",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L559",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L566",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L566",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L567",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L567",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Concat",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L567",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L567",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L568",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "SqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L570",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "ExecuteReaderAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L571",
+            "receiver": "command",
+            "lang": "csharp",
+            "receiver_type": "SqlCommand"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "BeginBinaryImportAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L574",
+            "receiver": "pg",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlConnection"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L575",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "ReadAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L578",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "StartRowAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L580",
+            "receiver": "importer",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "GetValue",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L584",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "InvalidOperationException",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L587",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "CompleteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L595",
+            "receiver": "importer",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_copyasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L600",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteNullAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L610",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L614",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L615",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToBoolean",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L615",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L616",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToInt16",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L616",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L617",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToInt32",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L617",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L618",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToInt64",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L618",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L619",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToDecimal",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L619",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L620",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToSingle",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L620",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L621",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToDouble",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L621",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L622",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L623",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L624",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L625",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L628",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "SpecifyKind",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L628",
+            "receiver": "DateTime",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToUniversalTime",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L634",
+            "receiver": "local",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "ToDateTime",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L636",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L638",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "SpecifyKind",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L638",
+            "receiver": "DateTime",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L640",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "FromDateTime",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L640",
+            "receiver": "DateOnly",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L641",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "WriteAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L642",
+            "receiver": "importer",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlBinaryImporter"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "FromTimeSpan",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L642",
+            "receiver": "TimeOnly",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "NotSupportedException",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L644",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_writevalueasync",
+            "callee": "GetType",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L644",
+            "receiver": "value",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L655",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "ExecuteReaderAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L656",
+            "receiver": "command",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "ReadAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L657",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L658",
+            "receiver": "identities",
+            "lang": "csharp",
+            "receiver_type": "List"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "GetString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L658",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "GetString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L658",
+            "receiver": "reader",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L662",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L663",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_fixidentitysequencesasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L671",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L680",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "callee": "ToInt64",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L685",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "callee": "ToInt64",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L686",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L686",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L689",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_verifyrowcountsasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L695",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L709",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Contains",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L715",
+            "receiver": "copyTables",
+            "lang": "csharp",
+            "receiver_type": "HashSet"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L717",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L717",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L717",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L718",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L718",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L718",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L718",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "ToInt64",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L719",
+            "receiver": "Convert",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L720",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L721",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Join",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L726",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L726",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L727",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_validateforeignkeysasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L734",
+            "receiver": "_progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L743",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_execasync",
+            "callee": "ExecuteNonQueryAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L744",
+            "receiver": "command",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlCommand"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L749",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarpgasync",
+            "callee": "ExecuteScalarAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L750",
+            "receiver": "command",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlCommand"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "callee": "SqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L755",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_migrationengine_migrator_core_migrationengine_scalarsqlasync",
+            "callee": "ExecuteScalarAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/MigrationEngine.cs",
+            "source_location": "L756",
+            "receiver": "command",
+            "lang": "csharp",
+            "receiver_type": "SqlCommand"
+        }
+    ],
+    "member_field_tables": [
+        {
+            "lang": "csharp",
+            "class_label": "MigrationEngine",
+            "source_file": "$graphify-root$/src/Migrator.Core/MigrationEngine.cs",
+            "fields": {
+                "_progress": "IProgress"
+            }
+        }
+    ]
+}

@@ -1,0 +1,1034 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "label": "ConnectionStore.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:c0879622a1b29655",
+            "label": "Migrator.App",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.App"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind",
+            "label": "ServerKind",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L6",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind_sqlserver",
+            "label": "SqlServer",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L6",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind_postgresql",
+            "label": "PostgreSql",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L6",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverprofile",
+            "label": "ServerProfile",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L9",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_storedprofile",
+            "label": "StoredProfile",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L17",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "label": "ConnectionStore",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L28",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "idataprotector",
+            "label": "IDataProtector",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/ConnectionStore.cs"
+        },
+        {
+            "id": "semaphoreslim",
+            "label": "SemaphoreSlim",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/ConnectionStore.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_storepath",
+            "label": "StorePath",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L43",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "label": ".ListAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L45",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "task",
+            "label": "Task",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/ConnectionStore.cs"
+        },
+        {
+            "id": "list",
+            "label": "List",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/ConnectionStore.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "label": ".SaveAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L51",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "label": ".DeleteAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L76",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_buildconnectionstringasync",
+            "label": ".BuildConnectionStringAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L90",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_tryunprotect",
+            "label": ".TryUnprotect()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L111",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "label": ".ReadAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L123",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "label": ".WriteAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L130",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "target": "csharp_namespace:c0879622a1b29655",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "target": "system_text_json",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L3",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "System.Text.Json",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "target": "microsoft_aspnetcore_dataprotection",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L4",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "Microsoft.AspNetCore.DataProtection",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L6",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind_sqlserver",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L6",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind_postgresql",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L6",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverprofile",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L9",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverprofile",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L12",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "ServerKind"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_storedprofile",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L17",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_storedprofile",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L18",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "ServerKind"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_cs",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L28",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "idataprotector",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L31",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "IDataProtector"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "semaphoreslim",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L32",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "SemaphoreSlim"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_storepath",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L43",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L45",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L45",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L45",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverprofile",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L45",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ServerProfile"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L51",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverkind",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L51",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "ServerKind"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L51",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverprofile",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L51",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ServerProfile"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L76",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L76",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_buildconnectionstringasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L90",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_buildconnectionstringasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L90",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_tryunprotect",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L111",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L123",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L123",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L123",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_storedprofile",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L123",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "StoredProfile"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L130",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L130",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_storedprofile",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L130",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "StoredProfile"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L130",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L47",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverprofile",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L48",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L57",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_storedprofile",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L65",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L70",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_serverprofile",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L71",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L81",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L83",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_buildconnectionstringasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L92",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_buildconnectionstringasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_tryunprotect",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L97",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "target": "list",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L125",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L127",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "target": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_storedprofile",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L127",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "StoredProfile"
+            }
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L48",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_listasync",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L48",
+            "receiver": "stored",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "WaitAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L54",
+            "receiver": "_lock",
+            "lang": "csharp",
+            "receiver_type": "SemaphoreSlim"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "FirstOrDefault",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L58",
+            "receiver": "stored",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "IsNullOrEmpty",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L61",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "Protect",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L63",
+            "receiver": "_protector",
+            "lang": "csharp",
+            "receiver_type": "IDataProtector"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L66",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "NewGuid",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L66",
+            "receiver": "Guid",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "RemoveAll",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L68",
+            "receiver": "stored",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "Add",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L69",
+            "receiver": "stored",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_saveasync",
+            "callee": "Release",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L73",
+            "receiver": "_lock",
+            "lang": "csharp",
+            "receiver_type": "SemaphoreSlim"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "callee": "WaitAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L78",
+            "receiver": "_lock",
+            "lang": "csharp",
+            "receiver_type": "SemaphoreSlim"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "callee": "RemoveAll",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L82",
+            "receiver": "stored",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_deleteasync",
+            "callee": "Release",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L86",
+            "receiver": "_lock",
+            "lang": "csharp",
+            "receiver_type": "SemaphoreSlim"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_buildconnectionstringasync",
+            "callee": "FirstOrDefault",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L92",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_buildconnectionstringasync",
+            "callee": "IsNullOrEmpty",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L95",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_tryunprotect",
+            "callee": "Unprotect",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L113",
+            "receiver": "_protector",
+            "lang": "csharp",
+            "receiver_type": "IDataProtector"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "callee": "Exists",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L125",
+            "receiver": "File",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "callee": "OpenRead",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L126",
+            "receiver": "File",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_readasync",
+            "callee": "DeserializeAsync<List<StoredProfile>>",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L127",
+            "receiver": "JsonSerializer",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "callee": "Create",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L132",
+            "receiver": "File",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "callee": "SerializeAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L133",
+            "receiver": "JsonSerializer",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_connectionstore_migrator_app_connectionstore_writeasync",
+            "callee": "JsonSerializerOptions",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/ConnectionStore.cs",
+            "source_location": "L133",
+            "receiver": null,
+            "lang": "csharp"
+        }
+    ],
+    "member_field_tables": [
+        {
+            "lang": "csharp",
+            "class_label": "ServerProfile",
+            "source_file": "$graphify-root$/src/Migrator.App/ConnectionStore.cs",
+            "fields": {
+                "Kind": "ServerKind"
+            }
+        },
+        {
+            "lang": "csharp",
+            "class_label": "StoredProfile",
+            "source_file": "$graphify-root$/src/Migrator.App/ConnectionStore.cs",
+            "fields": {
+                "Kind": "ServerKind"
+            }
+        },
+        {
+            "lang": "csharp",
+            "class_label": "ConnectionStore",
+            "source_file": "$graphify-root$/src/Migrator.App/ConnectionStore.cs",
+            "fields": {
+                "_protector": "IDataProtector",
+                "_lock": "SemaphoreSlim"
+            }
+        }
+    ]
+}

@@ -1,0 +1,713 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "label": "MigrationTypes.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:6fd09b4656d9c278",
+            "label": "Migrator.Core",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.Core"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_columninfo",
+            "label": "ColumnInfo",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L4",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "label": "TablePlan",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L15",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "list",
+            "label": "List",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs"
+        },
+        {
+            "id": "source",
+            "label": "Source",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs"
+        },
+        {
+            "id": "target",
+            "label": "Target",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_foreignkey",
+            "label": "ForeignKey",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L20",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "child",
+            "label": "Child",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs"
+        },
+        {
+            "id": "parent",
+            "label": "Parent",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "label": "ProgressKind",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_info",
+            "label": "Info",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_warning",
+            "label": "Warning",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_error",
+            "label": "Error",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_success",
+            "label": "Success",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_step",
+            "label": "Step",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progressmessage",
+            "label": "ProgressMessage",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L42",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "label": "MigrationOptions",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L49",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_allowsourceonlytables",
+            "label": "AllowSourceOnlyTables",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L52",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_mirrormissingtables",
+            "label": "MirrorMissingTables",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L60",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_allowschemarisk",
+            "label": "AllowSchemaRisk",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L63",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_allowcollationmismatch",
+            "label": "AllowCollationMismatch",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L66",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_verifyonly",
+            "label": "VerifyOnly",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L69",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_expectediculocale",
+            "label": "ExpectedIcuLocale",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L72",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_migratehistorytables",
+            "label": "MigrateHistoryTables",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L83",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationresult",
+            "label": "MigrationResult",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L91",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "timespan",
+            "label": "TimeSpan",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs"
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "csharp_namespace:6fd09b4656d9c278",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_columninfo",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L4",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L15",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_columninfo",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ColumnInfo"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "target": "source",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "Source"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_columninfo",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ColumnInfo"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "target": "target",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "Target"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L18",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_tableplan",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_columninfo",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L18",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ColumnInfo"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_foreignkey",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L20",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_foreignkey",
+            "target": "list",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L24",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "List"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_foreignkey",
+            "target": "child",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L24",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "Child"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_foreignkey",
+            "target": "parent",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L24",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "Parent"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_info",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_warning",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_error",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_success",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind_step",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progressmessage",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L42",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progressmessage",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_progresskind",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L43",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "ProgressKind"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L49",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_allowsourceonlytables",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L52",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_mirrormissingtables",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L60",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_allowschemarisk",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L63",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_allowcollationmismatch",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L66",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_verifyonly",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L69",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_expectediculocale",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L72",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationoptions_migratehistorytables",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L83",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_cs",
+            "target": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationresult",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L91",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrationtypes_migrator_core_migrationresult",
+            "target": "timespan",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/MigrationTypes.cs",
+            "source_location": "L94",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "TimeSpan"
+            }
+        }
+    ],
+    "raw_calls": [],
+    "member_field_tables": [
+        {
+            "lang": "csharp",
+            "class_label": "TablePlan",
+            "source_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs",
+            "fields": {
+                "CopyColumns": "List",
+                "SynthesizedColumns": "List"
+            }
+        },
+        {
+            "lang": "csharp",
+            "class_label": "ForeignKey",
+            "source_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs",
+            "fields": {
+                "Columns": "List"
+            }
+        },
+        {
+            "lang": "csharp",
+            "class_label": "ProgressMessage",
+            "source_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs",
+            "fields": {
+                "Kind": "ProgressKind"
+            }
+        },
+        {
+            "lang": "csharp",
+            "class_label": "MigrationResult",
+            "source_file": "$graphify-root$/src/Migrator.Core/MigrationTypes.cs",
+            "fields": {
+                "Duration": "TimeSpan"
+            }
+        }
+    ]
+}

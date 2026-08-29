@@ -14,3 +14,7 @@ package-lock.json
 # MCP config is where a credential would leak from.
 .claude/settings.local.json
 .mcp.json
+
+# graphify machine-local sidecars (re-resolved per machine)
+graphify-out/.graphify_python
+graphify-out/.graphify_root

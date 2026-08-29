@@ -1,0 +1,746 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_cs",
+            "label": "TargetDatabase.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:6fd09b4656d9c278",
+            "label": "Migrator.Core",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.Core"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate",
+            "label": "TargetDatabaseState",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate_failed",
+            "label": "Failed",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate_created",
+            "label": "Created",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate_alreadyexisted",
+            "label": "AlreadyExisted",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase",
+            "label": "TargetDatabase",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L13",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "label": ".EnsureCreatedAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L20",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "iprogress",
+            "label": "IProgress",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/TargetDatabase.cs"
+        },
+        {
+            "id": "progressmessage",
+            "label": "ProgressMessage",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/TargetDatabase.cs"
+        },
+        {
+            "id": "cancellationtoken",
+            "label": "CancellationToken",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/TargetDatabase.cs"
+        },
+        {
+            "id": "task",
+            "label": "Task",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/TargetDatabase.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "label": ".CheckCollationAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L71",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "npgsqlconnection",
+            "label": "NpgsqlConnection",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/TargetDatabase.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "label": ".ReadLocaleAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L103",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_describelocale",
+            "label": ".DescribeLocale()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L122",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_quote",
+            "label": ".Quote()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L129",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_cs",
+            "target": "csharp_namespace:6fd09b4656d9c278",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_cs",
+            "target": "npgsql",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L3",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "Npgsql",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_cs",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate_failed",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate_created",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate_alreadyexisted",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L10",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_cs",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L13",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L20",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "target": "iprogress",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L20",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "IProgress"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "target": "progressmessage",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L20",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ProgressMessage"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L20",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L20",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabasestate",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L20",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "TargetDatabaseState"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L71",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L71",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "target": "iprogress",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L71",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "IProgress"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "target": "progressmessage",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L71",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ProgressMessage"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L71",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L71",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L103",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L103",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L103",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L103",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_describelocale",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L122",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_quote",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L129",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "target": "npgsqlconnection",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L33",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_quote",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L51",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L78",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "target": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_describelocale",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L88",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "NpgsqlConnectionStringBuilder",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L23",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "IsNullOrWhiteSpace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L25",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L27",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "NpgsqlConnectionStringBuilder",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L32",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "OpenAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L34",
+            "receiver": "connection",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlConnection"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L36",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "AddWithValue",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L38",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "ExecuteScalarAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L39",
+            "receiver": "exists",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L41",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "IsNullOrWhiteSpace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L48",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "Replace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L50",
+            "receiver": "icuLocale",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L53",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "ExecuteNonQueryAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L54",
+            "receiver": "create",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L57",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_ensurecreatedasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L60",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "callee": "IsNullOrWhiteSpace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L75",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "callee": "Equals",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L79",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L81",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L92",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_checkcollationasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L97",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L110",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_readlocaleasync",
+            "callee": "ExecuteScalarAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L112",
+            "receiver": "command",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlCommand"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_targetdatabase_migrator_core_targetdatabase_quote",
+            "callee": "Replace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/TargetDatabase.cs",
+            "source_location": "L129",
+            "receiver": "identifier",
+            "lang": "csharp"
+        }
+    ]
+}

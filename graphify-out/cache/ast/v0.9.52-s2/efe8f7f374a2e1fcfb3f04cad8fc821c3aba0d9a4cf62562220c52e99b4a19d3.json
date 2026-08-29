@@ -1,0 +1,352 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_cs",
+            "label": "MigrationReport.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:9b7b510e5af26b6b",
+            "label": "Migrator.App.Reporting",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.App.Reporting"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_databaseoutcome",
+            "label": "DatabaseOutcome",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L7",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "timespan",
+            "label": "TimeSpan",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReport.cs"
+        },
+        {
+            "id": "ireadonlylist",
+            "label": "IReadOnlyList",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReport.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "label": "MigrationReport",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L25",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "datetimeoffset",
+            "label": "DateTimeOffset",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReport.cs"
+        },
+        {
+            "id": "runmode",
+            "label": "RunMode",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReport.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_succeededcount",
+            "label": "SucceededCount",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L32",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_failedcount",
+            "label": "FailedCount",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L33",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_totalrows",
+            "label": "TotalRows",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L34",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_createdcount",
+            "label": "CreatedCount",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L35",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_hasusers",
+            "label": "HasUsers",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L36",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_hasschemanotes",
+            "label": "HasSchemaNotes",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L37",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_cs",
+            "target": "csharp_namespace:9b7b510e5af26b6b",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_cs",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_databaseoutcome",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L7",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_databaseoutcome",
+            "target": "timespan",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L12",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "TimeSpan"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_databaseoutcome",
+            "target": "ireadonlylist",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L22",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "IReadOnlyList"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_cs",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L25",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "datetimeoffset",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L26",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "DateTimeOffset"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "runmode",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L29",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "RunMode"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "ireadonlylist",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L30",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "IReadOnlyList"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_databaseoutcome",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L30",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "DatabaseOutcome"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_succeededcount",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L32",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_failedcount",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L33",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_totalrows",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L34",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_createdcount",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L35",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_hasusers",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L36",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreport_migrator_app_reporting_migrationreport_hasschemanotes",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReport.cs",
+            "source_location": "L37",
+            "weight": 1.0,
+            "context": "field"
+        }
+    ],
+    "raw_calls": [],
+    "member_field_tables": [
+        {
+            "lang": "csharp",
+            "class_label": "DatabaseOutcome",
+            "source_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReport.cs",
+            "fields": {
+                "Duration": "TimeSpan",
+                "SchemaNotes": "IReadOnlyList"
+            }
+        },
+        {
+            "lang": "csharp",
+            "class_label": "MigrationReport",
+            "source_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReport.cs",
+            "fields": {
+                "CompletedAt": "DateTimeOffset",
+                "Mode": "RunMode",
+                "Databases": "IReadOnlyList"
+            }
+        }
+    ]
+}

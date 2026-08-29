@@ -1,0 +1,443 @@
+{
+    ".claude/README.md": {
+        "size": 3216,
+        "mtime_ns": 1787826602425291544,
+        "indexed_at_ns": 1788039463239764206,
+        "word_count": 489,
+        "hashes": {
+            ".claude/readme.md": "a13667fdc1533e4b2337e0c620dd5a6e5d3b79213013b1b98dbeecb5d5b75d92"
+        }
+    },
+    ".claude/settings.json": {
+        "size": 605,
+        "mtime_ns": 1787826611374312212,
+        "indexed_at_ns": 1788039456730655650,
+        "word_count": 45,
+        "hashes": {
+            ".claude/settings.json": "440890cf03d2697c5a88cb3004a5c5d1ba1098dd45e09f49c20fc56527799613"
+        }
+    },
+    ".claude/skills/verify-ui/SKILL.md": {
+        "size": 2826,
+        "mtime_ns": 1787826574769224354,
+        "indexed_at_ns": 1788039463243209220,
+        "word_count": 488,
+        "hashes": {
+            ".claude/skills/verify-ui/skill.md": "01fc2581cb2ff20c25401c2a0321a38f5b3be69e3e0b6f959c28ba5ca1fcda8e"
+        }
+    },
+    ".claude/skills/verify-ui/package.json": {
+        "size": 385,
+        "mtime_ns": 1787826563556195641,
+        "indexed_at_ns": 1788039456732650936,
+        "word_count": 41,
+        "hashes": {
+            ".claude/skills/verify-ui/package.json": "86e2d6b9d082cf72b9296582d55727cdfe8b9679029b8bd0c7c12956a693839a"
+        }
+    },
+    ".claude/skills/verify-ui/scripts/audit-ui.mjs": {
+        "size": 9331,
+        "mtime_ns": 1787843399334926726,
+        "indexed_at_ns": 1788039430074170965,
+        "word_count": 1171
+    },
+    ".github/dependabot.yml": {
+        "size": 448,
+        "mtime_ns": 1787658310985906792,
+        "indexed_at_ns": 1788039463245035315,
+        "word_count": 46,
+        "hashes": {
+            ".github/dependabot.yml": "280ec046955de95a8324fddaae7e3da24ffcac7ae4297a59c7b2b2cba0aa5294"
+        }
+    },
+    ".github/workflows/ci.yml": {
+        "size": 1390,
+        "mtime_ns": 1787658294774922169,
+        "indexed_at_ns": 1788039463247616456,
+        "word_count": 164,
+        "hashes": {
+            ".github/workflows/ci.yml": "0c760f537168a335b080310007765cfa9947c2eafcbda865ccd8590e339ef382"
+        }
+    },
+    ".github/workflows/release-please.yml": {
+        "size": 1213,
+        "mtime_ns": 1787781103737735371,
+        "indexed_at_ns": 1788039463249534739,
+        "word_count": 136,
+        "hashes": {
+            ".github/workflows/release-please.yml": "25987d68b26389db8b7598af333863f6a8c078dd42469f8d236b874c6987f8c5"
+        }
+    },
+    ".github/workflows/release.yml": {
+        "size": 3760,
+        "mtime_ns": 1787781097562747127,
+        "indexed_at_ns": 1788039463252381440,
+        "word_count": 400,
+        "hashes": {
+            ".github/workflows/release.yml": "38a699da8020bd02fc977f245edd420855dc87eec1c15431cfddfb0c594c412d"
+        }
+    },
+    "CHANGELOG.md": {
+        "size": 1413,
+        "mtime_ns": 1787826206896700680,
+        "indexed_at_ns": 1788039463255292641,
+        "word_count": 99,
+        "hashes": {
+            "changelog.md": "8591a067fe64a736ed107d183585b96c4f4af18dc3bf8e851ff015064bcaaac8"
+        }
+    },
+    "CLAUDE.md": {
+        "size": 4075,
+        "mtime_ns": 1787826374599562994,
+        "indexed_at_ns": 1788039463258628741,
+        "word_count": 645,
+        "hashes": {
+            "claude.md": "3a761caba9f1493c1c9f057b6fbcad4287763ab7a8270f3b013a893ac74e7146"
+        }
+    },
+    "CODE_OF_CONDUCT.md": {
+        "size": 5490,
+        "mtime_ns": 1787657963594185749,
+        "indexed_at_ns": 1788039463260444180,
+        "word_count": 722,
+        "hashes": {
+            "code_of_conduct.md": "abdd1fc7240e2030db20db9cd0f66ee8045ebe09b84e39ba94ffa9e97bb555af"
+        }
+    },
+    "CONTRIBUTING.md": {
+        "size": 6058,
+        "mtime_ns": 1787657923216209397,
+        "indexed_at_ns": 1788039463262680932,
+        "word_count": 956,
+        "hashes": {
+            "contributing.md": "ab32732b36f9a443728d7f6a7d456e632e56231d8b6e7b965ee6970fc07ca6c9"
+        }
+    },
+    "README.md": {
+        "size": 7446,
+        "mtime_ns": 1787844165836602615,
+        "indexed_at_ns": 1788039463264789839,
+        "word_count": 1144,
+        "hashes": {
+            "readme.md": "626374ab42503719433008059baed8267d655222efcdc607d70a5f2c9fb5a765"
+        }
+    },
+    "SECURITY.md": {
+        "size": 4949,
+        "mtime_ns": 1787658000908161931,
+        "indexed_at_ns": 1788039463266829390,
+        "word_count": 811,
+        "hashes": {
+            "security.md": "116ec447299b99ec4c1b3dfc3b0be7f489379c6bc21bb0d9dd112db633082b19"
+        }
+    },
+    "SqlDataMigrator.sln": {
+        "size": 1864,
+        "mtime_ns": 1787655962495279452,
+        "indexed_at_ns": 1788039456733558475,
+        "word_count": 115,
+        "hashes": {
+            "sqldatamigrator.sln": "a7f1b55bb73aa2e30f9671cd9a3a74600f9b89092b8730b28807f389a4832818"
+        }
+    },
+    "docs/ARCHITECTURE.md": {
+        "size": 6573,
+        "mtime_ns": 1787844197540866432,
+        "indexed_at_ns": 1788039463269608386,
+        "word_count": 1066,
+        "hashes": {
+            "docs/architecture.md": "2ecdd26825460500a48cb2330a94c028569e7f15306ff28f2005f51cc2f09fb9"
+        }
+    },
+    "docs/ROADMAP.md": {
+        "size": 3331,
+        "mtime_ns": 1787778963409062024,
+        "indexed_at_ns": 1788039463272545170,
+        "word_count": 504,
+        "hashes": {
+            "docs/roadmap.md": "091c6a819046decbdcefddfb0fa34737cb7e9db86b4eaa98de5cd0b644406bcd"
+        }
+    },
+    "docs/SAFETY.md": {
+        "size": 14858,
+        "mtime_ns": 1787850358114772506,
+        "indexed_at_ns": 1788039463275272105,
+        "word_count": 2500,
+        "hashes": {
+            "docs/safety.md": "02a947bd619e2d85f93b3cc853a639ff8a0678e08d8317558a99a266fdc0673d"
+        }
+    },
+    "docs/USAGE.md": {
+        "size": 18503,
+        "mtime_ns": 1787850358117649378,
+        "indexed_at_ns": 1788039463277708845,
+        "word_count": 3228,
+        "hashes": {
+            "docs/usage.md": "7be0a9ab5603aed4223f6443c9e0ff132d08796c234a24ced8299689d893a0fa"
+        }
+    },
+    "src/Migrator.App/AppMessageCode.cs": {
+        "size": 1399,
+        "mtime_ns": 1787840173588585555,
+        "indexed_at_ns": 1788039456734491091,
+        "word_count": 161,
+        "hashes": {
+            "src/migrator.app/appmessagecode.cs": "23a1c03915d5e637deacbcc755d8515fd97fc25ac72e686a77217ba08f3b36c0"
+        }
+    },
+    "src/Migrator.App/Assets/DejaVuSans-LICENSE.txt": {
+        "size": 3859,
+        "mtime_ns": 1787821918217356110,
+        "indexed_at_ns": 1788039463281236442,
+        "word_count": 573,
+        "hashes": {
+            "src/migrator.app/assets/dejavusans-license.txt": "9439d479d5102e7a6504d9d50c510de9eedf8f1368a554854e3497531439a539"
+        }
+    },
+    "src/Migrator.App/BatchRunner.cs": {
+        "size": 14598,
+        "mtime_ns": 1787849691459743125,
+        "indexed_at_ns": 1788039456735252125,
+        "word_count": 1420,
+        "hashes": {
+            "src/migrator.app/batchrunner.cs": "dbdd05d7143441f34c3b65fd89361617a05ce7d7c62db8318a8a50cdcf62a9b8"
+        }
+    },
+    "src/Migrator.App/ConnectionStore.cs": {
+        "size": 5067,
+        "mtime_ns": 1787781056139825807,
+        "indexed_at_ns": 1788039456735887858,
+        "word_count": 494,
+        "hashes": {
+            "src/migrator.app/connectionstore.cs": "d11714c3ff6fb1857f136b79072a1446f63d046990e3395af7b63b91262e42ef"
+        }
+    },
+    "src/Migrator.App/DesktopShell.cs": {
+        "size": 4770,
+        "mtime_ns": 1787868918730343766,
+        "indexed_at_ns": 1788039456736511874,
+        "word_count": 615,
+        "hashes": {
+            "src/migrator.app/desktopshell.cs": "15665ee4d749e4d9f95c4e8da250d35b571adf6d5d423af38ffa83678e56487e"
+        }
+    },
+    "src/Migrator.App/Migrator.App.csproj": {
+        "size": 2625,
+        "mtime_ns": 1787868658780284148,
+        "indexed_at_ns": 1788039456737148358,
+        "word_count": 228,
+        "hashes": {
+            "src/migrator.app/migrator.app.csproj": "5fdd12757018fadb4d8d2f0f1567143b74701d17b08e1653df2b20da530ada14"
+        }
+    },
+    "src/Migrator.App/Program.cs": {
+        "size": 22112,
+        "mtime_ns": 1787868959706830901,
+        "indexed_at_ns": 1788039456737706755,
+        "word_count": 2303,
+        "hashes": {
+            "src/migrator.app/program.cs": "ff78a0bb8bb3d2302c7a0b838490aec1c6f4316f7cbe648e65f148d3e9c746e1"
+        }
+    },
+    "src/Migrator.App/Properties/launchSettings.json": {
+        "size": 1032,
+        "mtime_ns": 1787655940170277925,
+        "indexed_at_ns": 1788039456738526111,
+        "word_count": 66,
+        "hashes": {
+            "src/migrator.app/properties/launchsettings.json": "d0774e92b2b78f577391fcf22f5d25258d5f72a2bfd92d46908a43fe7ee5b0f9"
+        }
+    },
+    "src/Migrator.App/Reporting/MigrationReport.cs": {
+        "size": 1572,
+        "mtime_ns": 1787847064935293042,
+        "indexed_at_ns": 1788039456739336032,
+        "word_count": 207,
+        "hashes": {
+            "src/migrator.app/reporting/migrationreport.cs": "efe8f7f374a2e1fcfb3f04cad8fc821c3aba0d9a4cf62562220c52e99b4a19d3"
+        }
+    },
+    "src/Migrator.App/Reporting/MigrationReportPdf.cs": {
+        "size": 21545,
+        "mtime_ns": 1787847106818379322,
+        "indexed_at_ns": 1788039456740254889,
+        "word_count": 2246,
+        "hashes": {
+            "src/migrator.app/reporting/migrationreportpdf.cs": "6c115599ac8ae004694fca19e9862060adbf9416aa5b8c0d29574e43ab2cfcf4"
+        }
+    },
+    "src/Migrator.App/Reporting/ReportFonts.cs": {
+        "size": 2012,
+        "mtime_ns": 1787822146843057028,
+        "indexed_at_ns": 1788039456741267923,
+        "word_count": 253,
+        "hashes": {
+            "src/migrator.app/reporting/reportfonts.cs": "afd4a6776892c0d38a85ed5ac688e95bff4ec2f4acc2123114a615df0e1bd273"
+        }
+    },
+    "src/Migrator.App/RunMode.cs": {
+        "size": 1058,
+        "mtime_ns": 1787840116351618389,
+        "indexed_at_ns": 1788039456742196074,
+        "word_count": 163,
+        "hashes": {
+            "src/migrator.app/runmode.cs": "ad7059e2b3ab6ed60b18e60a19d5ec33542596034cc92fb647f3e135e57de424"
+        }
+    },
+    "src/Migrator.App/appsettings.Development.json": {
+        "size": 127,
+        "mtime_ns": 1787655940014277910,
+        "indexed_at_ns": 1788039456742936013,
+        "word_count": 12,
+        "hashes": {
+            "src/migrator.app/appsettings.development.json": "f32d2cf5395dad7d943cd83234893e75f8ef8ca2b17f048e0b484146998a6684"
+        }
+    },
+    "src/Migrator.App/appsettings.json": {
+        "size": 151,
+        "mtime_ns": 1787655940021277910,
+        "indexed_at_ns": 1788039456743665327,
+        "word_count": 14,
+        "hashes": {
+            "src/migrator.app/appsettings.json": "4af450e62ffc0349a24c63d783a51d6e4829022cfd6d3c5923c448bb1c2625cc"
+        }
+    },
+    "src/Migrator.App/wwwroot/admin.js": {
+        "size": 27010,
+        "mtime_ns": 1787844930914747788,
+        "indexed_at_ns": 1788039430175210222,
+        "word_count": 2743
+    },
+    "src/Migrator.App/wwwroot/app.js": {
+        "size": 27869,
+        "mtime_ns": 1787849796261926234,
+        "indexed_at_ns": 1788039430177753397,
+        "word_count": 2938
+    },
+    "src/Migrator.App/wwwroot/index.html": {
+        "size": 29694,
+        "mtime_ns": 1787849796304390912,
+        "indexed_at_ns": 1788039463283690695,
+        "word_count": 2331,
+        "hashes": {
+            "src/migrator.app/wwwroot/index.html": "86b3361879519e8976aaf46cf14a4fee1517a81608574d22ed0a4b4c39affc45"
+        }
+    },
+    "src/Migrator.Core/Admin/AdminTypes.cs": {
+        "size": 4714,
+        "mtime_ns": 1787844878049584665,
+        "indexed_at_ns": 1788039456744360929,
+        "word_count": 686,
+        "hashes": {
+            "src/migrator.core/admin/admintypes.cs": "71c362def1acc653af115dc1cf9ac51c0cb3506fc615a7c8a1b5d7aa52bfda84"
+        }
+    },
+    "src/Migrator.Core/Admin/IServerAdmin.cs": {
+        "size": 4183,
+        "mtime_ns": 1787844878050370808,
+        "indexed_at_ns": 1788039456745155770,
+        "word_count": 493,
+        "hashes": {
+            "src/migrator.core/admin/iserveradmin.cs": "2ebfd375b36f55404d29a1d18e0b4b0efa33a46b7449bafbdb8363529c9bcaa4"
+        }
+    },
+    "src/Migrator.Core/Admin/PostgresAdmin.cs": {
+        "size": 22795,
+        "mtime_ns": 1787844852734612981,
+        "indexed_at_ns": 1788039456745835601,
+        "word_count": 2308,
+        "hashes": {
+            "src/migrator.core/admin/postgresadmin.cs": "376797126823d45380e4a983a721e2d22d2f6e8d86d04b0b9898af23f3b14168"
+        }
+    },
+    "src/Migrator.Core/Admin/SqlServerAdmin.cs": {
+        "size": 21184,
+        "mtime_ns": 1787844878051464650,
+        "indexed_at_ns": 1788039456746612703,
+        "word_count": 2057,
+        "hashes": {
+            "src/migrator.core/admin/sqlserveradmin.cs": "53422f2a609e9456b253a32ceb78e644a0d00d52a2ebb47a67e808d5659a5a24"
+        }
+    },
+    "src/Migrator.Core/MessageCode.cs": {
+        "size": 9550,
+        "mtime_ns": 1787849534095830812,
+        "indexed_at_ns": 1788039456747354604,
+        "word_count": 826,
+        "hashes": {
+            "src/migrator.core/messagecode.cs": "3694bd1ae6cf37390bf9f4984a616d89d3725b93c44ffbf8457309baa2459961"
+        }
+    },
+    "src/Migrator.Core/MigrationEngine.cs": {
+        "size": 40600,
+        "mtime_ns": 1787850358214765514,
+        "indexed_at_ns": 1788039456748073196,
+        "word_count": 3786,
+        "hashes": {
+            "src/migrator.core/migrationengine.cs": "73eaebd84be0a8262ab279693195693d7a13c4a05a61c4bfa78c93b89d241461"
+        }
+    },
+    "src/Migrator.Core/MigrationHistory.cs": {
+        "size": 2016,
+        "mtime_ns": 1787849510395808617,
+        "indexed_at_ns": 1788039456749282145,
+        "word_count": 284,
+        "hashes": {
+            "src/migrator.core/migrationhistory.cs": "08b82c0634daf3293846c9deec1cf73bfdc7f9802e3b4bf8e96fe5148aef395e"
+        }
+    },
+    "src/Migrator.Core/MigrationTypes.cs": {
+        "size": 3886,
+        "mtime_ns": 1787849534093388908,
+        "indexed_at_ns": 1788039456749989619,
+        "word_count": 532,
+        "hashes": {
+            "src/migrator.core/migrationtypes.cs": "d7bbf3481e3d6c6c723598dcd3cbb651349c01a7cb97324207f9bd4e47d26d49"
+        }
+    },
+    "src/Migrator.Core/Migrator.Core.csproj": {
+        "size": 569,
+        "mtime_ns": 1787827695550645899,
+        "indexed_at_ns": 1788039456750814590,
+        "word_count": 39,
+        "hashes": {
+            "src/migrator.core/migrator.core.csproj": "e774db419fcb1e77193019b05c2d554421fb73be8498b9c72ca900cd24d2591c"
+        }
+    },
+    "src/Migrator.Core/SchemaMirror.cs": {
+        "size": 9092,
+        "mtime_ns": 1787849646830371767,
+        "indexed_at_ns": 1788039456751550219,
+        "word_count": 923,
+        "hashes": {
+            "src/migrator.core/schemamirror.cs": "1327482a1ce52953dd04febfffe866b7cff5032de113d84288f6ed5585ac4ebf"
+        }
+    },
+    "src/Migrator.Core/SchemaReader.cs": {
+        "size": 12335,
+        "mtime_ns": 1787849691455258440,
+        "indexed_at_ns": 1788039456752227551,
+        "word_count": 1202,
+        "hashes": {
+            "src/migrator.core/schemareader.cs": "e39127ad4ce7fa9342164f2dab270ed1257fdb496c58eb1389a073c7bf3a700c"
+        }
+    },
+    "src/Migrator.Core/TargetDatabase.cs": {
+        "size": 5899,
+        "mtime_ns": 1787823072250524624,
+        "indexed_at_ns": 1788039456753168606,
+        "word_count": 552,
+        "hashes": {
+            "src/migrator.core/targetdatabase.cs": "a35fef90641ec43f77c3f221bfac9423744f9f97a1cac16b3355704c9c8d709e"
+        }
+    },
+    "src/Migrator.Core/UserProvisioner.cs": {
+        "size": 10094,
+        "mtime_ns": 1787842430973793660,
+        "indexed_at_ns": 1788039456754052445,
+        "word_count": 1089,
+        "hashes": {
+            "src/migrator.core/userprovisioner.cs": "1f0f73b12e7e3465d5cc860f3f823ffda8204a5340457cd63611fe2d44957bb0"
+        }
+    }
+}

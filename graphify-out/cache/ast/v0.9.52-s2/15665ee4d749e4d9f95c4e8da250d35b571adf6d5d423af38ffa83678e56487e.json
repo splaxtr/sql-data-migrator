@@ -1,0 +1,444 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_app_desktopshell_cs",
+            "label": "DesktopShell.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:c0879622a1b29655",
+            "label": "Migrator.App",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L3",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.App"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell",
+            "label": "DesktopShell",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L19",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s20"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "label": ".Run()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L42",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s20"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "label": ".NoDisplay()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L75",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s20"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_ismissingwebview",
+            "label": ".IsMissingWebView()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L86",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s20"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "exception",
+            "label": "Exception",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/DesktopShell.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_innermost",
+            "label": ".Innermost()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L89",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s20"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_cannotopenmessage",
+            "label": ".CannotOpenMessage()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L92",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s20"
+                ]
+            },
+            "_callable": true
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_cs",
+            "target": "photino_net",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L1",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "Photino.NET",
+                "scope_kind": "file"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_cs",
+            "target": "csharp_namespace:c0879622a1b29655",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L3",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_cs",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L19",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L42",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L75",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_ismissingwebview",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L86",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_ismissingwebview",
+            "target": "exception",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L86",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Exception"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_innermost",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L89",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_innermost",
+            "target": "exception",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L89",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Exception"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_innermost",
+            "target": "exception",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L89",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Exception"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_cannotopenmessage",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L92",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_cannotopenmessage",
+            "target": "exception",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L92",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Exception"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L44",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_ismissingwebview",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L63",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_cannotopenmessage",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L65",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_innermost",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L65",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_ismissingwebview",
+            "target": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_innermost",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L86",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "WaitForClose",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "Load",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "Center",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "SetMinSize",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "SetSize",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "SetUseOsDefaultSize",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "SetLogVerbosity",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "SetTitle",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_run",
+            "callee": "PhotinoWindow",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L49",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "callee": "IsLinux",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L76",
+            "receiver": "OperatingSystem",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "callee": "IsNullOrEmpty",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L77",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "callee": "GetEnvironmentVariable",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L77",
+            "receiver": "Environment",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "callee": "IsNullOrEmpty",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L78",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_nodisplay",
+            "callee": "GetEnvironmentVariable",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L78",
+            "receiver": "Environment",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_cannotopenmessage",
+            "callee": "IsLinux",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L94",
+            "receiver": "OperatingSystem",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_desktopshell_migrator_app_desktopshell_cannotopenmessage",
+            "callee": "IsWindows",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/DesktopShell.cs",
+            "source_location": "L96",
+            "receiver": "OperatingSystem",
+            "lang": "csharp"
+        }
+    ]
+}

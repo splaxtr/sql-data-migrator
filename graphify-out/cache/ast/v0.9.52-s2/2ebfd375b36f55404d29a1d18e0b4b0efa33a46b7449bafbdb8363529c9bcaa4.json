@@ -1,0 +1,1338 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_cs",
+            "label": "IServerAdmin.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:3238db58343235b5",
+            "label": "Migrator.Core.Admin",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.Core.Admin"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "label": "IServerAdmin",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L11",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_capabilities",
+            "label": "Capabilities",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L13",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "admincapabilities",
+            "label": "AdminCapabilities",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listdatabasesasync",
+            "label": ".ListDatabasesAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L15",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "cancellationtoken",
+            "label": "CancellationToken",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "task",
+            "label": "Task",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "ireadonlylist",
+            "label": "IReadOnlyList",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "databasesummary",
+            "label": "DatabaseSummary",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listrolesasync",
+            "label": ".ListRolesAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L16",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "rolesummary",
+            "label": "RoleSummary",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listgrantsasync",
+            "label": ".ListGrantsAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L17",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "databasegrant",
+            "label": "DatabaseGrant",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createdatabaseasync",
+            "label": ".CreateDatabaseAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L19",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setdatabaseownerasync",
+            "label": ".SetDatabaseOwnerAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L20",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewdatabasedropasync",
+            "label": ".PreviewDatabaseDropAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L21",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "databasedroppreview",
+            "label": "DatabaseDropPreview",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_dropdatabaseasync",
+            "label": ".DropDatabaseAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L22",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createroleasync",
+            "label": ".CreateRoleAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L24",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "roleattributes",
+            "label": "RoleAttributes",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setrolepasswordasync",
+            "label": ".SetRolePasswordAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L25",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setroleattributesasync",
+            "label": ".SetRoleAttributesAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L26",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewroledropasync",
+            "label": ".PreviewRoleDropAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "roledroppreview",
+            "label": "RoleDropPreview",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_droproleasync",
+            "label": ".DropRoleAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L28",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_reassignownedasync",
+            "label": ".ReassignOwnedAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L36",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setprivilegeasync",
+            "label": ".SetPrivilegeAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L38",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "privilegelevel",
+            "label": "PrivilegeLevel",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setpublicconnectasync",
+            "label": ".SetPublicConnectAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L39",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setmembershipasync",
+            "label": ".SetMembershipAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L40",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier",
+            "label": "AdminIdentifier",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L46",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "label": ".Validate()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L56",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_postgres",
+            "label": ".Postgres()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L67",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_sqlserver",
+            "label": ".SqlServer()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L74",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_literal",
+            "label": ".Literal()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L81",
+            "metadata": {
+                "namespace": "Migrator.Core.Admin",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_cs",
+            "target": "csharp_namespace:3238db58343235b5",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_cs",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L11",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_capabilities",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L13",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "admincapabilities",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L13",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "AdminCapabilities"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listdatabasesasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L15",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listdatabasesasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L15",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listdatabasesasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L15",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listdatabasesasync",
+            "target": "ireadonlylist",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L15",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "IReadOnlyList"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listdatabasesasync",
+            "target": "databasesummary",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L15",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "DatabaseSummary"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listrolesasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L16",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listrolesasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L16",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listrolesasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L16",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listrolesasync",
+            "target": "ireadonlylist",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L16",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "IReadOnlyList"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listrolesasync",
+            "target": "rolesummary",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L16",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "RoleSummary"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listgrantsasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L17",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listgrantsasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listgrantsasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listgrantsasync",
+            "target": "ireadonlylist",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "IReadOnlyList"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_listgrantsasync",
+            "target": "databasegrant",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L17",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "DatabaseGrant"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createdatabaseasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L19",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createdatabaseasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L19",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createdatabaseasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L19",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setdatabaseownerasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L20",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setdatabaseownerasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L20",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setdatabaseownerasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L20",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewdatabasedropasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L21",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewdatabasedropasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L21",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewdatabasedropasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L21",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewdatabasedropasync",
+            "target": "databasedroppreview",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L21",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "DatabaseDropPreview"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_dropdatabaseasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L22",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_dropdatabaseasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L22",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_dropdatabaseasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L22",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createroleasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L24",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createroleasync",
+            "target": "roleattributes",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L24",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "RoleAttributes"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createroleasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L24",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_createroleasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L24",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setrolepasswordasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L25",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setrolepasswordasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L25",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setrolepasswordasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L25",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setroleattributesasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L26",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setroleattributesasync",
+            "target": "roleattributes",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L26",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "RoleAttributes"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setroleattributesasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L26",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setroleattributesasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L26",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewroledropasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewroledropasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L27",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewroledropasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L27",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_previewroledropasync",
+            "target": "roledroppreview",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L27",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "RoleDropPreview"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_droproleasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L28",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_droproleasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L28",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_droproleasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L28",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_reassignownedasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L36",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_reassignownedasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L36",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_reassignownedasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L36",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setprivilegeasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L38",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setprivilegeasync",
+            "target": "privilegelevel",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L38",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "PrivilegeLevel"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setprivilegeasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L38",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setprivilegeasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L38",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setpublicconnectasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L39",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setpublicconnectasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L39",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setpublicconnectasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L39",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setmembershipasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L40",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setmembershipasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L40",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_iserveradmin_setmembershipasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L40",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_cs",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L46",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L56",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_postgres",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L67",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_sqlserver",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L74",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_literal",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L81",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_postgres",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L69",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_sqlserver",
+            "target": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L76",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "callee": "IsNullOrWhiteSpace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L58",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "callee": "ArgumentException",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L59",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "callee": "Any",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L60",
+            "receiver": "name",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "callee": "ArgumentException",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L61",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "callee": "GetByteCount",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L62",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_validate",
+            "callee": "ArgumentException",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L63",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_postgres",
+            "callee": "Replace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L70",
+            "receiver": "name",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_sqlserver",
+            "callee": "Replace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L77",
+            "receiver": "name",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_admin_iserveradmin_migrator_core_admin_adminidentifier_literal",
+            "callee": "Replace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/Admin/IServerAdmin.cs",
+            "source_location": "L81",
+            "receiver": "value",
+            "lang": "csharp"
+        }
+    ],
+    "member_field_tables": [
+        {
+            "lang": "csharp",
+            "class_label": "IServerAdmin",
+            "source_file": "$graphify-root$/src/Migrator.Core/Admin/IServerAdmin.cs",
+            "fields": {
+                "Capabilities": "AdminCapabilities"
+            }
+        }
+    ]
+}

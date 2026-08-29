@@ -1,0 +1,73 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "label": "Migrator.Core.csproj",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "source_location": null
+        },
+        {
+            "id": "framework_net8_0",
+            "label": "net8.0",
+            "file_type": "concept",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "source_location": null
+        },
+        {
+            "id": "nuget_microsoft_data_sqlclient",
+            "label": "Microsoft.Data.SqlClient (7.0.2)",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "source_location": null
+        },
+        {
+            "id": "nuget_npgsql",
+            "label": "Npgsql (10.0.3)",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "source_location": null
+        },
+        {
+            "id": "sdk_microsoft_net_sdk",
+            "label": "Microsoft.NET.Sdk",
+            "file_type": "concept",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "source_location": null
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "target": "framework_net8_0",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "target": "nuget_microsoft_data_sqlclient",
+            "relation": "imports",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "target": "nuget_npgsql",
+            "relation": "imports",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "target": "sdk_microsoft_net_sdk",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "weight": 1.0
+        }
+    ]
+}

@@ -1,0 +1,911 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_cs",
+            "label": "UserProvisioner.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:6fd09b4656d9c278",
+            "label": "Migrator.Core",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.Core"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_provisioneduser",
+            "label": "ProvisionedUser",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L12",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "label": "UserProvisioner",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L23",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "label": ".EnsureAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L39",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "iprogress",
+            "label": "IProgress",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/UserProvisioner.cs"
+        },
+        {
+            "id": "progressmessage",
+            "label": "ProgressMessage",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/UserProvisioner.cs"
+        },
+        {
+            "id": "cancellationtoken",
+            "label": "CancellationToken",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/UserProvisioner.cs"
+        },
+        {
+            "id": "task",
+            "label": "Task",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/UserProvisioner.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryownershipasync",
+            "label": ".TryOwnershipAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L127",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "npgsqlconnection",
+            "label": "NpgsqlConnection",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.Core/UserProvisioner.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "label": ".TryObjectOwnershipAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L145",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_buildrolename",
+            "label": ".BuildRoleName()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L181",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "label": ".Sanitize()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L191",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_generatepassword",
+            "label": ".GeneratePassword()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L204",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_literal",
+            "label": ".Literal()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L212",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "label": ".ExecAsync()",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L214",
+            "metadata": {
+                "namespace": "Migrator.Core",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_cs",
+            "target": "csharp_namespace:6fd09b4656d9c278",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_cs",
+            "target": "system_security_cryptography",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L3",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "System.Security.Cryptography",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_cs",
+            "target": "system_text",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L4",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "System.Text",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_cs",
+            "target": "npgsql",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L5",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "Npgsql",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_cs",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_provisioneduser",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L12",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_cs",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L23",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L39",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "iprogress",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L39",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "IProgress"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "progressmessage",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L39",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ProgressMessage"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L39",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L39",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_provisioneduser",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L39",
+            "weight": 1.0,
+            "context": "generic_arg",
+            "metadata": {
+                "ref_token": "ProvisionedUser"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryownershipasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L127",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryownershipasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L127",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryownershipasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L127",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryownershipasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L127",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L145",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L145",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L145",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L145",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_buildrolename",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L181",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L191",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_generatepassword",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L204",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_literal",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L212",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L214",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "target": "npgsqlconnection",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L214",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "NpgsqlConnection"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "target": "cancellationtoken",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L214",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "CancellationToken"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "target": "task",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L214",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "Task"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "npgsqlconnection",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L53",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_generatepassword",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L66",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L67",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_literal",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L68",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryownershipasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L94",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L106",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_provisioneduser",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L117",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryownershipasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L132",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_literal",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L148",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_tryobjectownershipasync",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L167",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_buildrolename",
+            "target": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L183",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L48",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "OpenAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L54",
+            "receiver": "maintenance",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlConnection"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L58",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "AddWithValue",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L60",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "ExecuteScalarAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L61",
+            "receiver": "exists",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L68",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L69",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L74",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L79",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Quote",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L80",
+            "receiver": "TargetDatabase",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L86",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "OpenAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L97",
+            "receiver": "target",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L110",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L115",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_ensureasync",
+            "callee": "Report",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L121",
+            "receiver": "progress",
+            "lang": "csharp",
+            "receiver_type": "IProgress"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_buildrolename",
+            "callee": "Replace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L184",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_buildrolename",
+            "callee": "IsNullOrWhiteSpace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L184",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_buildrolename",
+            "callee": "IsDigit",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L187",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "callee": "StringBuilder",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L193",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "callee": "ToLowerInvariant",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L194",
+            "receiver": "value",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "callee": "Append",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L195",
+            "receiver": "builder",
+            "lang": "csharp",
+            "receiver_type": "StringBuilder"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "callee": "IsAsciiLetterOrDigit",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L195",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_sanitize",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L196",
+            "receiver": "builder",
+            "lang": "csharp",
+            "receiver_type": "StringBuilder"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_generatepassword",
+            "callee": "GetInt32",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L208",
+            "receiver": "RandomNumberGenerator",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_generatepassword",
+            "callee": "string",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L209",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_literal",
+            "callee": "Replace",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L212",
+            "receiver": "value",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "callee": "NpgsqlCommand",
+            "is_member_call": false,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L216",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_core_userprovisioner_migrator_core_userprovisioner_execasync",
+            "callee": "ExecuteNonQueryAsync",
+            "is_member_call": true,
+            "source_file": "src/Migrator.Core/UserProvisioner.cs",
+            "source_location": "L217",
+            "receiver": "command",
+            "lang": "csharp",
+            "receiver_type": "NpgsqlCommand"
+        }
+    ]
+}

@@ -1,0 +1,297 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_reportfonts_cs",
+            "label": "ReportFonts.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:9b7b510e5af26b6b",
+            "label": "Migrator.App.Reporting",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.App.Reporting"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts",
+            "label": "ReportFonts",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L15",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "ifontresolver",
+            "label": "IFontResolver",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": ""
+        },
+        {
+            "id": "lazy",
+            "label": "Lazy",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/ReportFonts.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_register",
+            "label": ".Register()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L29",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "label": ".GetFont()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L31",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_resolvetypeface",
+            "label": ".ResolveTypeface()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L43",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "fontresolverinfo",
+            "label": "FontResolverInfo",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/ReportFonts.cs"
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_cs",
+            "target": "csharp_namespace:9b7b510e5af26b6b",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_cs",
+            "target": "system_reflection",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L3",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "System.Reflection",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_cs",
+            "target": "pdfsharp_fonts",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L4",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "PdfSharp.Fonts",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_cs",
+            "target": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L15",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts",
+            "target": "ifontresolver",
+            "relation": "implements",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L15",
+            "weight": 1.0,
+            "metadata": {
+                "ref_token": "IFontResolver"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts",
+            "target": "lazy",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L23",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "Lazy"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts",
+            "target": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_register",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L29",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts",
+            "target": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L31",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts",
+            "target": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_resolvetypeface",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L43",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_resolvetypeface",
+            "target": "fontresolverinfo",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L43",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "FontResolverInfo"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_resolvetypeface",
+            "target": "fontresolverinfo",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L44",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "callee": "GetManifestResourceStream",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L33",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "callee": "GetTypeInfo",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L33",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "callee": "InvalidOperationException",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L34",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "callee": "MemoryStream",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L35",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "callee": "CopyTo",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L36",
+            "receiver": "stream",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_reportfonts_migrator_app_reporting_reportfonts_getfont",
+            "callee": "ToArray",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/ReportFonts.cs",
+            "source_location": "L37",
+            "receiver": "memory",
+            "lang": "csharp",
+            "receiver_type": "MemoryStream"
+        }
+    ],
+    "member_field_tables": [
+        {
+            "lang": "csharp",
+            "class_label": "ReportFonts",
+            "source_file": "$graphify-root$/src/Migrator.App/Reporting/ReportFonts.cs",
+            "fields": {
+                "Registration": "Lazy"
+            }
+        }
+    ]
+}

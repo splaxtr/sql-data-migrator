@@ -1,0 +1,2865 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_cs",
+            "label": "MigrationReportPdf.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:9b7b510e5af26b6b",
+            "label": "Migrator.App.Reporting",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.App.Reporting"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "label": "MigrationReportPdf",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L16",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "cultureinfo",
+            "label": "CultureInfo",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "xcolor",
+            "label": "XColor",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "label": ".Build()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L36",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "migrationreport",
+            "label": "MigrationReport",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "label": ".DrawHeader()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L65",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "layout",
+            "label": "Layout",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_titlefor",
+            "label": ".TitleFor()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L95",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "runmode",
+            "label": "RunMode",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_filenamefor",
+            "label": ".FileNameFor()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L103",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "label": ".Field()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L110",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "label": ".DrawStats()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L119",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "label": ".DrawResults()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L157",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "label": ".DrawSchemaNotes()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L234",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "label": ".DrawUsers()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L252",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "label": ".DrawUserBlock()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L259",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "databaseoutcome",
+            "label": "DatabaseOutcome",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "label": ".DrawPasswordNotice()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L312",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_column",
+            "label": "Column",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L340",
+            "metadata": {
+                "is_nested_type": true,
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "label": ".Heading()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L342",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "label": ".TableHeader()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L353",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "label": ".Row()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L371",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "label": ".NoteLine()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L394",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "label": ".DrawFooters()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L407",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "pdfdocument",
+            "label": "PdfDocument",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "label": "Layout",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L423",
+            "metadata": {
+                "is_nested_type": true,
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_gfx",
+            "label": "Gfx",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L433",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "xgraphics",
+            "label": "XGraphics",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_y",
+            "label": "Y",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L434",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_bottomlimit",
+            "label": "BottomLimit",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L435",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_repeatheader",
+            "label": "RepeatHeader",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L438",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "action",
+            "label": "Action",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_newpage",
+            "label": ".NewPage()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L440",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_ensure",
+            "label": ".Ensure()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L449",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_close",
+            "label": ".Close()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L454",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_font",
+            "label": ".Font()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L457",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "xfont",
+            "label": "XFont",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "label": ".Brush()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L460",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "xsolidbrush",
+            "label": "XSolidBrush",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_formatduration",
+            "label": ".FormatDuration()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L462",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "timespan",
+            "label": "TimeSpan",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "label": ".Fit()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L469",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "label": ".WrapHard()",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L482",
+            "metadata": {
+                "namespace": "Migrator.App.Reporting",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true
+        },
+        {
+            "id": "ienumerable",
+            "label": "IEnumerable",
+            "file_type": "code",
+            "source_file": "",
+            "source_location": "",
+            "origin_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs"
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_cs",
+            "target": "csharp_namespace:9b7b510e5af26b6b",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_cs",
+            "target": "system_globalization",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L3",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "System.Globalization",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_cs",
+            "target": "pdfsharp",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L4",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "PdfSharp",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_cs",
+            "target": "pdfsharp_drawing",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L5",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "PdfSharp.Drawing",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_cs",
+            "target": "pdfsharp_pdf",
+            "relation": "imports",
+            "context": "import",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L6",
+            "weight": 1.0,
+            "metadata": {
+                "using_kind": "namespace",
+                "target_fqn": "PdfSharp.Pdf",
+                "scope_kind": "namespace",
+                "scope_id": "s0"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_cs",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L16",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "cultureinfo",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L18",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "CultureInfo"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L27",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L28",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L29",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L30",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L31",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L32",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L33",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L34",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L36",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "migrationreport",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L36",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "MigrationReport"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L65",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L65",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "target": "migrationreport",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L65",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "MigrationReport"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_titlefor",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L95",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_titlefor",
+            "target": "runmode",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L95",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "RunMode"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_filenamefor",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L103",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_filenamefor",
+            "target": "runmode",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L103",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "RunMode"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L110",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L110",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L119",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L119",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "target": "migrationreport",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L119",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "MigrationReport"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L157",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L157",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "migrationreport",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L157",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "MigrationReport"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L234",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L234",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "target": "migrationreport",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L234",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "MigrationReport"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L252",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L252",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "target": "migrationreport",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L252",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "MigrationReport"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L259",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L259",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "target": "databaseoutcome",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L259",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "DatabaseOutcome"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L312",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L312",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_column",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L340",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L342",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L342",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L353",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L353",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_column",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L353",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Column"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L371",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L371",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_column",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L371",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Column"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L371",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L394",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "target": "layout",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L394",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "Layout"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L407",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "target": "pdfdocument",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L407",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "PdfDocument"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L423",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "pdfdocument",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L425",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "PdfDocument"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_gfx",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L433",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "xgraphics",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L433",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "XGraphics"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_y",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L434",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_bottomlimit",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L435",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_repeatheader",
+            "relation": "defines",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L438",
+            "weight": 1.0,
+            "context": "field"
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "action",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L438",
+            "weight": 1.0,
+            "context": "field",
+            "metadata": {
+                "ref_token": "Action"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_newpage",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L440",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_ensure",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L449",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_close",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L454",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_font",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L457",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_font",
+            "target": "xfont",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L457",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "XFont"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L460",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "target": "xcolor",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L460",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "XColor"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "target": "xsolidbrush",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L460",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "XSolidBrush"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_formatduration",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L462",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_formatduration",
+            "target": "timespan",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L462",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "TimeSpan"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L469",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "target": "xgraphics",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L469",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "XGraphics"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "target": "xfont",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L469",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "XFont"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "relation": "method",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L482",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "target": "xgraphics",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L482",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "XGraphics"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "target": "xfont",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L482",
+            "weight": 1.0,
+            "context": "parameter_type",
+            "metadata": {
+                "ref_token": "XFont"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "target": "ienumerable",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L482",
+            "weight": 1.0,
+            "context": "return_type",
+            "metadata": {
+                "ref_token": "IEnumerable"
+            }
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "pdfdocument",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L40",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_titlefor",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L41",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L44",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L45",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L46",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L47",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L48",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L51",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L52",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L56",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_titlefor",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L68",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L68",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L80",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L112",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L114",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L142",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L149",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_column",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L165",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L181",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L182",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_formatduration",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L206",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L209",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L214",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L236",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L243",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L246",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L254",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L256",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L272",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L282",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L320",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L325",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L348",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L357",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L385",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L385",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L397",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L400",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_brush",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L414",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_ensure",
+            "target": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_newpage",
+            "relation": "calls",
+            "context": "call",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L451",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": [
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "callee": "Register",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L38",
+            "receiver": "ReportFonts",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "callee": "Close",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L54",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "callee": "MemoryStream",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L58",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "callee": "Save",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L59",
+            "receiver": "document",
+            "lang": "csharp",
+            "receiver_type": "PdfDocument"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_build",
+            "callee": "ToArray",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L60",
+            "receiver": "buffer",
+            "lang": "csharp",
+            "receiver_type": "MemoryStream"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L68",
+            "receiver": "gfx",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L69",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L72",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "ToLocalTime",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L72",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L73",
+            "receiver": "gfx",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L74",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "DrawLine",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L77",
+            "receiver": "gfx",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawheader",
+            "callee": "XPen",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L77",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L112",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L113",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L114",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_field",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L115",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "Ensure",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L123",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L130",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L131",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L132",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L134",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L135",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "DrawRectangle",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L142",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L142",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L149",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L150",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L151",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawstats",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L152",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L192",
+            "receiver": "index",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L202",
+            "receiver": "index",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawresults",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L205",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "callee": "Ensure",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L242",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L243",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawschemanotes",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L244",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawusers",
+            "callee": "Where",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L255",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L271",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "Select",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L271",
+            "receiver": "fields",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L272",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L275",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "List",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L276",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "Sum",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L278",
+            "receiver": "wrapped",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "Ensure",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L279",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L282",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L283",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L284",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L286",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L291",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L292",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L295",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L296",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L303",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L304",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "DrawLine",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L308",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawuserblock",
+            "callee": "XPen",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L308",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "ToList",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L320",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "Ensure",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L322",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L324",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "DrawRectangle",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L325",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "DrawLine",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L326",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "XPen",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L326",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L331",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawpasswordnotice",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L332",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "callee": "Ensure",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L347",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L348",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_heading",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L349",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "callee": "Ensure",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L356",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "callee": "DrawRectangle",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L357",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L357",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L362",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_tableheader",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L363",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "callee": "NewPage",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L376",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "callee": "Invoke",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L377",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L385",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L386",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "callee": "DrawLine",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L391",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_row",
+            "callee": "XPen",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L391",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "callee": "NewPage",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L399",
+            "receiver": "layout",
+            "lang": "csharp",
+            "receiver_type": "Layout"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L400",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L401",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "callee": "DrawLine",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L404",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_noteline",
+            "callee": "XPen",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L404",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "callee": "FromPdfPage",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L411",
+            "receiver": "XGraphics",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "callee": "DrawLine",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L413",
+            "receiver": "gfx",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "callee": "XPen",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L413",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L414",
+            "receiver": "gfx",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L415",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "callee": "DrawString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L416",
+            "receiver": "gfx",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_drawfooters",
+            "callee": "XRect",
+            "is_member_call": false,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L417",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_newpage",
+            "callee": "Dispose",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L442",
+            "receiver": "Gfx?",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_newpage",
+            "callee": "AddPage",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L443",
+            "receiver": "_document",
+            "lang": "csharp",
+            "receiver_type": "PdfDocument"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_newpage",
+            "callee": "FromPdfPage",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L445",
+            "receiver": "XGraphics",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_layout_close",
+            "callee": "Dispose",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L454",
+            "receiver": "Gfx?",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_formatduration",
+            "callee": "ToString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L465",
+            "receiver": null,
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "callee": "MeasureString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L471",
+            "receiver": "gfx",
+            "lang": "csharp",
+            "receiver_type": "XGraphics"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_fit",
+            "callee": "MeasureString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L473",
+            "receiver": "gfx",
+            "lang": "csharp",
+            "receiver_type": "XGraphics"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "callee": "Split",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L488",
+            "receiver": "text",
+            "lang": "csharp"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "callee": "MeasureString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L491",
+            "receiver": "gfx",
+            "lang": "csharp",
+            "receiver_type": "XGraphics"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "callee": "MeasureString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L494",
+            "receiver": "gfx",
+            "lang": "csharp",
+            "receiver_type": "XGraphics"
+        },
+        {
+            "caller_nid": "$graphify-root$_src_migrator_app_reporting_migrationreportpdf_migrator_app_reporting_migrationreportpdf_wraphard",
+            "callee": "MeasureString",
+            "is_member_call": true,
+            "source_file": "src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "source_location": "L499",
+            "receiver": "gfx",
+            "lang": "csharp",
+            "receiver_type": "XGraphics"
+        }
+    ],
+    "member_field_tables": [
+        {
+            "lang": "csharp",
+            "class_label": "MigrationReportPdf",
+            "source_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "fields": {
+                "Turkish": "CultureInfo",
+                "Ink": "XColor",
+                "Muted": "XColor",
+                "Rule": "XColor",
+                "Panel": "XColor",
+                "Good": "XColor",
+                "Bad": "XColor",
+                "NoticeFill": "XColor",
+                "NoticeEdge": "XColor"
+            }
+        },
+        {
+            "lang": "csharp",
+            "class_label": "Layout",
+            "source_file": "$graphify-root$/src/Migrator.App/Reporting/MigrationReportPdf.cs",
+            "fields": {
+                "_document": "PdfDocument",
+                "Gfx": "XGraphics",
+                "RepeatHeader": "Action"
+            }
+        }
+    ]
+}

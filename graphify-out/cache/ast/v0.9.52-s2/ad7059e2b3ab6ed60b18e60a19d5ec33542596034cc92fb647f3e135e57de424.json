@@ -1,0 +1,125 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_app_runmode_cs",
+            "label": "RunMode.cs",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L1"
+        },
+        {
+            "id": "csharp_namespace:c0879622a1b29655",
+            "label": "Migrator.App",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L1",
+            "type": "namespace",
+            "metadata": {
+                "kind": "csharp_namespace",
+                "namespace": "Migrator.App"
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode",
+            "label": "RunMode",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L12",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            },
+            "_callable": true,
+            "_callable_class": true
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode_migrate",
+            "label": "Migrate",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L15",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode_verifyonly",
+            "label": "VerifyOnly",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L21",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        },
+        {
+            "id": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode_provisiononly",
+            "label": "ProvisionOnly",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L27",
+            "metadata": {
+                "namespace": "Migrator.App",
+                "scope_chain": [
+                    "s0"
+                ]
+            }
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_app_runmode_cs",
+            "target": "csharp_namespace:c0879622a1b29655",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L1",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_runmode_cs",
+            "target": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode",
+            "relation": "contains",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L12",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode",
+            "target": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode_migrate",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L15",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode",
+            "target": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode_verifyonly",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L21",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode",
+            "target": "$graphify-root$_src_migrator_app_runmode_migrator_app_runmode_provisiononly",
+            "relation": "case_of",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/RunMode.cs",
+            "source_location": "L27",
+            "weight": 1.0
+        }
+    ],
+    "raw_calls": []
+}

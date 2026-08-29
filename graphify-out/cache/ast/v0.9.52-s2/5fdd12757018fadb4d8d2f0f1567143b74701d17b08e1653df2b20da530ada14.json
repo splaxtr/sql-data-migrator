@@ -1,0 +1,118 @@
+{
+    "nodes": [
+        {
+            "id": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "label": "Migrator.App.csproj",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        },
+        {
+            "id": "framework_net8_0",
+            "label": "net8.0",
+            "file_type": "concept",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        },
+        {
+            "id": "nuget_microsoft_aspnetcore_dataprotection",
+            "label": "Microsoft.AspNetCore.DataProtection (10.0.11)",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        },
+        {
+            "id": "nuget_microsoft_extensions_fileproviders_embedded",
+            "label": "Microsoft.Extensions.FileProviders.Embedded (8.0.11)",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        },
+        {
+            "id": "nuget_pdfsharp",
+            "label": "PDFsharp (6.2.4)",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        },
+        {
+            "id": "nuget_photino_net",
+            "label": "Photino.NET (4.0.16)",
+            "file_type": "code",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        },
+        {
+            "id": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "label": "Migrator.Core.csproj",
+            "file_type": "code",
+            "source_file": "src/Migrator.Core/Migrator.Core.csproj",
+            "source_location": null
+        },
+        {
+            "id": "sdk_microsoft_net_sdk_web",
+            "label": "Microsoft.NET.Sdk.Web",
+            "file_type": "concept",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "source_location": null
+        }
+    ],
+    "edges": [
+        {
+            "source": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "target": "framework_net8_0",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "target": "nuget_microsoft_aspnetcore_dataprotection",
+            "relation": "imports",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "target": "nuget_microsoft_extensions_fileproviders_embedded",
+            "relation": "imports",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "target": "nuget_pdfsharp",
+            "relation": "imports",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "target": "nuget_photino_net",
+            "relation": "imports",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "target": "$graphify-root$_src_migrator_core_migrator_core_csproj",
+            "relation": "imports",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "weight": 1.0
+        },
+        {
+            "source": "$graphify-root$_src_migrator_app_migrator_app_csproj",
+            "target": "sdk_microsoft_net_sdk_web",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "source_file": "src/Migrator.App/Migrator.App.csproj",
+            "weight": 1.0
+        }
+    ]
+}

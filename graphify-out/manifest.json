@@ -1,0 +1,302 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1787826611.3743122,
+    "seen": 1788040146.3724957,
+    "ast_hash": "6415961ded0d8e16497cd8e8be992d41",
+    "semantic_hash": "6415961ded0d8e16497cd8e8be992d41"
+  },
+  ".claude/skills/verify-ui/package.json": {
+    "mtime": 1787826563.5561957,
+    "seen": 1788040146.37251,
+    "ast_hash": "fe3672de29c4ebc9f2baa731fefcbe78",
+    "semantic_hash": "fe3672de29c4ebc9f2baa731fefcbe78"
+  },
+  ".claude/skills/verify-ui/scripts/audit-ui.mjs": {
+    "mtime": 1787843399.3349268,
+    "seen": 1788040146.3725147,
+    "ast_hash": "fda03cf0211af276072619349afe35d5",
+    "semantic_hash": "fda03cf0211af276072619349afe35d5"
+  },
+  "SqlDataMigrator.sln": {
+    "mtime": 1787655962.4952796,
+    "seen": 1788040146.3725183,
+    "ast_hash": "b207ce188c6dae6cc8cbf34fd62c90bf",
+    "semantic_hash": "b207ce188c6dae6cc8cbf34fd62c90bf"
+  },
+  "src/Migrator.App/AppMessageCode.cs": {
+    "mtime": 1787840173.5885856,
+    "seen": 1788040146.3725214,
+    "ast_hash": "546f957a5b2c96cbe6ad87d5639c6de2",
+    "semantic_hash": "546f957a5b2c96cbe6ad87d5639c6de2"
+  },
+  "src/Migrator.App/BatchRunner.cs": {
+    "mtime": 1787849691.459743,
+    "seen": 1788040146.3725245,
+    "ast_hash": "6adeb43414f3da4ac5cc18d766a8416a",
+    "semantic_hash": "6adeb43414f3da4ac5cc18d766a8416a"
+  },
+  "src/Migrator.App/ConnectionStore.cs": {
+    "mtime": 1787781056.1398258,
+    "seen": 1788040146.372528,
+    "ast_hash": "834eec1abd4870fd6d5275c654b66a9d",
+    "semantic_hash": "834eec1abd4870fd6d5275c654b66a9d"
+  },
+  "src/Migrator.App/DesktopShell.cs": {
+    "mtime": 1788040054.9479456,
+    "seen": 1788040146.3725307,
+    "ast_hash": "fb0d9aa0ea6d12803ad37adba5772962",
+    "semantic_hash": "fb0d9aa0ea6d12803ad37adba5772962"
+  },
+  "src/Migrator.App/Migrator.App.csproj": {
+    "mtime": 1788040054.9479456,
+    "seen": 1788040146.3725338,
+    "ast_hash": "ee49e2a5741225a1c6e36a34938ec24a",
+    "semantic_hash": "ee49e2a5741225a1c6e36a34938ec24a"
+  },
+  "src/Migrator.App/Program.cs": {
+    "mtime": 1788040054.949763,
+    "seen": 1788040146.372537,
+    "ast_hash": "4b3a8120a8fe2a3c41ec679e14077cc3",
+    "semantic_hash": "4b3a8120a8fe2a3c41ec679e14077cc3"
+  },
+  "src/Migrator.App/Properties/launchSettings.json": {
+    "mtime": 1787655940.1702778,
+    "seen": 1788040146.37254,
+    "ast_hash": "3dfc343b794e2daf1d45a944f23f9c15",
+    "semantic_hash": "3dfc343b794e2daf1d45a944f23f9c15"
+  },
+  "src/Migrator.App/Reporting/MigrationReport.cs": {
+    "mtime": 1787847064.935293,
+    "seen": 1788040146.3725433,
+    "ast_hash": "1464b263e0e8e2583ff726464abd54cd",
+    "semantic_hash": "1464b263e0e8e2583ff726464abd54cd"
+  },
+  "src/Migrator.App/Reporting/MigrationReportPdf.cs": {
+    "mtime": 1787847106.8183794,
+    "seen": 1788040146.3725462,
+    "ast_hash": "2eacafb798ab0ea9ec9bbbd9b81d3e9f",
+    "semantic_hash": "2eacafb798ab0ea9ec9bbbd9b81d3e9f"
+  },
+  "src/Migrator.App/Reporting/ReportFonts.cs": {
+    "mtime": 1787822146.843057,
+    "seen": 1788040146.372549,
+    "ast_hash": "c1ce35c8580dba9f7b447f95c8aee463",
+    "semantic_hash": "c1ce35c8580dba9f7b447f95c8aee463"
+  },
+  "src/Migrator.App/RunMode.cs": {
+    "mtime": 1787840116.3516183,
+    "seen": 1788040146.3725522,
+    "ast_hash": "d21540b09c81b0f27e9db1d055f93e68",
+    "semantic_hash": "d21540b09c81b0f27e9db1d055f93e68"
+  },
+  "src/Migrator.App/appsettings.Development.json": {
+    "mtime": 1787655940.014278,
+    "seen": 1788040146.372555,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "src/Migrator.App/appsettings.json": {
+    "mtime": 1787655940.021278,
+    "seen": 1788040146.3725576,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "src/Migrator.App/wwwroot/admin.js": {
+    "mtime": 1787844930.9147477,
+    "seen": 1788040146.3725612,
+    "ast_hash": "05d3a4363296e86b600524767e260d4f",
+    "semantic_hash": "05d3a4363296e86b600524767e260d4f"
+  },
+  "src/Migrator.App/wwwroot/app.js": {
+    "mtime": 1787849796.2619262,
+    "seen": 1788040146.3725648,
+    "ast_hash": "280d5371c67139833bab302b78275b41",
+    "semantic_hash": "280d5371c67139833bab302b78275b41"
+  },
+  "src/Migrator.Core/Admin/AdminTypes.cs": {
+    "mtime": 1787844878.0495846,
+    "seen": 1788040146.372568,
+    "ast_hash": "41f01bc5bef63030951e9168a316dd22",
+    "semantic_hash": "41f01bc5bef63030951e9168a316dd22"
+  },
+  "src/Migrator.Core/Admin/IServerAdmin.cs": {
+    "mtime": 1787844878.0503707,
+    "seen": 1788040146.372571,
+    "ast_hash": "f46251b8d7923aaa39e18302783af2b7",
+    "semantic_hash": "f46251b8d7923aaa39e18302783af2b7"
+  },
+  "src/Migrator.Core/Admin/PostgresAdmin.cs": {
+    "mtime": 1787844852.734613,
+    "seen": 1788040146.3725739,
+    "ast_hash": "29a8517d5a9013aed9eb18a47bc51a01",
+    "semantic_hash": "29a8517d5a9013aed9eb18a47bc51a01"
+  },
+  "src/Migrator.Core/Admin/SqlServerAdmin.cs": {
+    "mtime": 1787844878.0514646,
+    "seen": 1788040146.3725781,
+    "ast_hash": "6713095db596f387e963d2045aca1b0c",
+    "semantic_hash": "6713095db596f387e963d2045aca1b0c"
+  },
+  "src/Migrator.Core/MessageCode.cs": {
+    "mtime": 1787849534.095831,
+    "seen": 1788040146.372581,
+    "ast_hash": "11650fcb43f079c44fb7fd5c729c2111",
+    "semantic_hash": "11650fcb43f079c44fb7fd5c729c2111"
+  },
+  "src/Migrator.Core/MigrationEngine.cs": {
+    "mtime": 1787850358.2147655,
+    "seen": 1788040146.372584,
+    "ast_hash": "7cd924652aa58895a85bdcd4afd17e93",
+    "semantic_hash": "7cd924652aa58895a85bdcd4afd17e93"
+  },
+  "src/Migrator.Core/MigrationHistory.cs": {
+    "mtime": 1787849510.3958087,
+    "seen": 1788040146.372587,
+    "ast_hash": "e7fccfb8bf20171291da02dd04c15dd1",
+    "semantic_hash": "e7fccfb8bf20171291da02dd04c15dd1"
+  },
+  "src/Migrator.Core/MigrationTypes.cs": {
+    "mtime": 1787849534.0933888,
+    "seen": 1788040146.3725903,
+    "ast_hash": "9444eedc7c005d826cab534dc1192dd6",
+    "semantic_hash": "9444eedc7c005d826cab534dc1192dd6"
+  },
+  "src/Migrator.Core/Migrator.Core.csproj": {
+    "mtime": 1787827695.5506458,
+    "seen": 1788040146.3725939,
+    "ast_hash": "9e3c41894cdcca100c474bafe0aa568c",
+    "semantic_hash": "9e3c41894cdcca100c474bafe0aa568c"
+  },
+  "src/Migrator.Core/SchemaMirror.cs": {
+    "mtime": 1787849646.8303719,
+    "seen": 1788040146.372597,
+    "ast_hash": "4a237e8a5b50754e9b4bd367f0e82340",
+    "semantic_hash": "4a237e8a5b50754e9b4bd367f0e82340"
+  },
+  "src/Migrator.Core/SchemaReader.cs": {
+    "mtime": 1787849691.4552584,
+    "seen": 1788040146.3725998,
+    "ast_hash": "6a7bac786a1e37a48a85bbeb179433f8",
+    "semantic_hash": "6a7bac786a1e37a48a85bbeb179433f8"
+  },
+  "src/Migrator.Core/TargetDatabase.cs": {
+    "mtime": 1787823072.2505245,
+    "seen": 1788040146.3726027,
+    "ast_hash": "008e03b0dc2a639df5b854ff43527b4f",
+    "semantic_hash": "008e03b0dc2a639df5b854ff43527b4f"
+  },
+  "src/Migrator.Core/UserProvisioner.cs": {
+    "mtime": 1787842430.9737937,
+    "seen": 1788040146.372606,
+    "ast_hash": "a74cc5fb083b8b2ea319e94021044d6b",
+    "semantic_hash": "a74cc5fb083b8b2ea319e94021044d6b"
+  },
+  ".claude/README.md": {
+    "mtime": 1787826602.4252915,
+    "seen": 1788040146.3726091,
+    "ast_hash": "19a8bd58e14a2be732ea9e50a87726ef",
+    "semantic_hash": "19a8bd58e14a2be732ea9e50a87726ef"
+  },
+  ".claude/skills/verify-ui/SKILL.md": {
+    "mtime": 1787826574.7692244,
+    "seen": 1788040146.3726122,
+    "ast_hash": "4a3979fba2c6e8333de9e92169e382e4",
+    "semantic_hash": "4a3979fba2c6e8333de9e92169e382e4"
+  },
+  ".github/dependabot.yml": {
+    "mtime": 1787658310.9859068,
+    "seen": 1788040146.3726156,
+    "ast_hash": "ea49d543d8f50557de9d93b47cb9334b",
+    "semantic_hash": "ea49d543d8f50557de9d93b47cb9334b"
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1787658294.7749221,
+    "seen": 1788040146.3726187,
+    "ast_hash": "56c49ecc2311c9999e861cc913ccbc66",
+    "semantic_hash": "56c49ecc2311c9999e861cc913ccbc66"
+  },
+  ".github/workflows/release-please.yml": {
+    "mtime": 1787781103.7377353,
+    "seen": 1788040146.3726215,
+    "ast_hash": "493e36e2cc7c3b04f49103375b2bfa4e",
+    "semantic_hash": "493e36e2cc7c3b04f49103375b2bfa4e"
+  },
+  ".github/workflows/release.yml": {
+    "mtime": 1787781097.5627472,
+    "seen": 1788040146.3726246,
+    "ast_hash": "45793a53c71a6b1dd31cf6fe9453f561",
+    "semantic_hash": "45793a53c71a6b1dd31cf6fe9453f561"
+  },
+  "CHANGELOG.md": {
+    "mtime": 1788040054.9228573,
+    "seen": 1788040146.3726277,
+    "ast_hash": "2d9d83dc27c39ca0ee3a008ea76120ab",
+    "semantic_hash": "2d9d83dc27c39ca0ee3a008ea76120ab"
+  },
+  "CLAUDE.md": {
+    "mtime": 1787826374.599563,
+    "seen": 1788040146.3726313,
+    "ast_hash": "9ccee97f4a3c32066bc5c464256d28c3",
+    "semantic_hash": "9ccee97f4a3c32066bc5c464256d28c3"
+  },
+  "CODE_OF_CONDUCT.md": {
+    "mtime": 1787657963.5941858,
+    "seen": 1788040146.372635,
+    "ast_hash": "3bd633639670e27a5930bbc7de9e7d53",
+    "semantic_hash": "3bd633639670e27a5930bbc7de9e7d53"
+  },
+  "CONTRIBUTING.md": {
+    "mtime": 1787657923.2162094,
+    "seen": 1788040146.372638,
+    "ast_hash": "6b1e28e8edf4268df9217d4decc64055",
+    "semantic_hash": "6b1e28e8edf4268df9217d4decc64055"
+  },
+  "README.md": {
+    "mtime": 1787844165.8366027,
+    "seen": 1788040146.372641,
+    "ast_hash": "2dd47f93cd5e6799bf50fd8435a79fee",
+    "semantic_hash": "2dd47f93cd5e6799bf50fd8435a79fee"
+  },
+  "SECURITY.md": {
+    "mtime": 1787658000.9081619,
+    "seen": 1788040146.3726482,
+    "ast_hash": "3d3a96db94d9bad2a586827bda455ab2",
+    "semantic_hash": "3d3a96db94d9bad2a586827bda455ab2"
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1787844197.5408664,
+    "seen": 1788040146.3726516,
+    "ast_hash": "d3cb6c6e228550e4dc2b705097665fd8",
+    "semantic_hash": "d3cb6c6e228550e4dc2b705097665fd8"
+  },
+  "docs/ROADMAP.md": {
+    "mtime": 1787778963.409062,
+    "seen": 1788040146.3726544,
+    "ast_hash": "a5cc56747e918291e7021c66e2ba1de3",
+    "semantic_hash": "a5cc56747e918291e7021c66e2ba1de3"
+  },
+  "docs/SAFETY.md": {
+    "mtime": 1787850358.1147726,
+    "seen": 1788040146.372657,
+    "ast_hash": "0c1501566219090861e9e5a30ab4a663",
+    "semantic_hash": "0c1501566219090861e9e5a30ab4a663"
+  },
+  "docs/USAGE.md": {
+    "mtime": 1787850358.1176493,
+    "seen": 1788040146.3726604,
+    "ast_hash": "1a71ee88e31133effde0a439dda03db4",
+    "semantic_hash": "1a71ee88e31133effde0a439dda03db4"
+  },
+  "src/Migrator.App/Assets/DejaVuSans-LICENSE.txt": {
+    "mtime": 1787821918.2173562,
+    "seen": 1788040146.3726633,
+    "ast_hash": "425865e1c534c5788b1341d401f131d9",
+    "semantic_hash": "425865e1c534c5788b1341d401f131d9"
+  },
+  "src/Migrator.App/wwwroot/index.html": {
+    "mtime": 1787849796.304391,
+    "seen": 1788040146.3726666,
+    "ast_hash": "41eb9ce8bc0af7e9373e1c5d1444df10",
+    "semantic_hash": "41eb9ce8bc0af7e9373e1c5d1444df10"
+  }
+}
