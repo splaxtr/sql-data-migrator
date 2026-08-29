@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/splaxtr/sql-data-migrator/compare/v0.6.0...v0.7.0) (2026-08-29)
+
+
+### Features
+
+* run the UI in a native desktop window via Photino, with browser fallback ([45d102d](https://github.com/splaxtr/sql-data-migrator/commit/45d102d3389b3db8f539156e5563cc53de178a5f))
+
 ## [0.6.0](https://github.com/splaxtr/sql-data-migrator/compare/v0.5.0...v0.6.0) (2026-08-27)
 
 
